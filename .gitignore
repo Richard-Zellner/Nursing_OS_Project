@@ -1,0 +1,14 @@
+.env
+.env.local
+*.key
+*.pem
+*.pfx
+*.p12
+__pycache__/
+.pytest_cache/
+dist/
+build/
+.venv/
+.loop/
+STOP
+DONE
