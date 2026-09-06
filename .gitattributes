@@ -1,0 +1,3 @@
+# Keep LF in the working tree: loop.sh must never become CRLF, and the runner
+# compares protected files against HEAD byte for byte.
+* text=auto eol=lf
