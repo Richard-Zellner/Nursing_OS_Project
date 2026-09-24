@@ -42,7 +42,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   expected type per field. Acceptance: a test asserts the three required
   fields and six important fields match the docs. Blocked by: 001.
 
-- [ ] **003 Four synthetic patients.** Write `data/simple_patient.json`,
+- [x] **003 Four synthetic patients.** Write `data/simple_patient.json`,
   `data/chf_patient.json` (spec §3 extended per §11-B), `data/incomplete_patient.json`,
   `data/complex_patient.json` per spec §11. Acceptance: each parses with
   `json.load`; a test checks IDs are `SYNTH-001` to `SYNTH-004`, no key named

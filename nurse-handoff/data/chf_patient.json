@@ -1,0 +1,30 @@
+{
+  "patient_id": "SYNTH-002",
+  "age": 72,
+  "code_status": "Full Code",
+  "primary_problem": "CHF exacerbation",
+  "neuro": "Alert and oriented x4",
+  "cardiac": "Normal sinus rhythm on telemetry",
+  "respiratory": {
+    "oxygen": true,
+    "device": "nasal cannula",
+    "flow_lpm": 2
+  },
+  "mobility": "1-person assist",
+  "diet": "Cardiac diet",
+  "access": [
+    "20G peripheral IV, left forearm"
+  ],
+  "medications_of_note": [
+    "Furosemide 40 mg IV BID"
+  ],
+  "recent_events": [
+    "Furosemide given at 1800",
+    "Intake 700 mL; urine output 900 mL this shift",
+    "Daily weight completed"
+  ],
+  "pending_tasks": [
+    "Morning BMP",
+    "Daily weight"
+  ]
+}

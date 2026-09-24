@@ -1,0 +1,18 @@
+{
+  "patient_id": "SYNTH-003",
+  "age": 68,
+  "primary_problem": "Fluid volume excess",
+  "neuro": "Awake and responsive",
+  "cardiac": "Regular rhythm",
+  "diet": "Low-sodium diet",
+  "access": [
+    "Peripheral IV, right forearm"
+  ],
+  "medications_of_note": [],
+  "recent_events": [
+    "Intake and output recorded this shift"
+  ],
+  "pending_tasks": [
+    "Review morning laboratory results"
+  ]
+}

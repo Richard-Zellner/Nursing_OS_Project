@@ -1,0 +1,19 @@
+{
+  "patient_id": "SYNTH-001",
+  "age": 54,
+  "code_status": "Full Code",
+  "primary_problem": "Routine postoperative recovery",
+  "neuro": "Alert and oriented",
+  "cardiac": "Regular rhythm",
+  "respiratory": {
+    "oxygen": false,
+    "device": null,
+    "flow_lpm": null
+  },
+  "mobility": "Independent",
+  "diet": "Regular diet",
+  "access": [],
+  "medications_of_note": [],
+  "recent_events": [],
+  "pending_tasks": []
+}

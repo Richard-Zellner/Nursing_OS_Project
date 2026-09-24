@@ -1,0 +1,21 @@
+{
+  "patient_id": "SYNTH-004",
+  "age": 61,
+  "code_status": "Full Code",
+  "primary_problem": "Synthetic respiratory assessment scenario",
+  "neuro": "Alert and oriented",
+  "cardiac": "Regular rhythm",
+  "respiratory": {
+    "oxygen": true,
+    "device": null,
+    "flow_lpm": null
+  },
+  "mobility": "Independent",
+  "diet": "Regular diet",
+  "access": [],
+  "medications_of_note": [
+    "Synthetic medication 20 mg IV once"
+  ],
+  "recent_events": [],
+  "pending_tasks": []
+}

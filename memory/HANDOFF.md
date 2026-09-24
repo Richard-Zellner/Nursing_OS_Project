@@ -1,25 +1,15 @@
 # Handoff
 
-## 2026-09-24 — Owner-requested directory organization
+## Implementation handoff — ticket 003
 
-Codex moved seven root-level planning documents into `docs/portfolio/`, using
-consistent repo-based filenames. Start at `docs/portfolio/README.md`; the hub
-README and `docs/README.md` provide navigation to plans, specs, and code.
-All seven moved documents retained their exact contents (SHA-256 checked).
-All 32 original source files were accounted for. Existing code, specs,
-controller entry points, task checkboxes, and Git configuration stayed in place.
+Ticket 003 adds all four synthetic patient JSON records and tests that they
+parse, use IDs `SYNTH-001` through `SYNTH-004`, contain no forbidden keys,
+and that patient C omits `code_status`, `mobility`, and `respiratory`.
+Patient B includes telemetry, oxygen, IV diuretic and access, intake/output,
+daily weight, and pending labs. Patient D retains the two contradictory
+conditions required by the spec.
 
-Verification: `tests/verify.ps1` passed, including 3 pytest tests and CLI usage;
-28 local Markdown links across 10 documents resolved. No ticket was advanced.
-The portfolio plans do not replace the current implementation ledger.
+Verification in this run: pytest passed (6 tests); `tests/verify.ps1` passed.
+No open questions. No human action is needed before the next ticket.
 
-## Implementation handoff — ticket 002
-
-The previous worker completed ticket 002. It added `schema.py` with ordered
-required, important, and optional fields, exact important-field warning lines,
-and expected Python types for every documented field. Added schema metadata
-tests aligned with `docs/PATIENT-SCHEMA.md`.
-
-Next ticket: 003 — Four synthetic patients. It is unblocked by completed
-ticket 001. Q-001 is answered: public GitHub setup and automated controller Git sync
-are authorized. See `memory/GIT-SETUP-2026-09-24.md`.
+Next ticket: 004 — Loader. It is unblocked by tickets 001 and 003.
