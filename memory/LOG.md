@@ -5,3 +5,9 @@ Use the DATE line the loop runner puts at the top of the prompt. End the file wi
 
 - 2026-09-04 20:30 | bootstrap (human) | AGENTS.md PROMPT.md TASKS.md docs/* tests/verify.ps1 memory/* loop.sh | verify: pass
 - 2026-09-05 18:30 | review fixes (human) | loop.sh PROMPT.md AGENTS.md TASKS.md tests/verify.ps1 memory/* | verify: pass
+- 2026-09-11 21:36 | controller upgrade (owner-authorized; no content unit) | AGENTS.md PROMPT.md TASKS.md loop.sh tests/verify.ps1 memory/* | verify: pass
+- 2026-09-11 22:25 | controller edge-case review (owner-authorized; no content unit) | contracts, verification, recovery | verify: pass
+- 2026-09-24 07:17 | Ticket 001 Skeleton | nurse-handoff/README.md, nurse-handoff/requirements.txt, nurse-handoff/nurse_handoff/__init__.py, nurse-handoff/nurse_handoff/__main__.py, nurse-handoff/conftest.py, nurse-handoff/tests/__init__.py, TASKS.md, memory/HANDOFF.md, memory/LOG.md | verify: pass
+- 2026-09-24 08:00 | Ticket 002 Schema document in code | nurse-handoff/nurse_handoff/schema.py, nurse-handoff/tests/test_schema.py, TASKS.md, memory/HANDOFF.md, memory/LOG.md | verify: pass
+- 2026-09-24 11:03 | Directory organization (Codex, owner-requested maintenance; no ticket) | seven planning documents moved to docs/portfolio/; README.md, docs/README.md, docs/portfolio/README.md, memory/HANDOFF.md, memory/DECISIONS.md, memory/LOG.md; SHA-256 preservation, 28 local links, tests/verify.ps1 (3 pytest tests) | verify: pass
+- 2026-09-24 12:24 | GitHub setup (owner maintenance; no content unit) | repository visibility, controller Git authorization, commit identity, native setup notes | verify: pass

@@ -17,11 +17,15 @@ Verification for every ticket:
 `nurse-handoff/.venv/Scripts/python.exe -m pytest -q nurse-handoff` and
 `powershell -NoProfile -ExecutionPolicy Bypass -File tests/verify.ps1`.
 Bare `python` does not resolve inside the sandbox; always use the venv path.
-The rules text of this file is protected; tickets and checkboxes are yours.
+The rules text and ticket definitions are protected; maintain assigned
+checkboxes. Propose new work or ticket splits in `memory/QUESTIONS.md`.
+Ticket 107 explicitly deletes its placeholder; ticket 110 adds the v0.2
+Definition of Done. Tickets 103 and 106 may append their new fields in a
+v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
 
 ## v0.1 — Deterministic handoff
 
-- [ ] **001 Skeleton.** Create `nurse-handoff/` with the structure in spec §9:
+- [x] **001 Skeleton.** Create `nurse-handoff/` with the structure in spec §9:
   `README.md` (the §15 opening plus a usage stub), `requirements.txt`
   (`pytest` only), `nurse_handoff/__init__.py` (version `0.1.0`),
   `nurse_handoff/__main__.py` (prints usage and exits 2 when no path given),
@@ -32,7 +36,7 @@ The rules text of this file is protected; tickets and checkboxes are yours.
   reports no tests collected (pytest exit code 5 is acceptable here and only
   here). Blocked by: none.
 
-- [ ] **002 Schema document in code.** Create `nurse_handoff/schema.py`
+- [x] **002 Schema document in code.** Create `nurse_handoff/schema.py`
   holding the field lists from `docs/PATIENT-SCHEMA.md`: `REQUIRED_FIELDS`,
   `IMPORTANT_FIELDS` (with their warning text), `OPTIONAL_FIELDS`, and the
   expected type per field. Acceptance: a test asserts the three required
@@ -189,9 +193,9 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 
 ## Human checklist (agent never ticks these)
 
-- [ ] (Optional) Re-run `powershell -File ..\loops\setup.ps1` after a Python upgrade; the loop runner runs it when the venv is missing.
+- [ ] Re-run `powershell -File ..\loops\setup.ps1` after a Python upgrade or if the Nursing venv is missing; the controller checks it and reports a blocker when setup is needed.
 - [ ] Create the GitHub repository and push `main` after 001 lands (Q-001).
-- [ ] Review and commit between iterations. Edits to protected files (AGENTS.md, PROMPT.md, loop.sh, tests/verify.ps1, docs/NURSE-HANDOFF-SPEC.md) must be committed before the next run.
+- [ ] Review and commit between iterations. Edits to protected files (AGENTS.md, PROMPT.md, loop.sh, tests/verify.ps1, docs/NURSE-HANDOFF-SPEC.md) are captured in the next pre-run snapshot; commits remain a human review choice.
 - [ ] After the v0.1 DONE file appears: review, `git tag v0.1.0`, push.
 - [ ] v0.1 released (tick this, then delete `DONE` to unblock v0.2).
 - [ ] After v0.2 DONE: review, `git tag v0.2.0`, decide on v0.3.

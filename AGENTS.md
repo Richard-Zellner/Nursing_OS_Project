@@ -30,7 +30,7 @@ synthetic patient JSON record to a nursing shift-handoff report. It lives in
    `memory/HANDOFF.md`, `.loop/last-diff.txt` and `.loop/prev-message.md`
    (if present), `TASKS.md`, `docs/NURSE-HANDOFF-SPEC.md`,
    `docs/PATIENT-SCHEMA.md`, `docs/OUTPUT-FORMAT.md`. Then
-   `memory/DECISIONS.md` (last 30 lines if over 60), the last 15 lines of
+   `memory/ACTIVE-DECISIONS.md` in full, then `memory/DECISIONS.md` (latest 30 lines; search earlier entries relevant to the selected unit), the last 15 lines of
    `memory/LOG.md`, and newly `answered` rows of `memory/QUESTIONS.md`.
 2. Do exactly **one** ticket. Rule 0 first: if `HOST-VERIFY` says fail,
    the only unit of work is making `tests/verify.ps1` pass. Otherwise take
@@ -38,12 +38,13 @@ synthetic patient JSON record to a nursing shift-handoff report. It lives in
    whose "Blocked by" line is satisfied. The Definition of Done and Human
    checklist boxes are not tickets. Do not start a second ticket.
 3. Finish the ticket completely, including its tests, before touching
-   anything else. If the ticket is too big, split it in `TASKS.md` (insert
-   the remainder as new tickets right after it) and finish the first part.
+   anything else. If the ticket is too big, report the proposed split in
+   `memory/QUESTIONS.md` and block for owner planning. Do not rewrite
+   ticket definitions or add new tickets during an unattended run.
 4. Run the verification below. Do not describe a check as passed unless it
-   ran in this session and passed. If the venv python cannot execute, write
-   the code and tests anyway, leave the ticket unticked, and report
-   `VERIFY: not-run (sandbox: python)`; the host runs pytest after you exit.
+   ran in this session and passed. If the venv Python cannot execute, leave
+   the ticket unticked and report status `blocked`, verify `not-run`, and
+   the exact error. The controller archives the attempt for owner repair.
 5. Before exiting: tick the ticket in `TASKS.md`; rewrite
    `memory/HANDOFF.md`; append one line to `memory/LOG.md` (end the file
    with a newline); add questions to `memory/QUESTIONS.md`; add any new
@@ -51,8 +52,8 @@ synthetic patient JSON record to a nursing shift-handoff report. It lives in
 6. If every item of the current version's **Definition of Done** block in
    `TASKS.md` is ticked and pytest passed in this session, create an empty
    file `DONE` in the project root and say so in `HANDOFF.md`. Otherwise
-   never create it. The loop runner deletes `DONE` if the host verification
-   disagrees.
+   never create it. The controller rolls back the candidate, including
+   `DONE`, if independent sandbox verification disagrees.
 
 ## When you are blocked
 
@@ -63,8 +64,7 @@ ahead, do not edit the rules to make the ticket fit. Write
 `memory/BLOCKED.md` with the ticket id, what you tried, the exact error
 text or the two conflicting sentences with file and line, and the one
 change a human must make. Leave the ledger unticked, still rewrite
-`HANDOFF.md` and append the LOG line with `verify: not-run`, and end with
-`STATUS: blocked`. The next run reads `BLOCKED.md` first and deletes it
+`HANDOFF.md` and append the LOG line with `verify: not-run`, and return JSON with status blocked. The next run reads `BLOCKED.md` first and deletes it
 only when the blocker is gone.
 
 ## Hard rules
@@ -79,10 +79,12 @@ only when the blocker is gone.
 - Work only inside this directory. Do not modify `.git`, do not commit, do
   not push, do not tag. The human owns git.
 - **Protected files.** Never edit `AGENTS.md`, `PROMPT.md`, `loop.sh`,
-  `tests/verify.ps1`, `docs/NURSE-HANDOFF-SPEC.md`, or the rules text of
-  `TASKS.md`. The loop runner reverts such edits and flags them in
-  `memory/BLOCKED.md`. Ticket text and checkboxes in `TASKS.md` are yours
-  to maintain.
+  `tests/verify.ps1`, `docs/NURSE-HANDOFF-SPEC.md`, `docs/PATIENT-SCHEMA.md`,
+  `docs/OUTPUT-FORMAT.md`, or the rules text of `TASKS.md`. The controller
+  rejects and rolls back such changes. Maintain assigned checkboxes, preserve
+  ticket definitions, and propose planning changes in `memory/QUESTIONS.md`.
+  Tickets 103 and 106 may append a v0.2 field-extension section to the patient
+  schema; preserve the existing v0.1 schema verbatim.
 - Preserve existing work. Refactor only when the ticket asks for it.
 - Python only: standard library plus pytest. No new dependencies without a
   ticket that says so.
@@ -116,3 +118,39 @@ it is missing or cannot execute, say so in `HANDOFF.md`. Do not pip install.
 - `memory/DECISIONS.md` — durable choices with a one-line why. Append only.
 - `memory/SOURCES.md` — external references with URL and date. Rarely needed.
 - `memory/BLOCKED.md` — exists only while something blocks the loop.
+
+## Controller protocol (2026-09-11)
+
+The controller supplies WORK-ID and ASSIGNED UNIT. Perform that unit only;
+do not select a different unit. Its explicit rotation cursor resolves repeated
+unit types. Owner review limits are enforced before a model session starts.
+When no approved work is eligible, the controller waits without model calls.
+
+The controller preserves a pre-run snapshot, validates allowed transitions,
+runs its own trusted verifier in the workspace sandbox, and accepts only
+verified artifact progress. Invalid attempts are archived outside this workspace
+and rolled back. Retry diagnostics are supplied in the next prompt. Do not
+modify controller files, human checkboxes/checkpoints, owner Ruling cells,
+owner proposal decisions, or memory/ACTIVE-DECISIONS.md. Changes by the owner
+between runs are allowed; a commit is not required to establish the pre-run
+snapshot. The agent still never commits, tags, or pushes.
+
+Always read memory/ACTIVE-DECISIONS.md. Search append-only decision history
+for older details relevant to your unit. Record every new durable decision
+in memory/DECISIONS.md. Human maintenance refreshes the active summary.
+Read only relevant sections of large indexes/glossaries using rg and bounded
+file reads; compare proposed names, motifs and entities against the full index
+by searching it. Do not load an ever-growing archive into every session.
+
+## Owner-authorized GitHub synchronization (2026-09-24)
+
+The owner requested automatic loop commits and chose a public repository at
+https://github.com/Richard-Zellner/Nursing_OS_Project. The trusted controller may commit and push
+only independently accepted work after the worker exits. The worker still
+must not change `.git`, commit, tag, push, or handle credentials. This
+controller exception supersedes older human-only Git statements; it does
+not authorize releases, creative approvals, or publication to other platforms.
+Owner source edits between runs must be reviewed, committed and pushed
+before another Git-enabled unit. `.gitignore` and `.gitattributes` are
+controller-protected during worker runs. Keep the working directory untouched
+during an active unit. Pending pushes retry without rerunning accepted work.
