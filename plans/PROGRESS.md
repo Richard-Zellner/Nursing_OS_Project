@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-25 by Claude Code (D-9 clinical drafts reviewed, RN sign-off recorded)
+Last updated: 2026-09-25 by Claude Code (second implementation round across P1–P5)
 
 ## Dashboard
 
@@ -16,12 +16,12 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | M1 v0.1 build (001–005 done) | in-progress | The loop continues with ticket 006 | v0.1 ~Sep 26, v0.2 ~Oct 9 |
-| P1 | NurseBench | M1 Track 1 (spec and 4 protocols RN-reviewed) | in-progress | P1-M1-3 gold calculators, then the seeded generator | v0.1 Oct 31 |
-| P2 | Charge Assign | M1 (rubric and constraint spec RN-reviewed) | in-progress | P2-M1-4 generator (add the missing model fields first), then P2-M2-1 hard constraints | Feb 2027 |
-| P3 | Dysphagia Screen FHIR | M1 complete; M2 Questionnaire next | in-progress | P3-M2-2 Questionnaire in FSH, P3-M3-2 fixture responses; HAPI needs Docker | Mar 2027 |
-| P4 | Grounded Handoff | Clinical spec parts 1–2 RN-reviewed | in-progress | P4-M1-2 Synthea script and P4-M1-4 overlay generator; HAPI needs Docker | Apr – mid-May 2027 |
-| P5 | Stroke Abstraction Agent | M1 complete; M2 truth vector and distractors RN-reviewed | in-progress | P5-M2-2 sampler, P5-M3-2 segmenter; owner decides D-7 before extractors | mid-May – Jun 2027 |
+| P0 | Nurse Handoff | M1 v0.1 build (001–008 done) | in-progress | The loop continues with ticket 009 | v0.1 ~Sep 26, v0.2 ~Oct 9 |
+| P1 | NurseBench | M1 Track 1: calculators and 150 items built | review | Owner signs off derived calculator values (P1-M1-3) and writes 30 hand items (M1-5); agent next: P1-M1-6 task and scorer | v0.1 Oct 31 |
+| P2 | Charge Assign | M1–M2 built: acuity calculator, 50 scenarios, hard constraints H1–H5 | review | Owner spot-checks 5 scenarios (M1-4) and reviews constraints (M2-2); agent next: P2-M3-1 medium and soft constraints | Feb 2027 |
+| P3 | Dysphagia Screen FHIR | M2 Questionnaire and page built; M3 fixture responses built | review | Owner: P3-Q019 blank-exclusion gating, M2-4 wording check; agent next: P3-M3-3 CQL library; HAPI needs Docker | Mar 2027 |
+| P4 | Grounded Handoff | M1 built except HAPI loading (Synthea pinned, overlay generator) | in-progress | Agent next: P4-M3-2 fact sheet builder; HAPI loading and M2 SMART launch need Docker | Apr – mid-May 2027 |
+| P5 | Stroke Abstraction Agent | Sampler, gold outcomes, segmenter and date checks built | in-progress | Owner decides D-7; agent next: P5-M2-3 chart-packet generator (template-based) | mid-May – Jun 2027 |
 
 All five separate repositories now exist privately, are registered for project
 recall, and have reviewed work pushed to `main`. Parallel technical work does
@@ -54,7 +54,7 @@ handoffs contain the check evidence and task-level state.
 ## Milestones
 
 ### P0 Nurse Handoff ([plan](projects/P0-nurse-handoff.md))
-- [ ] M1 v0.1 build: tickets 004–015 (001–005 done; validator by the loop in `a65a598`)
+- [ ] M1 v0.1 build: tickets 004–015 (001–008 done by the loop, through `8ab0cce`)
 - [ ] G1 v0.1 release: reviewed, `v0.1.0` tagged, "v0.1 released" ticked, `DONE` deleted, pushed
 - [ ] M2 v0.2 rules: tickets 101–110
 - [ ] G2 v0.2 release: `v0.2.0` tagged; D-2 recorded
@@ -139,3 +139,4 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 | 2026-09-24 | Codex + three subagents (owner-requested parallel round) | P0–P5 | Six scoped assignments reviewed by parent; P0 loader, P1 schema/split/offline eval/full CI, P2 domain, P3 SUSHI build, P4 citation existence, P5 exact evidence spans; four remaining repos created privately and registered | Parent reran 206 tests plus builds/CLI checks; all five separate repos passed Windows/Linux CI; P4 Java-selector failure corrected and green run observed; links, task IDs, exclusions and Git state checked | P0 ticket 005 under existing loop allowance; P1 wording review; owner clinical inputs and P3 HAPI dependency gate further clinical work |
 | 2026-09-24 | Claude Code (owner request) | all | Dashboard fixes (D-8 wording, hours "not logged"); D-9 clinical-drafting delegation recorded | `tests/verify.ps1` run | Draft the clinical inputs |
 | 2026-09-25 | Claude Code + five subagents (D-9) | P1–P5 | Drafted the blocking clinical inputs: P1 M0-7, Track 1 spec, 4 protocols; P2 rubric and constraint spec; P3 spec, terminology, 15 fixtures; P4 overlay and handoff spec; P5 measure digest, truth vector, fixture spec. Parent reviewed each; owner RN sign-off recorded (owner-stated). Source checks stay open in each repo's QUESTIONS.md. Menon citation corrected in the hub | Real runs: P1 86 pytest + validate + mock eval; P2 Maven 6 tests; P3 SUSHI 0 errors, 8 tests; P4 Maven BUILD SUCCESS; P5 69 pytest + verify-evidence. All five pushed; working trees clean | Agent tasks: P1-M1-3, P2-M1-4, P3-M2-2, P4-M1-2, P5-M2-2. Owner: D-7, Docker install, source checks |
+| 2026-09-25 | Claude Code + five subagents | P1–P5 | Implementation round 2: P1 calculators and 150 items (bfffb2f); P2 acuity calculator, 50 scenarios, H1–H5 (68c3e17); P3 Questionnaire, LHC-Forms page, 15 fixture responses (765e202); P4 Synthea pin, inventory, overlay generator (aacdfda); P5 sampler, gold outcomes, segmenter, date checks (48b993c). Parent reviewed each diff, reran checks, fixed two stale README lines | Parent reruns: P1 420 pytest + validate + mock eval; P2 Maven 69 tests; P3 SUSHI 0/0, 71 tests; P4 Maven 47 tests; P5 344 pytest + both verify-evidence fixtures. Signed-off clinical docs unchanged in every repo | Owner reviews listed in the dashboard; weekly usage limit reached during the round |
