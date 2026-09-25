@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-24 by Claude Code (dashboard fixes; clinical drafting delegated)
+Last updated: 2026-09-25 by Claude Code (D-9 clinical drafts reviewed, RN sign-off recorded)
 
 ## Dashboard
 
@@ -16,12 +16,12 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | M1 v0.1 build (004 complete) | in-progress | Ticket 005 validator; loop eligible after the daily run limit resets | v0.1 ~Sep 26, v0.2 ~Oct 9 |
-| P1 | NurseBench | M0 technical work complete; wording review open | review | Owner P1-M0-7 README/disclaimer review, then Track 1 spec and protocols | M0 Oct 11, v0.1 Oct 31 |
-| P2 | Charge Assign | M1 domain scaffold and M2 CI complete | in-progress | Owner acuity rubric and clinical constraints spec before generator/solver work | Feb 2027 |
-| P3 | Dysphagia Screen FHIR | M2-1 authoring foundation complete | in-progress | Owner M1 wording, sources, terminology and clinical spec; no Questionnaire/CQL/HAPI yet | Mar 2027 |
-| P4 | Grounded Handoff | M1 scaffold portion and M4-1 complete | in-progress | P3 HAPI setup and owner overlay/handoff spec; citation existence is mechanical only | Apr – mid-May 2027 |
-| P5 | Stroke Abstraction Agent | Scaffold and M3-4a exact-span checks complete | in-progress | Owner measure digest/date rules, clinical spec and D-7; P1/P3 dependencies remain | mid-May – Jun 2027 |
+| P0 | Nurse Handoff | M1 v0.1 build (001–005 done) | in-progress | The loop continues with ticket 006 | v0.1 ~Sep 26, v0.2 ~Oct 9 |
+| P1 | NurseBench | M1 Track 1 (spec and 4 protocols RN-reviewed) | in-progress | P1-M1-3 gold calculators, then the seeded generator | v0.1 Oct 31 |
+| P2 | Charge Assign | M1 (rubric and constraint spec RN-reviewed) | in-progress | P2-M1-4 generator (add the missing model fields first), then P2-M2-1 hard constraints | Feb 2027 |
+| P3 | Dysphagia Screen FHIR | M1 complete; M2 Questionnaire next | in-progress | P3-M2-2 Questionnaire in FSH, P3-M3-2 fixture responses; HAPI needs Docker | Mar 2027 |
+| P4 | Grounded Handoff | Clinical spec parts 1–2 RN-reviewed | in-progress | P4-M1-2 Synthea script and P4-M1-4 overlay generator; HAPI needs Docker | Apr – mid-May 2027 |
+| P5 | Stroke Abstraction Agent | M1 complete; M2 truth vector and distractors RN-reviewed | in-progress | P5-M2-2 sampler, P5-M3-2 segmenter; owner decides D-7 before extractors | mid-May – Jun 2027 |
 
 All five separate repositories now exist privately, are registered for project
 recall, and have reviewed work pushed to `main`. Parallel technical work does
@@ -54,14 +54,14 @@ handoffs contain the check evidence and task-level state.
 ## Milestones
 
 ### P0 Nurse Handoff ([plan](projects/P0-nurse-handoff.md))
-- [ ] M1 v0.1 build: tickets 004–015 (001–004 done; loader accepted in `15e9a17`)
+- [ ] M1 v0.1 build: tickets 004–015 (001–005 done; validator by the loop in `a65a598`)
 - [ ] G1 v0.1 release: reviewed, `v0.1.0` tagged, "v0.1 released" ticked, `DONE` deleted, pushed
 - [ ] M2 v0.2 rules: tickets 101–110
 - [ ] G2 v0.2 release: `v0.2.0` tagged; D-2 recorded
 - [ ] M3 portfolio polish: LICENSE, DISCLAIMER, CHANGELOG, CI, write-up
 
 ### P1 NurseBench ([plan](projects/P1-nursebench.md))
-- [ ] M0 scaffolding: repo, schema, mock-model Inspect task, canary, split, CI (Oct 11)
+- [x] M0 scaffolding: repo, schema, mock-model Inspect task, canary, split, CI (Oct 11); wording finalized under D-9, RN-reviewed 2026-09-24
 - [ ] M1 Track 1 protocol math: 150 items, real runs (Oct 31)
 - [ ] v0.1.0 released and public; hub README row added
 - [ ] M2 Track 4 NIHSS (Nov 30)
@@ -79,7 +79,7 @@ handoffs contain the check evidence and task-level state.
 - [ ] v1.0.0 released with write-up
 
 ### P3 Dysphagia Screen FHIR ([plan](projects/P3-dysphagia-screen-fhir.md))
-- [ ] M1 clinical spec, terminology, guideline wording
+- [x] M1 clinical spec, terminology, guideline wording (agent-drafted under D-9, RN-reviewed 2026-09-24)
 - [ ] M2 Questionnaire (FSH, SUSHI, LHC-Forms)
 - [ ] M3 CQL library, 12–15 fixtures passing
 - [ ] M4 PlanDefinition, `$apply` on local HAPI
@@ -97,7 +97,7 @@ handoffs contain the check evidence and task-level state.
 - [ ] v1.0.0 released with write-up
 
 ### P5 Stroke Abstraction Agent ([plan](projects/P5-stroke-abstraction-agent.md))
-- [ ] M1 measure digest
+- [x] M1 measure digest (Specs Manual v2026B1; agent-drafted under D-9, RN-reviewed 2026-09-24)
 - [ ] M2 60 synthetic chart packets (first 20 hand-validated)
 - [ ] M3 segmenter, extractors, evidence verifier
 - [ ] M4 measure engine, end-to-end run
@@ -137,3 +137,5 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 | 2026-09-24 | Claude Code (owner decision) | all | Git history rewritten to remove the employer name (only one overview line changed in 3 commits) and force-pushed; Morse dropped from NurseBench | History diff checked; `tests/verify.ps1` run | P1: create private `nursebench` repo |
 | 2026-09-24 | Codex (owner-delegated setup) | P1 | Created private repo, cloned to Desktop, registered project recall, and pushed the starter scaffold; P1-M0-1 and P1-M0-2 complete | GitHub API confirms private and remote main matches; locked dependency sync, package imports/compilation, Inspect CLI, Git ignores, all 39 task IDs and 13 local links checked | P1-M0-3 schema/validator; remaining M0 tasks and owner wording review stay open |
 | 2026-09-24 | Codex + three subagents (owner-requested parallel round) | P0–P5 | Six scoped assignments reviewed by parent; P0 loader, P1 schema/split/offline eval/full CI, P2 domain, P3 SUSHI build, P4 citation existence, P5 exact evidence spans; four remaining repos created privately and registered | Parent reran 206 tests plus builds/CLI checks; all five separate repos passed Windows/Linux CI; P4 Java-selector failure corrected and green run observed; links, task IDs, exclusions and Git state checked | P0 ticket 005 under existing loop allowance; P1 wording review; owner clinical inputs and P3 HAPI dependency gate further clinical work |
+| 2026-09-24 | Claude Code (owner request) | all | Dashboard fixes (D-8 wording, hours "not logged"); D-9 clinical-drafting delegation recorded | `tests/verify.ps1` run | Draft the clinical inputs |
+| 2026-09-25 | Claude Code + five subagents (D-9) | P1–P5 | Drafted the blocking clinical inputs: P1 M0-7, Track 1 spec, 4 protocols; P2 rubric and constraint spec; P3 spec, terminology, 15 fixtures; P4 overlay and handoff spec; P5 measure digest, truth vector, fixture spec. Parent reviewed each; owner RN sign-off recorded (owner-stated). Source checks stay open in each repo's QUESTIONS.md. Menon citation corrected in the hub | Real runs: P1 86 pytest + validate + mock eval; P2 Maven 6 tests; P3 SUSHI 0 errors, 8 tests; P4 Maven BUILD SUCCESS; P5 69 pytest + verify-evidence. All five pushed; working trees clean | Agent tasks: P1-M1-3, P2-M1-4, P3-M2-2, P4-M1-2, P5-M2-2. Owner: D-7, Docker install, source checks |

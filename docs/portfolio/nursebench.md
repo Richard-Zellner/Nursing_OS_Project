@@ -55,7 +55,7 @@ This track tests protocol *application*, not memorized dosing. The protocol text
 | Protocol | Source | Key values |
 | --- | --- | --- |
 | Heparin, weight-based VTE | Raschke, Ann Intern Med 1993 | 80 U/kg bolus, 18 U/kg/h. aPTT <35 s: rebolus 80 U/kg, +4 U/kg/h. 35–45 s: 40 U/kg, +2. 46–70 s: no change. 71–90 s: −2. >90 s: hold 1 h, then −3 |
-| Heparin, ACS low-intensity | Becker, Am J Med 2001 | 60 U/kg bolus (max 4,000 U), 12 U/kg/h (max 1,000 U/h) |
+| Heparin, ACS low-intensity | Menon et al., Am J Med 2001 (originally cited here as Becker; corrected 2026-09-25) | 60 U/kg bolus (max 4,000 U), 12 U/kg/h (max 1,000 U/h) |
 | Insulin correction scale | NurseBench-authored, modeled on public samples (NCBI Bookshelf, Saudi MOH) | Three sensitivity tiers; low BG routes to hypoglycemia protocol; a high threshold triggers notify-provider |
 | Potassium replacement | NurseBench-authored, modeled on public VUMC/UAMS protocols | Dose by K+ band; hold + notify on renal-function flag; max peripheral IV rate; recheck timing |
 

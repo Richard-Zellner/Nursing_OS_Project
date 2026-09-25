@@ -50,7 +50,7 @@
 | Task | Type | Deliverable | Acceptance |
 |---|---|---|---|
 | P1-M1-1 | OWNER | `docs/clinical-spec-t1.md`: scope, output contract, tolerance per field, the five critical-error definitions, the edge-case taxonomy | Complete per the [clinical-spec template](../templates/clinical-spec.md) |
-| P1-M1-2 | OWNER | `protocols/*.yaml` for heparin VTE (Raschke 1993), heparin ACS (Becker 2001), insulin correction and potassium (both NurseBench-authored), each citing its source. An agent may fix YAML syntax but not values. | The owner has checked each number against its source |
+| P1-M1-2 | OWNER | `protocols/*.yaml` for heparin VTE (Raschke 1993), heparin ACS (Menon 2001), insulin correction and potassium (both NurseBench-authored), each citing its source. An agent may fix YAML syntax but not values. | The owner has checked each number against its source |
 | P1-M1-3 | AGENT | Gold calculators, one per protocol, covering band edges, caps, rounding, lb→kg and U/h↔mL/h | Every band boundary is unit-tested, and the owner signs off on the expected values in the tests |
 | P1-M1-4 | AGENT | Seeded `generate.py` producing 150 items, about 25% of them edge cases (missing data, exclusions, critical values) | Same seed gives byte-identical output, and every item passes the schema |
 | P1-M1-5 | OWNER | 30 hand-written items, plus review of 100% of edge-case items | Items marked `authored_by: RN` and `reviewed: true` |

@@ -16,7 +16,7 @@ Pages opened during research on Sept 24, 2026. Items marked (verify) were paywal
 ## Clinical, regulatory and measures
 
 - [Raschke 1993 — weight-based heparin nomogram](https://www.acpjournals.org/doi/10.7326/0003-4819-119-9-199311010-00002) (full text paywalled)
-- [Becker 2001 — ACS heparin dosing](https://pubmed.ncbi.nlm.nih.gov/11382373/)
+- [Menon et al. 2001 — ACS heparin dosing](https://pubmed.ncbi.nlm.nih.gov/11382373/) (originally listed as Becker 2001; PubMed gives Menon V et al.)
 - [NCBI Bookshelf — sample sliding-scale insulin protocol](https://www.ncbi.nlm.nih.gov/books/NBK593194/)
 - [VUMC electrolyte repletion guideline](https://www.vumc.org/trauma-and-scc/sites/default/files/public_files/Protocols/Electrolyte%20Repletion%20Guideline%20PMG%20v2024.pdf)
 - [American Stroke Association — BE FAST warning signs](https://www.stroke.org/en/about-stroke/stroke-symptoms)

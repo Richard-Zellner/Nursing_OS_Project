@@ -41,6 +41,19 @@ When a clinical fact cannot be established from a public source, draft the
 most defensible choice, mark it `VERIFY:`, and add a row to the repo's
 `memory/QUESTIONS.md`.
 
+**Human measurements are outside D-9.** Some tasks exist to measure a human
+judgment against a model. If an agent produced them, the result would compare
+one model with another. These stay with the owner, an RN, or other named
+human reviewers:
+
+- grader and judge validation labels used for kappa (P1-M3-6, P1-M4-4, P4-M4-4)
+- PEMAT-P scoring (P1-M4-4) and usefulness/safety ratings (P4-M5-3)
+- the blinded charge-nurse review (P2-M5-3)
+- the blind abstraction for human agreement (P5-M6-1)
+
+Agents may prepare packets, forms and answer keys for these tasks, but never
+the judgments themselves.
+
 ## 2. Prerequisites
 
 Checked on RGB on 2026-09-24. Re-check before relying on this list.
