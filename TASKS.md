@@ -55,7 +55,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   Rejects a top-level non-object. Acceptance: `tests/test_loader.py` covers
   valid load, missing file, invalid JSON, non-object. Blocked by: 001, 003.
 
-- [ ] **005 Validator.** `validator.py`: `validate(record) -> list[str]`
+- [x] **005 Validator.** `validator.py`: `validate(record) -> list[str]`
   returning one `"<field> is required"` per missing required field in schema
   order, plus `"<field> must be <type>"` for type errors (spec
   `PATIENT-SCHEMA.md` §Type errors). Empty string counts as missing.
@@ -137,7 +137,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
 
 - [x] four synthetic patients exist (003)
 - [x] patient JSON loads correctly (004)
-- [ ] required fields are validated (005)
+- [x] required fields are validated (005)
 - [ ] missing information is preserved as unknown (007, 009)
 - [ ] handoff is generated (009)
 - [ ] basic clinical rules run (010–012)
