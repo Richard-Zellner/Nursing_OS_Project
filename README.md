@@ -7,6 +7,8 @@ repository is synthetic; nothing here is intended for clinical use.
 
 ## Start here
 
+- **[Continue here](CONTINUE.md)** — one-page reference for resuming the
+  portfolio: where everything is, rules, commands, and the current checkpoint.
 - [Portfolio plans](docs/portfolio/README.md) — overview, five separate repos,
   and research sources.
 - [Delivery plan](plans/README.md) — master plan, per-project milestones,

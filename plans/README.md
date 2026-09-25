@@ -10,7 +10,7 @@ each task, and where things stand.
 
 ## Reading order
 
-**Resuming work?** Start with [RESUME.md](RESUME.md), the continue-from-here
+**Resuming work?** The one-page card is [CONTINUE.md](../CONTINUE.md). Then read [RESUME.md](RESUME.md), the continue-from-here
 plan, and the latest review, [REVIEW-2026-09-25.md](REVIEW-2026-09-25.md).
 
 1. [MASTER-PLAN.md](MASTER-PLAN.md): finish line, calendar, dependencies,
