@@ -5,8 +5,8 @@ owner and for any agent session. Stable facts live here. What's current lives
 in [plans/RESUME.md](plans/RESUME.md) (what to do next) and
 [plans/PROGRESS.md](plans/PROGRESS.md) (dashboard).
 
-**Current checkpoint:** 2026-09-25, recorded in
-[plans/REVIEW-2026-09-25.md](plans/REVIEW-2026-09-25.md). When a new review
+**Current checkpoint:** 2026-09-25 (round 3), recorded in
+[plans/REVIEW-2026-09-25-round3.md](plans/REVIEW-2026-09-25-round3.md). When a new review
 and resume plan replace these, update this line.
 
 ## How to resume
