@@ -77,7 +77,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   the string `Room air` never appears for any of the four patients or for a
   record with `respiratory` absent. Blocked by: 006.
 
-- [ ] **008 List sections.** `render_list_section(title, items) -> str` and
+- [x] **008 List sections.** `render_list_section(title, items) -> str` and
   its use for ACCESS, MEDICATIONS OF NOTE, THIS SHIFT, PENDING. `None`
   (missing) renders `Not documented`; `[]` renders `None`; otherwise `- item`
   lines in input order. Acceptance: tests for all three states and for

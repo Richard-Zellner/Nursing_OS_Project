@@ -5,7 +5,12 @@ from pathlib import Path
 
 import pytest
 
-from nurse_handoff.generator import render_assessment, render_overview
+from nurse_handoff.generator import (
+    render_assessment,
+    render_handoff,
+    render_list_section,
+    render_overview,
+)
 
 
 def test_render_overview_with_code_status_is_byte_exact():
@@ -125,4 +130,64 @@ def test_room_air_is_never_assumed_for_any_synthetic_patient_or_missing_data():
 
     assert "Room air" not in render_assessment(
         {"neuro": "Not documented"}
+    )
+
+
+@pytest.mark.parametrize(
+    ("items", "expected"),
+    [
+        (None, "DETAILS\nNot documented"),
+        ([], "DETAILS\nNone"),
+        (["second", "first"], "DETAILS\n- second\n- first"),
+    ],
+    ids=["unknown", "explicitly-empty", "preserve-input-order"],
+)
+def test_render_list_section_distinguishes_unknown_empty_and_populated(items, expected):
+    assert render_list_section("DETAILS", items) == expected
+
+
+def test_render_handoff_uses_all_list_sections_in_fixed_order():
+    handoff = render_handoff(
+        {
+            "age": 72,
+            "code_status": "Full Code",
+            "primary_problem": "Synthetic test condition",
+            "neuro": "Alert and oriented x4",
+            "cardiac": "Normal sinus rhythm",
+            "respiratory": {"oxygen": False},
+            "mobility": "Independent",
+            "diet": "Regular diet",
+            "access": ["20G peripheral IV", "18G peripheral IV"],
+            "medications_of_note": ["Synthetic medication"],
+            "recent_events": ["Synthetic event"],
+            "pending_tasks": ["Synthetic task"],
+        }
+    )
+
+    assert handoff == (
+        "NURSING HANDOFF\n"
+        "---------------\n"
+        "\n"
+        "72-year-old — Full Code\n"
+        "Primary problem: Synthetic test condition\n"
+        "\n"
+        "ASSESSMENT\n"
+        "Neuro: Alert and oriented x4\n"
+        "Cardiac: Normal sinus rhythm\n"
+        "Respiratory: No supplemental oxygen documented\n"
+        "Mobility: Independent\n"
+        "Diet: Regular diet\n"
+        "\n"
+        "ACCESS\n"
+        "- 20G peripheral IV\n"
+        "- 18G peripheral IV\n"
+        "\n"
+        "MEDICATIONS OF NOTE\n"
+        "- Synthetic medication\n"
+        "\n"
+        "THIS SHIFT\n"
+        "- Synthetic event\n"
+        "\n"
+        "PENDING\n"
+        "- Synthetic task\n"
     )
