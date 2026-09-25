@@ -28,3 +28,4 @@ Use the DATE line the loop runner puts at the top of the prompt. End the file wi
 - 2026-09-25 13:00 | Portfolio implementation round 2 recorded (Claude Code, owner-requested; no ticket) | plans/PROGRESS.md, memory/LOG.md; five portfolio repos committed separately | verify: pass
 - 2026-09-25 13:40 | Portfolio review and resume plan (Claude Code, owner-requested; no ticket) | plans/REVIEW-2026-09-25.md, plans/RESUME.md, plans/README.md, plans/PROGRESS.md, plans/RUNBOOK.md, memory/LOG.md | verify: pass
 - 2026-09-25 14:15 | Continue-here reference card (Claude Code, owner-requested; no ticket) | CONTINUE.md, README.md, plans/README.md, memory/LOG.md | verify: pass
+- 2026-09-25 15:10 | Wave A recorded (Claude Code, owner-requested resume; no ticket) | plans/PROGRESS.md, plans/RUNBOOK.md, plans/RESUME.md, memory/LOG.md; P1, P2, P3 repos committed separately | verify: pass

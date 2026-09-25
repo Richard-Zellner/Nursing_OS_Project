@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-25 by Claude Code (second implementation round across P1–P5)
+Last updated: 2026-09-25 by Claude Code (Wave A of plans/RESUME.md: P1, P2, P3)
 
 ## Dashboard
 
@@ -17,9 +17,9 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
 | P0 | Nurse Handoff | M1 v0.1 build (001–008 done) | in-progress | The loop continues with ticket 009 | v0.1 ~Sep 26, v0.2 ~Oct 9 |
-| P1 | NurseBench | M1 Track 1: calculators and 150 items built | review | Owner signs off derived calculator values (P1-M1-3) and writes 30 hand items (M1-5); agent next: P1-M1-6 task and scorer | v0.1 Oct 31 |
-| P2 | Charge Assign | M1–M2 built: acuity calculator, 50 scenarios, hard constraints H1–H5 | review | Owner spot-checks 5 scenarios (M1-4) and reviews constraints (M2-2); agent next: P2-M3-1 medium and soft constraints | Feb 2027 |
-| P3 | Dysphagia Screen FHIR | M2 Questionnaire and page built; M3 fixture responses built | review | Owner: P3-Q019 blank-exclusion gating, M2-4 wording check; agent next: P3-M3-3 CQL library; HAPI needs Docker | Mar 2027 |
+| P1 | NurseBench | M1 Track 1: calculators, 150 items, task, scorer and report built | review | Owner: D-3 models and budget, 30 hand items (M1-5), calculator sign-off (M1-3), Q-10–Q-17; then P1-M1-8 smoke and full runs | v0.1 Oct 31 |
+| P2 | Charge Assign | M1–M3 built: calculator, 50 scenarios, H1–H5, M1 and S1–S4, baselines, benchmark results | review | Owner: spot-check 5 scenarios (M1-4), constraint review (M2-2), read results and write limitations (M3-4), Q015–Q027 | Feb 2027 |
+| P3 | Dysphagia Screen FHIR | M3 done: CQL library compiled to ELM, all 15 fixtures pass | review | Owner: P3-Q019 gating, M2-4 wording, CQL review, Q020–Q022; M4 HAPI and `$apply` need Docker | Mar 2027 |
 | P4 | Grounded Handoff | M1 built except HAPI loading (Synthea pinned, overlay generator) | in-progress | Agent next: P4-M3-2 fact sheet builder; HAPI loading and M2 SMART launch need Docker | Apr – mid-May 2027 |
 | P5 | Stroke Abstraction Agent | Sampler, gold outcomes, segmenter and date checks built | in-progress | Owner decides D-7; agent next: P5-M2-3 chart-packet generator (template-based) | mid-May – Jun 2027 |
 
@@ -81,7 +81,7 @@ handoffs contain the check evidence and task-level state.
 ### P3 Dysphagia Screen FHIR ([plan](projects/P3-dysphagia-screen-fhir.md))
 - [x] M1 clinical spec, terminology, guideline wording (agent-drafted under D-9, RN-reviewed 2026-09-24)
 - [ ] M2 Questionnaire (FSH, SUSHI, LHC-Forms)
-- [ ] M3 CQL library, 12–15 fixtures passing
+- [x] M3 CQL library, 12–15 fixtures passing (`b1228b1`; CQL agent-drafted under D-9, owner review pending)
 - [ ] M4 PlanDefinition, `$apply` on local HAPI
 - [ ] v0.1.0 released
 - [ ] M5 CI with HAPI in Docker, README, demo
@@ -141,3 +141,4 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 | 2026-09-25 | Claude Code + five subagents (D-9) | P1–P5 | Drafted the blocking clinical inputs: P1 M0-7, Track 1 spec, 4 protocols; P2 rubric and constraint spec; P3 spec, terminology, 15 fixtures; P4 overlay and handoff spec; P5 measure digest, truth vector, fixture spec. Parent reviewed each; owner RN sign-off recorded (owner-stated). Source checks stay open in each repo's QUESTIONS.md. Menon citation corrected in the hub | Real runs: P1 86 pytest + validate + mock eval; P2 Maven 6 tests; P3 SUSHI 0 errors, 8 tests; P4 Maven BUILD SUCCESS; P5 69 pytest + verify-evidence. All five pushed; working trees clean | Agent tasks: P1-M1-3, P2-M1-4, P3-M2-2, P4-M1-2, P5-M2-2. Owner: D-7, Docker install, source checks |
 | 2026-09-25 | Claude Code + five subagents | P1–P5 | Implementation round 2: P1 calculators and 150 items (bfffb2f); P2 acuity calculator, 50 scenarios, H1–H5 (68c3e17); P3 Questionnaire, LHC-Forms page, 15 fixture responses (765e202); P4 Synthea pin, inventory, overlay generator (aacdfda); P5 sampler, gold outcomes, segmenter, date checks (48b993c). Parent reviewed each diff, reran checks, fixed two stale README lines | Parent reruns: P1 420 pytest + validate + mock eval; P2 Maven 69 tests; P3 SUSHI 0/0, 71 tests; P4 Maven 47 tests; P5 344 pytest + both verify-evidence fixtures. Signed-off clinical docs unchanged in every repo | Owner reviews listed in the dashboard; weekly usage limit reached during the round |
 | 2026-09-25 | Claude Code (owner request) | all | Full review and record: [REVIEW-2026-09-25.md](REVIEW-2026-09-25.md) (timeline, decisions, per-project state, 11 findings) and [RESUME.md](RESUME.md) (owner queue in 3 tiers, agent waves A/B, blockers, brief template) | Read-only audit of 6 repos: all clean and synced; 1,005 tests at last parent reruns; 58 open questions (31 source checks, 27 owner decisions or reviews) | Owner Tier 1 items; then Wave A (P1-M1-6/7, P3-M3-3/4, P2-M3-1..3) |
+| 2026-09-25 | Claude Code + three subagents | P1–P3 | Wave A of RESUME.md: P1-M1-6/7 Track 1 task, scorer, bootstrap and report (a513968); P2-M3-1..3 M1 and S1–S4, baselines, real benchmark over 50 scenarios (6b08d18); P3-M3-3/4 CQL library with pinned Maven ELM build and fixture tests (b1228b1). Parent reviewed each diff against the spec and reran checks. New owner questions: P1 Q-16–Q-17, P2 Q021–Q027, P3 Q021–Q022 | Parent reruns: P1 629 pytest + validate + mock eval + mock Track 1 report (refused for results/); P2 Maven 107 tests (1 skipped: on-demand benchmark); P3 npm verify incl. Maven 55 JUnit tests. P3 `npm run verify` now needs JDK 21 | Wave B running: P4-M3-2/M4-2/M4-5, P5-M2-3 (20 packets) + M4-1, P1-M2-1/2 |

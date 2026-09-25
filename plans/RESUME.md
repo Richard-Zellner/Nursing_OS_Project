@@ -153,7 +153,7 @@ Report back concisely: files changed, coverage, test counts, ambiguities logged,
 | Hub | `powershell -NoProfile -ExecutionPolicy Bypass -File tests/verify.ps1` |
 | P1 | `uv sync --locked`; `uv run --locked pytest -q`; `uv run --locked python -m nursebench.validate`; mock eval: `uv run --locked inspect eval nursebench/hello_world.py --model mockllm/model --log-dir <fresh %TEMP% dir> --display none`, then `uv run --locked python scripts/check_mock_eval.py <dir>`. Delete the dir afterwards. |
 | P2, P4 | PowerShell: `$env:JAVA_HOME='C:\Users\14087\.local\share\nursing-os-tools\jdk21\jdk-21.0.12.1+1'; $env:Path="$env:JAVA_HOME\bin;$env:Path"; .\mvnw.cmd -B -ntp verify` |
-| P3 | `npm ci --ignore-scripts`; `npm run verify` |
+| P3 | Set JAVA_HOME as for P2 (since `b1228b1`, `npm run verify` also runs the Maven CQL build), then `npm ci --ignore-scripts`; `npm run verify` |
 | P5 | `uv sync --locked`; `uv run --locked pytest -q`; `uv run --locked verify-evidence tests/fixtures/mechanical-valid.json` |
 
 Test counts at this checkpoint: hub 54, P1 420, P2 69, P3 71, P4 47, P5 344.
