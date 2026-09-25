@@ -39,7 +39,7 @@ At about 10 hours a week, the target is **end of June 2027** (about 330 hours).
 
 ```text
 2026  Sep 24 ─ Oct 9    P0 v0.1 + v0.2 run in the loop; owner reviews and tags releases
-      Oct 1  ─ Oct 11   P1 M0 scaffolding · email Dr. Morse by Oct 9 · employer policy check
+      Oct 1  ─ Oct 11   P1 M0 scaffolding (private repo)
       Oct 12 ─ Oct 31   P1 M1 Track 1 → NurseBench v0.1 (the résumé gate)
       Nov               P1 M2 Track 4 NIHSS, kept light for the NCA-GENL exam
       Dec 1  ─ Dec 8    no build work (CAHIMS exam Dec 8)
@@ -98,7 +98,7 @@ own.
 | D-1 | Separate repos (overview) or hub subfolders (Sep 4 decision) | **Decided 2026-09-24 by the owner: separate repos**, with the hub kept as the index | Done |
 | D-2 | Treat Nurse Handoff as finished at v0.2, with its roadmap v0.3+ covered by P4 | Yes | At the P0 v0.2 release |
 | D-3 | NurseBench model roster and API budget cap | 3 frontier API models plus 1 open-weights model; cap set by the owner (the blueprint estimated about $50) | Before the P1 M1 runs (~Oct 25) |
-| D-4 | Repo visibility during development | Private until v0.1, then public (the résumé rule only needs v0.1 public) | At each repo's creation |
+| D-4 | Repo visibility during development | **Decided 2026-09-24 by the owner: private until ready**, then public at release (the résumé rule only needs v0.1 public) | Done |
 | D-5 | Enroll new repos in the unattended loop | No. Use interactive agent sessions. Enrolling a repo needs owner-authorized controller work. | Any time |
 | D-6 | Confirm the CAHIMS and NCA-GENL exam dates | Keep the overview's dates | Now |
 | D-7 | P5 orchestration: Claude Agent SDK, `claude -p` scripts, or Java (LangChain4j / Spring AI) | Decide at the P5 M3 start | May 2027 |
@@ -111,6 +111,9 @@ and tick the decision in [PROGRESS.md](PROGRESS.md).
 
 These come from the overview's ground rules.
 
+- **Employer:** portfolio work happens outside shift hours. The employer is
+  never named, referenced or used in any repo, write-up or post (owner
+  confirmed 2026-09-24).
 - **Data:** synthetic or public only. No employer material: no policies,
   order sets, EHR screenshots, build details or cases, even de-identified
   ones. Never send credentialed data such as full MIMIC to a third-party LLM.
@@ -139,4 +142,4 @@ These come from the overview's ground rules.
 | Tooling gaps on RGB | As of 2026-09-24, Java, Maven, Docker, gh and SUSHI are not installed | Install one month ahead ([RUNBOOK §2](RUNBOOK.md#2-prerequisites)) |
 | RAM contention (32 GB; Qwen runs manually) | HAPI or Docker fails while Qwen is loaded | Stop Qwen during Docker work and check free memory first |
 | Source or standard changes (Specs Manual, US Core, Timefold 2.x) | Newer version at milestone start | Each plan's first milestone includes a "verify current version" task |
-| Public-posting conflict with employer policy | Policy not yet checked | The owner checks before the first public release. The hub repo is already public. |
+| Employer named or implied in a public file | A release-time search finds the name or an abbreviation | Remove it before the repo goes public. Outside work is permitted off shift (owner, 2026-09-24). |

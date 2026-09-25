@@ -13,10 +13,10 @@
 
 ## Before starting (owner)
 
-- Employer outside-work and social-media policy checked (portfolio gate G0).
-- D-4 visibility chosen. D-1 is decided: separate repo.
-- Morse Fall Scale permission email sent to Dr. Janice Morse, **by Oct 9**.
-      This only unblocks v1.1. v1.0 does not depend on the reply.
+- Done: G0 (outside work off shift; the employer is never named), D-1
+  (separate repo), D-4 (private until the v0.1 release).
+- Optional: email Dr. Janice Morse for Morse Fall Scale permission. It is
+  only needed to add fall-risk scoring in v1.1; v1.0 does not depend on it.
 - LLM API accounts and keys in user environment variables (never in the
       repo). D-3 model roster and budget cap set before M1 runs.
 

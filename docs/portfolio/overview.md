@@ -28,7 +28,7 @@ Changes from the original list, based on the licensing and measure research:
 
 Use synthetic or public data only, and write every clinical spec yourself — that authorship is the hiring signal.
 
-- **No employer material.** That means no employer policies, order sets, Epic screenshots, build details or cases, even "de-identified" ones. Check the employer's outside-work and social-media policy before posting publicly.
+- **No employer material.** That means no employer policies, order sets, Epic screenshots, build details or cases, even "de-identified" ones. The employer is never named or used, and portfolio work happens outside shift hours.
 - **AI-assisted coding is fine.** The clinical spec, gold answers, rubrics and constraint weights must be yours, and you should be able to defend every scorer and constraint in an interview.
 - **Résumé rule:** a repo goes on the résumé only once v0.1 is public. Metrics come only from actual runs.
 

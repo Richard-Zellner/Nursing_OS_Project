@@ -30,9 +30,9 @@ line. It applies to v0.1 (the first public, résumé-eligible release) and v1.0
 - [ ] CHANGELOG entry for this version
 
 ## Release
-- [ ] G0 employer-policy check done (first public release only)
+- [ ] Repo, history and write-up searched for the employer's name and abbreviations; none found
 - [ ] `git tag vX.Y.Z` and push the tag; GitHub release notes written from the CHANGELOG
-- [ ] Visibility set (public at v0.1 at the latest)
+- [ ] Visibility switched from private to public (D-4: public at release)
 
 ## After release
 - [ ] Hub README projects table updated (status, link, headline result)

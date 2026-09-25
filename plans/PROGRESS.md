@@ -17,7 +17,7 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
 | P0 | Nurse Handoff | M1 v0.1 build (tickets 004–015) | in-progress | The loop takes ticket 004 after the daily run limit resets | v0.1 ~Sep 26, v0.2 ~Oct 9 |
-| P1 | NurseBench | M0 scaffolding | not-started | Owner: G0 policy check, create repo | M0 Oct 11, v0.1 Oct 31 |
+| P1 | NurseBench | M0 scaffolding | not-started | Owner: create the private `nursebench` repo | M0 Oct 11, v0.1 Oct 31 |
 | P2 | Charge Assign | — | not-started | Install JDK 21 + Maven in January | Feb 2027 |
 | P3 | Dysphagia Screen FHIR | — | not-started | Install Docker Desktop in February | Mar 2027 |
 | P4 | Grounded Handoff | — | not-started | Waits on P3's HAPI setup | Apr – mid-May 2027 |
@@ -25,16 +25,16 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 ## Owner gates and decisions
 
-- [ ] **G0** Employer outside-work/social-media policy checked before any new public release
+- [x] **G0** Employer policy: outside work is permitted off shift; the employer is never named or used (owner, 2026-09-24)
 - [x] **D-1** Separate repos: decided by the owner on 2026-09-24
 - [ ] **D-2** Nurse Handoff ends at v0.2; roadmap v0.3+ goes to P4, at the P0 v0.2 release
 - [ ] **D-3** NurseBench model roster and API budget cap, by ~Oct 25
-- [ ] **D-4** Visibility during development (recommended: private until v0.1), per repo
+- [x] **D-4** New repos stay private until ready, then go public at release (owner, 2026-09-24)
 - [ ] **D-5** Loop enrollment for new repos (recommended: no)
 - [ ] **D-6** CAHIMS and NCA-GENL dates confirmed
 - [ ] **D-7** P5 orchestration choice, at P5 M3
 - [ ] **D-8** Run P2 in parallel with P1 (recommended: no)
-- [ ] Morse Fall Scale permission email sent (by Oct 9, 2026)
+- [ ] (Optional) Morse Fall Scale permission email, only if fall-risk scoring is wanted in NurseBench v1.1
 - [ ] LLM API keys set as user environment variables (never in a repo)
 
 ## Tooling (RGB, checked 2026-09-24)
@@ -126,3 +126,4 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 |---|---|---|---|---|---|
 | 2026-09-24 | Claude Code (owner request) | all | Created `plans/`: master plan, six project plans, progress file, runbook, templates | Links checked; `tests/verify.ps1` run | Owner: review, decide D-1, commit and push `plans/` before the next loop unit |
 | 2026-09-24 | Claude Code (owner decision) | all | Owner chose separate repos (D-1); recorded in DECISIONS/ACTIVE-DECISIONS; plans committed and pushed | `tests/verify.ps1` run | P1: G0 policy check, create `nursebench` repo |
+| 2026-09-24 | Claude Code (owner decision) | all | G0 satisfied (outside work off shift; employer never named); D-4 private until ready; Morse email made optional; employer name removed from the overview | `tests/verify.ps1` run | P1: create private `nursebench` repo |

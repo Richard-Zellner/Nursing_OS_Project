@@ -85,7 +85,8 @@ routes to this hub, and this runbook routes to the plan.
 Do this at each project's first milestone. It is an owner-led step: an
 agent can run it once the owner says to.
 
-1. **Owner:** choose D-4 (visibility). D-1 is decided: separate repos. Create the GitHub repo
+1. **Owner:** create the GitHub repo as **private** (D-4; public only at release).
+   D-1 is decided: separate repos. Create the GitHub repo
    `Richard-Zellner/<repo>` with no template files.
 2. Clone it to `C:\Users\14087\Desktop\<repo>`.
 3. **Agent:** scaffold from [templates/repo-scaffold.md](templates/repo-scaffold.md),
@@ -148,7 +149,7 @@ The hub is loop-driven and auto-pushed, which puts constraints on edits here:
   `powershell -NoProfile -File controller.ps1 status` and
   `controller.ps1 git-sync --project Nursing_OS_Project`.
 - The hub is **public**. Anything written in `plans/` becomes public when it
-  is pushed. Keep personal career and employer details out of it.
+  is pushed. Keep personal career details out of it, and never name the employer.
 - New repos are **not** enrolled in the loop (D-5). Enrolling one would need
   owner-authorized controller changes in `loops/policy.py` plus a loop
   contract for that repo.
