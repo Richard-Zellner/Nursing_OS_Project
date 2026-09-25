@@ -34,7 +34,7 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 - [ ] **D-6** CAHIMS and NCA-GENL dates confirmed
 - [ ] **D-7** P5 orchestration choice, at P5 M3
 - [ ] **D-8** Run P2 in parallel with P1 (recommended: no)
-- [ ] (Optional) Morse Fall Scale permission email, only if fall-risk scoring is wanted in NurseBench v1.1
+- [x] Morse Fall Scale dropped; no permission email (owner, 2026-09-24)
 - [ ] LLM API keys set as user environment variables (never in a repo)
 
 ## Tooling (RGB, checked 2026-09-24)
@@ -127,3 +127,4 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 | 2026-09-24 | Claude Code (owner request) | all | Created `plans/`: master plan, six project plans, progress file, runbook, templates | Links checked; `tests/verify.ps1` run | Owner: review, decide D-1, commit and push `plans/` before the next loop unit |
 | 2026-09-24 | Claude Code (owner decision) | all | Owner chose separate repos (D-1); recorded in DECISIONS/ACTIVE-DECISIONS; plans committed and pushed | `tests/verify.ps1` run | P1: G0 policy check, create `nursebench` repo |
 | 2026-09-24 | Claude Code (owner decision) | all | G0 satisfied (outside work off shift; employer never named); D-4 private until ready; Morse email made optional; employer name removed from the overview | `tests/verify.ps1` run | P1: create private `nursebench` repo |
+| 2026-09-24 | Claude Code (owner decision) | all | Git history rewritten to remove the employer name (only one overview line changed in 3 commits) and force-pushed; Morse dropped from NurseBench | History diff checked; `tests/verify.ps1` run | P1: create private `nursebench` repo |

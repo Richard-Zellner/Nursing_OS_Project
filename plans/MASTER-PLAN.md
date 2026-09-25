@@ -118,8 +118,8 @@ These come from the overview's ground rules.
   order sets, EHR screenshots, build details or cases, even de-identified
   ones. Never send credentialed data such as full MIMIC to a third-party LLM.
 - **Licensed instruments:** follow the licensing table in the overview.
-  Braden, TOR-BSST, Schmitt-Thompson and the NHS SNCT are excluded. Morse
-  waits for permission.
+  Braden, Morse, TOR-BSST, Schmitt-Thompson and the NHS SNCT are excluded.
+  Morse was dropped by the owner on 2026-09-24, so no permission is sought.
 - **Authorship:** the owner writes every clinical spec, gold answer, rubric,
   acuity weight, constraint weight and human label. Agents build code,
   tests, generators, CI and document structure, but never clinical content.

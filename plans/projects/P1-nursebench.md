@@ -15,8 +15,8 @@
 
 - Done: G0 (outside work off shift; the employer is never named), D-1
   (separate repo), D-4 (private until the v0.1 release).
-- Optional: email Dr. Janice Morse for Morse Fall Scale permission. It is
-  only needed to add fall-risk scoring in v1.1; v1.0 does not depend on it.
+- Morse Fall Scale: dropped (owner, 2026-09-24). Track 4 is NIHSS only, and
+  no fall-risk scale is planned.
 - LLM API accounts and keys in user environment variables (never in the
       repo). D-3 model roster and budget cap set before M1 runs.
 
@@ -105,7 +105,7 @@ No build work Dec 1–8.
 | P1-M4-6 | OWNER | Headline: the "readable but unsafe" rate, stated with the limits of readability formulas | Owner-written |
 | P1-M4-7 | OWNER | Release v1.0.0, write-up, résumé line filled from real runs | Release checklist complete |
 
-v1.1 (after v1.0, optional): add Morse to Track 4 if permission arrives.
+No fall-risk scale follows v1.0: the owner dropped Morse on 2026-09-24 (too much work and licensing risk).
 
 ## Hand-offs
 

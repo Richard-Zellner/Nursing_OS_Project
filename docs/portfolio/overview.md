@@ -20,7 +20,7 @@ Hours are rough, assuming AI-assisted coding at \~10 h/week. Running #11 alongsi
 
 Changes from the original list, based on the licensing and measure research:
 
-- **Braden dropped from Track 4.** It needs a paid license. Morse is free but needs the author's permission, so it waits for v1.1.
+- **Braden dropped from Track 4.** It needs a paid license. Morse is free but needs the author's permission, so it waits for v1.1. *(Update 2026-09-24: the owner dropped Morse; no fall-risk scale is planned.)*
 - **Dysphagia screening and door-to-needle are Get With The Guidelines (GWTG) measures, not Joint Commission ones.** The Joint Commission retired its dysphagia measure (STK-7), so project 13 now pulls from both sources.
 - **Inspect replaces promptfoo as the eval harness.** OpenAI acquired promptfoo in March 2026, which is awkward for a benchmark that also grades OpenAI models.
 
@@ -36,7 +36,7 @@ Use synthetic or public data only, and write every clinical spec yourself — th
 | --- | --- | --- |
 | NIH Stroke Scale (NINDS) | Items and scoring OK with NINDS citation; don't copy AHA/NIHSS certification-course material | Treated as public domain everywhere; no explicit NINDS statement found |
 | Braden Scale | Don't embed item text | License fee required — verified |
-| Morse Fall Scale | Email Dr. Janice Morse (Univ. of Utah) before adding | Free, permission required — verified |
+| Morse Fall Scale | Not used (dropped by the owner on 2026-09-24) | Free, permission required — verified |
 | TOR-BSST swallow screen | Don't use | Proprietary, paid training — verified |
 | Schmitt-Thompson triage protocols | Don't reproduce | Proprietary — verified |
 | NHS Safer Nursing Care Tool | Don't replicate its bands | Licensed — verified |

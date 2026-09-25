@@ -84,7 +84,7 @@ Disclaimer in the repo: these are reference nomograms from named publications. D
 
 ## Track 4 — Narrative → NIHSS
 
-This track tests whether a model can score the NIH Stroke Scale from a nursing neuro-exam narrative. \~25 h, \~100 narratives. v1 is NIHSS only; Morse comes in v1.1 after Dr. Morse's permission, and Braden is out (licensed).
+This track tests whether a model can score the NIH Stroke Scale from a nursing neuro-exam narrative. \~25 h, \~100 narratives. v1 is NIHSS only. Morse was dropped on 2026-09-24 (owner decision), and Braden is out (licensed).
 
 **Generation with seeded truth.** Sample a gold 15-item score vector, then have an LLM write a narrative consistent with it. Vary the style: structured, shorthand ("L arm drifts, hits bed \~8 s"), messy. You verify every narrative against its vector. Write 20 by hand, generate \~80. The same pattern powers project 13.
 
@@ -161,7 +161,7 @@ This track tests whether plain-language rewrites and translations keep the safet
 
 v0.1 (Track 1) by end of October is the résumé gate. The rest fits around NCA-GENL in November and CAHIMS on Dec 8, 2026.
 
-- [ ] Email Dr. Morse for Morse Fall Scale permission — by Oct 9, 2026
+- ~~Email Dr. Morse for Morse Fall Scale permission — by Oct 9, 2026~~ Dropped 2026-09-24 (owner decision).
 - [ ] M0 scaffolding (\~10 h): repo, Inspect hello-world task, schema, disclaimers, canary, CI — by Oct 11, 2026
 - [ ] M1 Track 1 + **v0.1 release**, then add to résumé and LinkedIn — by Oct 31, 2026
 - [ ] M2 Track 4 NIHSS (kept light for NCA-GENL month) — by Nov 30, 2026
