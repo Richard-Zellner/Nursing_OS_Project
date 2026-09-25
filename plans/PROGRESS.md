@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-24 by Claude Code (initial plan)
+Last updated: 2026-09-24 by Codex (NurseBench repository setup)
 
 ## Dashboard
 
@@ -17,7 +17,7 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
 | P0 | Nurse Handoff | M1 v0.1 build (tickets 004–015) | in-progress | The loop takes ticket 004 after the daily run limit resets | v0.1 ~Sep 26, v0.2 ~Oct 9 |
-| P1 | NurseBench | M0 scaffolding | not-started | Owner: create the private `nursebench` repo | M0 Oct 11, v0.1 Oct 31 |
+| P1 | NurseBench | M0 scaffolding | in-progress | P1-M0-1 and P1-M0-2 complete; next: P1-M0-3 shared item schema and validator | M0 Oct 11, v0.1 Oct 31 |
 | P2 | Charge Assign | — | not-started | Install JDK 21 + Maven in January | Feb 2027 |
 | P3 | Dysphagia Screen FHIR | — | not-started | Install Docker Desktop in February | Mar 2027 |
 | P4 | Grounded Handoff | — | not-started | Waits on P3's HAPI setup | Apr – mid-May 2027 |
@@ -128,3 +128,4 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 | 2026-09-24 | Claude Code (owner decision) | all | Owner chose separate repos (D-1); recorded in DECISIONS/ACTIVE-DECISIONS; plans committed and pushed | `tests/verify.ps1` run | P1: G0 policy check, create `nursebench` repo |
 | 2026-09-24 | Claude Code (owner decision) | all | G0 satisfied (outside work off shift; employer never named); D-4 private until ready; Morse email made optional; employer name removed from the overview | `tests/verify.ps1` run | P1: create private `nursebench` repo |
 | 2026-09-24 | Claude Code (owner decision) | all | Git history rewritten to remove the employer name (only one overview line changed in 3 commits) and force-pushed; Morse dropped from NurseBench | History diff checked; `tests/verify.ps1` run | P1: create private `nursebench` repo |
+| 2026-09-24 | Codex (owner-delegated setup) | P1 | Created private repo, cloned to Desktop, registered project recall, and pushed the starter scaffold; P1-M0-1 and P1-M0-2 complete | GitHub API confirms private and remote main matches; locked dependency sync, package imports/compilation, Inspect CLI, Git ignores, all 39 task IDs and 13 local links checked | P1-M0-3 schema/validator; remaining M0 tasks and owner wording review stay open |
