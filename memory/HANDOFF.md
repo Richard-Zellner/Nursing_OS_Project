@@ -1,18 +1,20 @@
 # Handoff
 
-## Implementation handoff — ticket 003
+## Implementation handoff — ticket 004
 
-Ticket 003 adds all four synthetic patient JSON records and tests that they
-parse, use IDs `SYNTH-001` through `SYNTH-004`, contain no forbidden keys,
-and that patient C omits `code_status`, `mobility`, and `respiratory`.
-Patient B includes telemetry, oxygen, IV diuretic and access, intake/output,
-daily weight, and pending labs. Patient D retains the two contradictory
-conditions required by the spec.
+Ticket 004 adds `load_patient(path) -> dict` and `PatientFileError`.
+The loader reads UTF-8 JSON objects and preserves all supplied values,
+including missing keys, null, false, empty lists, and unknown keys.
+Missing files, malformed JSON/UTF-8, non-object roots, and read failures
+produce useful path-bearing errors. Required-field validation remains 005.
 
-Verification in this run: pytest passed (6 tests); `tests/verify.ps1` passed.
-No open questions. No human action is needed before the next ticket.
+Verification in this run: baseline pytest passed (6 tests); final pytest
+passed (27 tests); `tests/verify.ps1` passed. No open questions.
+This was owner-authorized delegated work; parent code review and an
+independent `tests/verify.ps1` run passed (27 tests).
+The ignored STOP marker remains under the parent session's control.
 
-Next ticket: 004 — Loader. It is unblocked by tickets 001 and 003.
+Next ticket: 005 — Validator. It is unblocked by ticket 002.
 
 ## Portfolio setup — 2026-09-24
 

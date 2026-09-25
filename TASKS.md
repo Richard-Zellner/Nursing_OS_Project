@@ -49,7 +49,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   `name`, `dob`, `mrn`, or `facility` exists, and patient C lacks
   `code_status`, `mobility`, `respiratory`. Blocked by: 001.
 
-- [ ] **004 Loader.** `loader.py`: `load_patient(path) -> dict`. Raises
+- [x] **004 Loader.** `loader.py`: `load_patient(path) -> dict`. Raises
   `PatientFileError` (message `file not found: <path>` or
   `invalid JSON in <path>: <json error>`) for missing or malformed files.
   Rejects a top-level non-object. Acceptance: `tests/test_loader.py` covers
@@ -135,8 +135,8 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
 
 ### Definition of Done — v0.1 (agent ticks these; DONE file when all ticked)
 
-- [ ] four synthetic patients exist (003)
-- [ ] patient JSON loads correctly (004)
+- [x] four synthetic patients exist (003)
+- [x] patient JSON loads correctly (004)
 - [ ] required fields are validated (005)
 - [ ] missing information is preserved as unknown (007, 009)
 - [ ] handoff is generated (009)
