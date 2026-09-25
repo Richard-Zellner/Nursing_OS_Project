@@ -9,6 +9,8 @@ intended for clinical use.
 
 - [Portfolio plans](docs/portfolio/README.md) — overview, five planned repos,
   and research sources.
+- [Delivery plan](plans/README.md) — master plan, per-project milestones,
+  progress tracker, and runbook for finishing all six projects.
 - [Nurse Handoff](nurse-handoff/README.md) — the existing Python project.
 - [Documentation](docs/README.md) — implementation specs and portfolio plans.
 - [Task ledger](TASKS.md) and [latest handoff](memory/HANDOFF.md) — implementation
@@ -30,6 +32,7 @@ deterministic `nurse-handoff` package.
 |---|---|
 | `docs/` | Nurse Handoff specifications and a documentation index |
 | `docs/portfolio/` | Portfolio overview, individual project plans, and research sources |
+| `plans/` | Delivery plan: master plan, project milestone plans, progress, runbook, templates |
 | `nurse-handoff/` | Python package, synthetic-data directory, package tests, and local virtual environment |
 | `tests/` | Repository verification script |
 | `memory/` | Handoff, decisions, iteration log, and owner questions |

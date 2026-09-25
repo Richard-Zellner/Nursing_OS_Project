@@ -18,3 +18,5 @@ package. Work is tracked in [`TASKS.md`](../TASKS.md).
 The [portfolio index](portfolio/README.md) links the September 24 planning
 documents for NurseBench, Charge Assign, Dysphagia CDS, Grounded Handoff,
 and the Stroke Abstraction Agent, plus their overview and research sources.
+The [delivery plan](../plans/README.md) sequences them into milestones and
+tracks progress.

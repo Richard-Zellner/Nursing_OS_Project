@@ -18,3 +18,4 @@
 Full historical rationale is preserved in DECISIONS.md. The owner refreshes this summary during review.
 
 - 2026-09-24 Owner authorized automatic controller commits/pushes after independent acceptance to https://github.com/Richard-Zellner/Nursing_OS_Project (public). Workers remain unable to commit or handle credentials; release and creative review gates still apply.
+- 2026-09-24 Owner decision D-1: the five portfolio projects are separate GitHub repositories; this hub is the index, delivery plan (plans/) and home of nurse-handoff/.

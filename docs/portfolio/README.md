@@ -20,6 +20,9 @@ their code repositories have not been created by this organization pass.
 | 4 | `grounded-handoff` | [SMART on FHIR handoff app](grounded-handoff.md) | 6 |
 | 5 | `stroke-abstraction-agent` | [Stroke measure abstraction](stroke-abstraction-agent.md) | 13 |
 
+Execution plans (milestones, owner and agent tasks, progress) are in
+[`plans/`](../../plans/README.md).
+
 [Research sources](sources.md) contains the original bibliography and its
 verification notes. It is separate from the agent reference log at
 [`memory/SOURCES.md`](../../memory/SOURCES.md).
