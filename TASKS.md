@@ -70,7 +70,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   Acceptance: tests for present and missing code status; byte-exact
   comparison. Blocked by: 005.
 
-- [ ] **007 Assessment section.** `render_assessment(record) -> str` with
+- [x] **007 Assessment section.** `render_assessment(record) -> str` with
   Neuro, Cardiac, Respiratory, Mobility, Diet lines. Respiratory follows the
   rendering table in `PATIENT-SCHEMA.md` exactly, including the `false`
   case. Acceptance: one test per row of the respiratory table; a test that

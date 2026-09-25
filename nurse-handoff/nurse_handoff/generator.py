@@ -16,3 +16,40 @@ def render_overview(record: dict) -> str:
         f"{record['age']}-year-old — {status_text}\n"
         f"Primary problem: {record['primary_problem']}"
     )
+
+
+def render_assessment(record: dict) -> str:
+    """Render the assessment section without filling in undocumented data."""
+    respiratory = record.get("respiratory")
+    if not isinstance(respiratory, dict):
+        respiratory_text = "Not documented"
+    else:
+        oxygen = respiratory.get("oxygen")
+        if oxygen is True:
+            device = respiratory.get("device")
+            flow_lpm = respiratory.get("flow_lpm")
+            if device is None:
+                respiratory_text = "Supplemental oxygen (device not documented)"
+            elif flow_lpm is None:
+                respiratory_text = f"{device} (flow not documented)"
+            else:
+                respiratory_text = f"{flow_lpm:g} L/min {device}"
+        elif oxygen is False:
+            respiratory_text = "No supplemental oxygen documented"
+        else:
+            respiratory_text = "Not documented"
+
+    lines = ["ASSESSMENT"]
+    for field, label in (
+        ("neuro", "Neuro"),
+        ("cardiac", "Cardiac"),
+    ):
+        value = record.get(field)
+        lines.append(f"{label}: {value if value is not None else 'Not documented'}")
+
+    lines.append(f"Respiratory: {respiratory_text}")
+    for field, label in (("mobility", "Mobility"), ("diet", "Diet")):
+        value = record.get(field)
+        lines.append(f"{label}: {value if value is not None else 'Not documented'}")
+
+    return "\n".join(lines)

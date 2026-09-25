@@ -1,14 +1,14 @@
 # Handoff
 
-## Nurse Handoff — ticket 006 accepted
+## Nurse Handoff — ticket 007 accepted
 
-Added `render_overview(record)` for the NURSING HANDOFF heading and overview
-lines, including the exact em dash and the missing-code-status text. Added
-byte-exact tests for documented and missing code status; explicit `null` is
-also covered. The section has no trailing LF so later assembly can control
-section spacing and the single final LF.
+Added `render_assessment(record)` with Neuro, Cardiac, Respiratory, Mobility,
+and Diet lines. Respiratory output follows the schema table, including the
+explicit oxygen-false case and missing/null distinctions. No undocumented
+status becomes “Room air.” Added table-row tests and checks for all four
+synthetic patients.
 
-Verification this run: pytest passed (39 tests); `tests/verify.ps1` passed.
+Verification this run: pytest passed (50 tests); `tests/verify.ps1` passed.
 No spec discrepancy. No open questions. No milestone or release completed.
-Next ticket: 007 Assessment section; its prerequisite 006 is satisfied.
+Next ticket: 008 List sections; prerequisite 006 is satisfied.
 Human action: none.
