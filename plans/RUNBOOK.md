@@ -36,9 +36,9 @@ Checked on RGB on 2026-09-24. Re-check before relying on this list.
 | Python 3.11, uv | P1, P5 | present | — |
 | Node 24 | P3 (SUSHI), P4 frontend | present | — |
 | Git | all | present | — |
-| JDK 21, Maven | P2; P3 cql-to-elm; P4 backend; Synthea | missing | Temurin 21 and Maven, e.g. `winget install EclipseAdoptium.Temurin.21.JDK` and `winget install Apache.Maven`; confirm the package IDs with `winget search` |
+| JDK 21, Maven | P2; P3 cql-to-elm; P4 backend; Synthea | portable Temurin 21.0.12.1+1 and Maven 3.9.16 verified in P2/P4 | RGB: `%USERPROFILE%/.local/share/nursing-os-tools/`; set process JAVA_HOME to its JDK; repo wrappers pin Maven |
 | Docker Desktop with WSL2 | P3, P4 (HAPI) | missing | docker.com installer; set a memory cap in `%UserProfile%\.wslconfig` |
-| SUSHI | P3 | missing | `npm install -g fsh-sushi` |
+| SUSHI | P3 | project-local 3.20.1 verified | From dysphagia-screen-fhir: `npm ci --ignore-scripts`, then `npm run verify`; no global install needed |
 | GitHub CLI | optional | missing | `winget install GitHub.cli` |
 
 Other things the owner sets up: LLM API keys as user environment variables,

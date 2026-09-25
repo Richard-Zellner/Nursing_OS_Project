@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-24 by Codex (NurseBench repository setup)
+Last updated: 2026-09-24 by Codex (owner-requested parallel work and independent review)
 
 ## Dashboard
 
@@ -16,12 +16,17 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | M1 v0.1 build (tickets 004–015) | in-progress | The loop takes ticket 004 after the daily run limit resets | v0.1 ~Sep 26, v0.2 ~Oct 9 |
-| P1 | NurseBench | M0 scaffolding | in-progress | P1-M0-1 and P1-M0-2 complete; next: P1-M0-3 shared item schema and validator | M0 Oct 11, v0.1 Oct 31 |
-| P2 | Charge Assign | — | not-started | Install JDK 21 + Maven in January | Feb 2027 |
-| P3 | Dysphagia Screen FHIR | — | not-started | Install Docker Desktop in February | Mar 2027 |
-| P4 | Grounded Handoff | — | not-started | Waits on P3's HAPI setup | Apr – mid-May 2027 |
-| P5 | Stroke Abstraction Agent | — | not-started | Waits on P1 and P3 | mid-May – Jun 2027 |
+| P0 | Nurse Handoff | M1 v0.1 build (004 complete) | in-progress | Ticket 005 validator; loop eligible after the daily run limit resets | v0.1 ~Sep 26, v0.2 ~Oct 9 |
+| P1 | NurseBench | M0 technical work complete; wording review open | review | Owner P1-M0-7 README/disclaimer review, then Track 1 spec and protocols | M0 Oct 11, v0.1 Oct 31 |
+| P2 | Charge Assign | M1 domain scaffold and M2 CI complete | in-progress | Owner acuity rubric and clinical constraints spec before generator/solver work | Feb 2027 |
+| P3 | Dysphagia Screen FHIR | M2-1 authoring foundation complete | in-progress | Owner M1 wording, sources, terminology and clinical spec; no Questionnaire/CQL/HAPI yet | Mar 2027 |
+| P4 | Grounded Handoff | M1 scaffold portion and M4-1 complete | in-progress | P3 HAPI setup and owner overlay/handoff spec; citation existence is mechanical only | Apr – mid-May 2027 |
+| P5 | Stroke Abstraction Agent | Scaffold and M3-4a exact-span checks complete | in-progress | Owner measure digest/date rules, clinical spec and D-7; P1/P3 dependencies remain | mid-May – Jun 2027 |
+
+All five separate repositories now exist privately, are registered for project
+recall, and have reviewed work pushed to `main`. Parallel technical work does
+not complete clinical milestones or change release targets. Native repository
+handoffs contain the check evidence and task-level state.
 
 ## Owner gates and decisions
 
@@ -33,22 +38,22 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 - [ ] **D-5** Loop enrollment for new repos (recommended: no)
 - [ ] **D-6** CAHIMS and NCA-GENL dates confirmed
 - [ ] **D-7** P5 orchestration choice, at P5 M3
-- [ ] **D-8** Run P2 in parallel with P1 (recommended: no)
+- [x] **D-8** Owner requested parallel work on all projects with subagents and parent review (2026-09-24); independent technical tasks advanced, clinical gates remain
 - [x] Morse Fall Scale dropped; no permission email (owner, 2026-09-24)
 - [ ] LLM API keys set as user environment variables (never in a repo)
 
 ## Tooling (RGB, checked 2026-09-24)
 
 - [x] Python 3.11, uv, Node 24, Git
-- [ ] JDK 21 and Maven, for P2 (by end of January) and P3's cql-to-elm
+- [x] Portable Temurin 21.0.12.1+1 and Maven 3.9.16; P2/P4 builds verified; no global PATH change
 - [ ] Docker Desktop with WSL2, for P3 (by end of February) and P4
-- [ ] SUSHI (`npm install -g fsh-sushi`), for P3
+- [x] Project-local SUSHI 3.20.1 in P3, pinned by npm lockfile; no global installation
 - [ ] GitHub CLI `gh` (optional; repos can be created on github.com)
 
 ## Milestones
 
 ### P0 Nurse Handoff ([plan](projects/P0-nurse-handoff.md))
-- [ ] M1 v0.1 build: tickets 004–015 (001–003 done, `916b48b`)
+- [ ] M1 v0.1 build: tickets 004–015 (001–004 done; loader accepted in `15e9a17`)
 - [ ] G1 v0.1 release: reviewed, `v0.1.0` tagged, "v0.1 released" ticked, `DONE` deleted, pushed
 - [ ] M2 v0.2 rules: tickets 101–110
 - [ ] G2 v0.2 release: `v0.2.0` tagged; D-2 recorded
@@ -129,3 +134,4 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 | 2026-09-24 | Claude Code (owner decision) | all | G0 satisfied (outside work off shift; employer never named); D-4 private until ready; Morse email made optional; employer name removed from the overview | `tests/verify.ps1` run | P1: create private `nursebench` repo |
 | 2026-09-24 | Claude Code (owner decision) | all | Git history rewritten to remove the employer name (only one overview line changed in 3 commits) and force-pushed; Morse dropped from NurseBench | History diff checked; `tests/verify.ps1` run | P1: create private `nursebench` repo |
 | 2026-09-24 | Codex (owner-delegated setup) | P1 | Created private repo, cloned to Desktop, registered project recall, and pushed the starter scaffold; P1-M0-1 and P1-M0-2 complete | GitHub API confirms private and remote main matches; locked dependency sync, package imports/compilation, Inspect CLI, Git ignores, all 39 task IDs and 13 local links checked | P1-M0-3 schema/validator; remaining M0 tasks and owner wording review stay open |
+| 2026-09-24 | Codex + three subagents (owner-requested parallel round) | P0–P5 | Six scoped assignments reviewed by parent; P0 loader, P1 schema/split/offline eval/full CI, P2 domain, P3 SUSHI build, P4 citation existence, P5 exact evidence spans; four remaining repos created privately and registered | Parent reran 206 tests plus builds/CLI checks; all five separate repos passed Windows/Linux CI; P4 Java-selector failure corrected and green run observed; links, task IDs, exclusions and Git state checked | P0 ticket 005 under existing loop allowance; P1 wording review; owner clinical inputs and P3 HAPI dependency gate further clinical work |

@@ -1,27 +1,33 @@
 # Handoff
 
-## Implementation handoff — ticket 004
+## Nurse Handoff — ticket 004 accepted
 
-Ticket 004 adds `load_patient(path) -> dict` and `PatientFileError`.
-The loader reads UTF-8 JSON objects and preserves all supplied values,
-including missing keys, null, false, empty lists, and unknown keys.
-Missing files, malformed JSON/UTF-8, non-object roots, and read failures
-produce useful path-bearing errors. Required-field validation remains 005.
+The UTF-8 JSON loader and path-bearing errors are complete, committed and
+pushed in 15e9a17. Missing, null, false and empty values remain distinct.
+Parent code review and independent tests/verify.ps1 passed: 27 tests.
+Next ticket: 005 Validator. No open P0 question. No milestone/release completed.
 
-Verification in this run: baseline pytest passed (6 tests); final pytest
-passed (27 tests); `tests/verify.ps1` passed. No open questions.
-This was owner-authorized delegated work; parent code review and an
-independent `tests/verify.ps1` run passed (27 tests).
-The ignored STOP marker remains under the parent session's control.
+## Portfolio parallel round — 2026-09-24
 
-Next ticket: 005 — Validator. It is unblocked by ticket 002.
+Owner requested subagents across all projects, then parent review. Three
+worker slots covered six separate assignments; parent reviewed every result.
+P1: M0-1 through M0-6 complete, 71 tests and offline Inspect CLI/log checks.
+Owner wording review M0-7 remains open before M0 completion.
+P2: domain scaffold M1-3 and CI M2-3 complete; 6 tests. No solver/constraints.
+P3: SUSHI foundation M2-1 complete; 0 errors/warnings and 6 tests.
+P4: Java scaffold M1-1a and citation existence M4-1 complete; 30 tests.
+P5: mechanical evidence spans M3-4a complete; 66 tests, CLI and package build.
+P4 HAPI-up parent task and P5 date-consistency parent task remain incomplete.
 
-## Portfolio setup — 2026-09-24
+All five separate repos exist privately on Desktop, are recall-registered,
+and have reviewed work pushed; Windows/Linux CI passed for all five.
+Read their native handoffs and TASKS.md.
+Owner clinical templates remain empty; no clinical labels/rules were invented.
+No paid model calls or releases. Portable Java/Maven and project-local SUSHI
+are verified; Docker/HAPI and Qwen services were not changed.
 
-Owner delegated the private NurseBench repository setup to Codex. P1-M0-1
-and P1-M0-2 are complete in the separate Desktop/nursebench repository.
-It is registered as nursebench; remote private visibility and the first
-pushed commit were checked. Local locked dependency and scaffold checks
-passed. All clinical content and releases remain pending owner work.
-Next interactive task: P1-M0-3 shared item schema and validator. See
-plans/PROGRESS.md and the new repository's memory/HANDOFF.md. P0 is unchanged.
+Next owner inputs: P1 wording/Track 1 protocols; P2 rubric/constraints;
+P3 clinical wording/terminology; P4 overlay/handoff requirements; P5 digest,
+date rules and orchestration choice. See plans/PROGRESS.md for the dashboard.
+After synchronization, resume at ticket 005 under the existing controller
+schedule and daily allowance (6/6 used on Sep 24).

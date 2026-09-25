@@ -1,13 +1,13 @@
 # Nursing OS Project
 
 Portfolio hub for the move from bedside nursing into nursing informatics and
-clinical AI. Each subfolder is one self-contained project with its own README
-and tests. All patient data in this repository is synthetic; nothing here is
-intended for clinical use.
+clinical AI. Nurse Handoff lives here; the five other projects have separate
+private repositories with their own READMEs and tests. All patient data in this
+repository is synthetic; nothing here is intended for clinical use.
 
 ## Start here
 
-- [Portfolio plans](docs/portfolio/README.md) — overview, five planned repos,
+- [Portfolio plans](docs/portfolio/README.md) — overview, five separate repos,
   and research sources.
 - [Delivery plan](plans/README.md) — master plan, per-project milestones,
   progress tracker, and runbook for finishing all six projects.

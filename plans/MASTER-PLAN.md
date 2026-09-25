@@ -45,7 +45,7 @@ At about 10 hours a week, the target is **end of June 2027** (about 330 hours).
       Dec 1  ─ Dec 8    no build work (CAHIMS exam Dec 8)
       Dec 9  ─ Dec 31   P1 M3 Track 2 escalation red-team
 2027  Jan               P1 M4 Track 5 → NurseBench v1.0
-      Feb               P2 Charge Assign (install JDK 21 + Maven in January)
+      Feb               P2 Charge Assign (Java/Maven scaffold started Sep 24)
       Mar               P3 Dysphagia FHIR CDS (install Docker Desktop in February)
       Apr ─ mid-May     P4 Grounded Handoff (reuses P3's HAPI server)
       mid-May ─ Jun     P5 Stroke Abstraction Agent (reuses P1's seeded generator)
@@ -54,6 +54,11 @@ At about 10 hours a week, the target is **end of June 2027** (about 330 hours).
 
 Exam dates come from the September 24 overview. The owner confirms the actual
 bookings (decision D-6).
+
+On September 24 the owner requested parallel agent work on all projects with
+parent review. Independent scaffolding and mechanical validators advanced
+early; the clinical dependencies and release targets above remain unchanged.
+See [current progress](PROGRESS.md) for completed work.
 
 ## Dependencies
 
@@ -102,7 +107,7 @@ own.
 | D-5 | Enroll new repos in the unattended loop | No. Use interactive agent sessions. Enrolling a repo needs owner-authorized controller work. | Any time |
 | D-6 | Confirm the CAHIMS and NCA-GENL exam dates | Keep the overview's dates | Now |
 | D-7 | P5 orchestration: Claude Agent SDK, `claude -p` scripts, or Java (LangChain4j / Spring AI) | Decide at the P5 M3 start | May 2027 |
-| D-8 | Run P2 in parallel with NurseBench to finish sooner | No. It would compete with exam study. | Optional |
+| D-8 | Run P2 in parallel with NurseBench to finish sooner | **Owner requested parallel agent work on all projects, 2026-09-24**, with parent review; clinical authorship and review gates remain | Done for this technical work round |
 
 Record each answer in `memory/DECISIONS.md`, refresh `memory/ACTIVE-DECISIONS.md`,
 and tick the decision in [PROGRESS.md](PROGRESS.md).
@@ -139,7 +144,7 @@ These come from the overview's ground rules.
 | Schedule slips during exam months | P1 M1 not code-complete by Oct 24 | Use the P1 scope-cut ladder. v0.1 ships smaller rather than late. |
 | LLM grader disagrees with RN labels | kappa below the owner's threshold | Revise the grader prompt once, then report human-scored results for that metric and state the limitation |
 | API cost overrun | The 20-item smoke run projects over the cap | Fewer models or items; use the local open-weights model for iteration |
-| Tooling gaps on RGB | As of 2026-09-24, Java, Maven, Docker, gh and SUSHI are not installed | Install one month ahead ([RUNBOOK §2](RUNBOOK.md#2-prerequisites)) |
+| Tooling gaps on RGB | Docker and optional gh are missing; portable Java/Maven and project-local SUSHI were verified Sep 24 | Install remaining tools when their integration task is ready ([RUNBOOK §2](RUNBOOK.md#2-prerequisites)) |
 | RAM contention (32 GB; Qwen runs manually) | HAPI or Docker fails while Qwen is loaded | Stop Qwen during Docker work and check free memory first |
 | Source or standard changes (Specs Manual, US Core, Timefold 2.x) | Newer version at milestone start | Each plan's first milestone includes a "verify current version" task |
 | Employer named or implied in a public file | A release-time search finds the name or an abbreviation | Remove it before the repo goes public. Outside work is permitted off shift (owner, 2026-09-24). |
