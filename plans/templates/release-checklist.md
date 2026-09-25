@@ -6,7 +6,7 @@ line. It applies to v0.1 (the first public, résumé-eligible release) and v1.0
 [P0](../projects/P0-nurse-handoff.md).
 
 ## Content
-- [ ] `docs/clinical-spec.md` is final, owner-authored, and versioned
+- [ ] Clinical specs final and versioned; every agent-drafted file and item signed off by the owner as RN (D-9); no `VERIFY:` markers left
 - [ ] All data is synthetic or public; no employer material; no real-patient identifiers
 - [ ] Licensed instruments excluded or permission documented (overview licensing table)
 - [ ] Every source attributed; MedlinePlus, NINDS and other citations present

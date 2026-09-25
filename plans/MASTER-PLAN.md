@@ -107,7 +107,8 @@ own.
 | D-5 | Enroll new repos in the unattended loop | No. Use interactive agent sessions. Enrolling a repo needs owner-authorized controller work. | Any time |
 | D-6 | Confirm the CAHIMS and NCA-GENL exam dates | Keep the overview's dates | Now |
 | D-7 | P5 orchestration: Claude Agent SDK, `claude -p` scripts, or Java (LangChain4j / Spring AI) | Decide at the P5 M3 start | May 2027 |
-| D-8 | Run P2 in parallel with NurseBench to finish sooner | **Owner requested parallel agent work on all projects, 2026-09-24**, with parent review; clinical authorship and review gates remain | Done for this technical work round |
+| D-8 | Build later projects alongside NurseBench instead of in sequence | **Decided 2026-09-24 by the owner: yes, parallel work on all projects.** Release targets are unchanged. | Done |
+| D-9 | Who drafts clinical content | **Decided 2026-09-24 by the owner: agents draft it**; the owner signs off as RN before each release | Done |
 
 Record each answer in `memory/DECISIONS.md`, refresh `memory/ACTIVE-DECISIONS.md`,
 and tick the decision in [PROGRESS.md](PROGRESS.md).
@@ -125,10 +126,11 @@ These come from the overview's ground rules.
 - **Licensed instruments:** follow the licensing table in the overview.
   Braden, Morse, TOR-BSST, Schmitt-Thompson and the NHS SNCT are excluded.
   Morse was dropped by the owner on 2026-09-24, so no permission is sought.
-- **Authorship:** the owner writes every clinical spec, gold answer, rubric,
-  acuity weight, constraint weight and human label. Agents build code,
-  tests, generators, CI and document structure, but never clinical content.
-  See [RUNBOOK §1](RUNBOOK.md#1-roles-and-the-authorship-boundary).
+- **Authorship (D-9):** agents draft clinical content (specs, protocol
+  values, gold answers, labels, rubrics, weights, thresholds) under the
+  owner's delegation. Every draft records its provenance, and the owner
+  signs off as RN before any release. Public claims say "RN-reviewed" for
+  agent-drafted content. See [RUNBOOK §1](RUNBOOK.md#1-roles-and-the-authorship-boundary).
 - **Evidence:** metrics come only from real runs. Record the model ID,
   version and run date with every result, and never estimate a number.
 - **Standard files:** README, DISCLAIMER, Apache-2.0 LICENSE, CC BY 4.0

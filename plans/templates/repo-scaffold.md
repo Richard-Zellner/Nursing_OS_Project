@@ -52,10 +52,11 @@ Nursing_OS_Project/plans/PROGRESS.md.
 memory/HANDOFF.md → TASKS.md → docs/clinical-spec.md → memory/DECISIONS.md (recent).
 
 ## Authorship boundary
-The owner writes all clinical content: specs, protocol values, gold answers,
-labels, rubrics, weights and thresholds. You implement it exactly. Never
-write or draft clinical content. If a needed clinical fact is missing, add
-a row to memory/QUESTIONS.md and stop that task.
+Clinical content (specs, protocol values, gold answers, labels, rubrics,
+weights, thresholds) may be agent-drafted under owner decision D-9 and the
+rules in the hub RUNBOOK §1: a provenance line on every file, citations or
+VERIFY: markers, `authored_by: agent` and `reviewed: false` on items, and the
+owner's RN sign-off before any release. Never label agent work as RN-authored.
 
 ## Hard rules
 - Synthetic or public data only. No employer material. No real patients.

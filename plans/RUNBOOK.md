@@ -12,20 +12,34 @@ Every task in a project plan carries one of three tags:
 
 | Tag | Who | Covers |
 |---|---|---|
-| **OWNER** | the owner only | Clinical specs, protocol values, gold answers, labels, rubrics, acuity and constraint weights, thresholds, reviews of generated clinical content, reviewer recruitment, decisions, releases, public posts, credentials |
-| **AGENT** | an agent, under the owner's spec | Scaffolding, code, calculators and scorers that implement the owner's spec, generators, tests, CI, UI, reports, format fixes |
+| **OWNER** | the owner; agents draft the clinical items under D-9 | Clinical specs, protocol values, gold answers, labels, rubrics, acuity and constraint weights, thresholds (agent-drafted since D-9); final RN sign-off on all clinical content; reviewer recruitment, decisions, releases, public posts and credentials (owner only) |
+| **AGENT** | an agent | Scaffolding, code, calculators and scorers that implement the spec, generators, tests, CI, UI, reports, format fixes |
 | **PAIR** | the agent drafts structure, the owner writes and approves the substance | README, DISCLAIMER, CHANGELOG, methodology structure |
 
-Agents never write clinical content, gold answers, labels or weights, even as
-a draft for the owner to edit. The owner's authorship is the hiring signal.
-An agent may:
+**Clinical drafting (D-9, owner decision 2026-09-24).** The owner delegated
+clinical input to agents ("use your discretion for the clinical input to the
+best of your ability"). Agents may draft specs, protocol values, gold
+answers, labels, rubrics, weights and thresholds, under these rules:
 
-- create an empty template or a list of questions for the owner to answer
-- check owner content for internal contradictions, unit errors or missing cases, and report them
-- implement owner content exactly, and raise a question when the content is ambiguous
+- Every agent-drafted clinical file starts with a provenance line:
+  `Provenance: agent-drafted YYYY-MM-DD under owner delegation (D-9). Owner RN review: pending.`
+- Every value cites a public source, or is marked project-authored with a
+  one-line rationale. Anything not checked against its source is marked
+  `VERIFY:` with exactly what to check.
+- Data items record `authored_by: agent` (or the repo's equivalent) and
+  `reviewed: false` until the owner reviews them. Never label agent work as
+  RN-authored.
+- Downstream work may build on drafts, so milestones can finish on drafted
+  content. The owner's RN sign-off is required before any **release**:
+  the owner changes the provenance line to `Owner RN review: YYYY-MM-DD`.
+- Public claims (README, write-ups, résumé) say "RN-reviewed" for
+  agent-drafted content, and "RN-authored" only for content the owner wrote.
+- Licensing rules still apply: no licensed instrument text, no employer
+  material, and no copying of forms. Paraphrase and cite.
 
-When an AGENT task needs a clinical fact the spec does not give, stop and ask
-the owner. Do not fill the gap.
+When a clinical fact cannot be established from a public source, draft the
+most defensible choice, mark it `VERIFY:`, and add a row to the repo's
+`memory/QUESTIONS.md`.
 
 ## 2. Prerequisites
 

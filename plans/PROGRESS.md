@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-24 by Codex (owner-requested parallel work and independent review)
+Last updated: 2026-09-24 by Claude Code (dashboard fixes; clinical drafting delegated)
 
 ## Dashboard
 
@@ -38,7 +38,8 @@ handoffs contain the check evidence and task-level state.
 - [ ] **D-5** Loop enrollment for new repos (recommended: no)
 - [ ] **D-6** CAHIMS and NCA-GENL dates confirmed
 - [ ] **D-7** P5 orchestration choice, at P5 M3
-- [x] **D-8** Owner requested parallel work on all projects with subagents and parent review (2026-09-24); independent technical tasks advanced, clinical gates remain
+- [x] **D-8** Build later projects alongside NurseBench instead of in sequence: yes. The owner asked for parallel work on all projects (2026-09-24). Release targets are unchanged.
+- [x] **D-9** Clinical input delegated to agents (owner, 2026-09-24). Agent drafts carry provenance, and the owner signs off as RN before each release ([RUNBOOK §1](RUNBOOK.md#1-roles-and-the-authorship-boundary))
 - [x] Morse Fall Scale dropped; no permission email (owner, 2026-09-24)
 - [ ] LLM API keys set as user environment variables (never in a repo)
 
@@ -112,16 +113,17 @@ handoffs contain the check evidence and task-level state.
 
 ## Hours
 
-Hours are the owner's actual time, logged per session. Estimates come from the research plans.
+Hours are the owner's actual time, logged per session. Agents never estimate or fill them in.
+Estimates come from the research plans.
 
 | ID | Estimate | Actual |
 |---|---|---|
-| P0 | ~6 | 0 |
-| P1 | ~110 | 0 |
-| P2 | ~45 | 0 |
-| P3 | ~40 | 0 |
-| P4 | ~60 | 0 |
-| P5 | ~70 | 0 |
+| P0 | ~6 | not logged |
+| P1 | ~110 | not logged |
+| P2 | ~45 | not logged |
+| P3 | ~40 | not logged |
+| P4 | ~60 | not logged |
+| P5 | ~70 | not logged |
 
 ## Session log
 

@@ -21,3 +21,4 @@ Full historical rationale is preserved in DECISIONS.md. The owner refreshes this
 - 2026-09-24 Owner decision D-1: the five portfolio projects are separate GitHub repositories; this hub is the index, delivery plan (plans/) and home of nurse-handoff/.
 - 2026-09-24 Owner decisions G0 and D-4: portfolio work happens off shift and never names or uses the employer; new portfolio repos stay private until their release.
 - 2026-09-24 Owner decision: Morse Fall Scale dropped from NurseBench; Track 4 is NIHSS-only.
+- 2026-09-24 Owner decision D-9: agents draft portfolio clinical content under provenance rules (plans/RUNBOOK.md §1); the owner signs off as RN before any release.
