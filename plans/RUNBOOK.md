@@ -81,7 +81,8 @@ Use this for every session, owner or agent.
 1. Resolve the project:
    `node C:/Users/14087/.agent-memory/project-system/project-memory.cjs boot "<task>" --owner --json`
    (owner sessions only; other sessions omit `--owner`).
-2. Read [PROGRESS.md](PROGRESS.md), then the project's plan in `projects/`,
+2. Read [RESUME.md](RESUME.md) (the current continue-from-here plan), then
+   [PROGRESS.md](PROGRESS.md), then the project's plan in `projects/`,
    then the repo's `memory/HANDOFF.md` and `TASKS.md`, then the research plan
    in `docs/portfolio/` for design detail.
 3. Pick the **first unfinished task in the current milestone** whose inputs
