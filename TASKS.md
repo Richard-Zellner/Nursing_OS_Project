@@ -63,7 +63,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   all three missing at once (three messages, ordered), wrong-type age, and a
   clean record returning `[]`. Blocked by: 002.
 
-- [ ] **006 Overview section.** `generator.py`: `render_overview(record)
+- [x] **006 Overview section.** `generator.py`: `render_overview(record)
   -> str` producing the `NURSING HANDOFF` header, underline, blank line, the
   age/code-status line (em dash U+2014, `Code status: Not documented` when
   missing), and `Primary problem:` line, exactly per `docs/OUTPUT-FORMAT.md`.
