@@ -79,8 +79,9 @@ The optimizer has to beat the whiteboard on balance and continuity with zero rul
 
 **Positioning line for the README:**
 
-- Epic's Assignment Wizard is a manual workload-balancing aid.
-- LeanTaaS iQueue and TeleTracking (Hospital IQ) forecast capacity and staffing.
+- Epic's Assignment Wizard suggests a shift assignment plan for the charge nurse to review (EpicShare, "Balance nursing workloads", accessed 2026-09-26).
+- LeanTaaS iQueue for Inpatient Flow (LeanTaaS acquired Hospital IQ in January 2023) and TeleTracking (Capacity IQ) forecast capacity and staffing.
+- Corrected 2026-09-26 from the vendors' own public pages (Charge Assign P2-Q035); the earlier text called the Epic tool a manual aid and put Hospital IQ under TeleTracking.
 - This prototype solves the per-shift constrained assignment itself.
 
 Keep it humble: this is a prototype, not a product.
