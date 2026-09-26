@@ -194,8 +194,8 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 ## Human checklist (agent never ticks these)
 
 - [ ] Re-run `powershell -File ..\loops\setup.ps1` after a Python upgrade or if the Nursing venv is missing; the controller checks it and reports a blocker when setup is needed.
-- [ ] Create the GitHub repository and push `main` after 001 lands (Q-001).
+- [x] Create the GitHub repository and push `main` after 001 lands (Q-001).
 - [ ] Review and commit between iterations. Edits to protected files (AGENTS.md, PROMPT.md, loop.sh, tests/verify.ps1, docs/NURSE-HANDOFF-SPEC.md) are captured in the next pre-run snapshot; commits remain a human review choice.
-- [ ] After the v0.1 DONE file appears: review, `git tag v0.1.0`, push.
-- [ ] v0.1 released (tick this, then delete `DONE` to unblock v0.2).
+- [x] After the v0.1 DONE file appears: review, `git tag v0.1.0`, push.
+- [x] v0.1 released (tick this, then delete `DONE` to unblock v0.2).
 - [ ] After v0.2 DONE: review, `git tag v0.2.0`, decide on v0.3.

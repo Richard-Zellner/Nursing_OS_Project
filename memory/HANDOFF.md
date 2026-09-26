@@ -1,6 +1,6 @@
 # Handoff
 
-## Nurse Handoff — v0.1 ready for human release
+## Nurse Handoff — v0.1.0 released (2026-09-26)
 
 Tickets 009-015 were completed in a direct owner-requested Claude Code session
 during the Codex outage (not by the loop), in ledger order, one at a time, each
@@ -31,7 +31,7 @@ Review (2026-09-26): `validate` also rejects a patient_id that is not
 Open questions: Q-003 (newline in list items, whitespace-only strings,
 UTF-8 BOM); Q-002, now only the empty optional strings part
 (`mobility: ""` renders `Mobility: ` with trailing whitespace); negative age
-is fixed. Decide whether it blocks tagging.
+is fixed. Owner: neither blocks the tag; handling stays open for v0.2.
 
-Human action: answer Q-002, then `git tag v0.1.0` and push. Tick "v0.1
-released" and delete `DONE` to unblock v0.2 (ticket 101).
+Released 2026-09-26 on the owner's instruction: tag `v0.1.0`, "v0.1 released"
+ticked, `DONE` deleted. Next: v0.2 ticket 101 (version bump) for the loop.

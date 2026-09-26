@@ -16,7 +16,7 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | M1 v0.1 build complete (001–015); controller baseline and trusted acceptance PASS (run 2026-09-26 07:00 UTC) | review | Owner G1 release (tag `v0.1.0`), Q-002 | v0.1 ~Sep 26, v0.2 ~Oct 9 |
+| P0 | Nurse Handoff | v0.1.0 released 2026-09-26; M2 v0.2 rules next (tickets 101–110) | in-progress | The loop continues with ticket 101 (needs a working Codex login); Q-002/Q-003 handling for a v0.2 ticket | v0.2 ~Oct 9 |
 | P1 | NurseBench | Track 1 harness; Track 4 spec, rules, sampler, scorer; Track 2 spec, private scenarios, perturbations, triage metrics and kappa gate; Track 5 tools | review | Owner: D-3, M1-5, calculator sign-off, Q-10–Q-45 (Q-29 licensing, Q-36 kappa minimum, Q-37 held-out), spec reviews | v0.1 Oct 31 |
 | P2 | Charge Assign | M1–M3 built with benchmark results; M4 floor map and reasons; M5-1 replanning | review | Owner: M1-4, M2-2, M3-4 results and limitations, M4-3 reason wording, Q015–Q030 | Feb 2027 |
 | P3 | Dysphagia Screen FHIR | M4 done: HAPI on the portable JDK, `$apply` passes all 15 fixtures | review | Owner: M2-4 wording, CQL and action wording (Q024), Q019–Q023, then v0.1.0 release. Agent next: P3-M5-1 HAPI CI once CI can be observed | Mar 2027 |
@@ -55,7 +55,7 @@ handoffs contain the check evidence and task-level state.
 
 ### P0 Nurse Handoff ([plan](projects/P0-nurse-handoff.md))
 - [x] M1 v0.1 build: tickets 001–015 (001–008 by the loop through `8ab0cce`; 009–015 in a direct Claude session, `e8dee59`; validator repair `e2ecbe4`)
-- [ ] G1 v0.1 release: reviewed, `v0.1.0` tagged, "v0.1 released" ticked, `DONE` deleted, pushed
+- [x] G1 v0.1 release: reviewed, `v0.1.0` tagged, "v0.1 released" ticked, `DONE` deleted, pushed (2026-09-26, owner instruction)
 - [ ] M2 v0.2 rules: tickets 101–110
 - [ ] G2 v0.2 release: `v0.2.0` tagged; D-2 recorded
 - [ ] M3 portfolio polish: LICENSE, DISCLAIMER, CHANGELOG, CI, write-up
