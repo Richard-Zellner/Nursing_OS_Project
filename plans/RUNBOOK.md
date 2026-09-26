@@ -64,14 +64,14 @@ Checked on RGB on 2026-09-24. Re-check before relying on this list.
 | Node 24 | P3 (SUSHI), P4 frontend | present | — |
 | Git | all | present | — |
 | JDK 21, Maven | P2; P3 cql-to-elm; P4 backend; Synthea | portable Temurin 21.0.12.1+1 and Maven 3.9.16 verified in P2/P4 | RGB: `%USERPROFILE%/.local/share/nursing-os-tools/`; set process JAVA_HOME to its JDK; repo wrappers pin Maven |
-| Docker Desktop with WSL2 | P3, P4 (HAPI) | missing | docker.com installer; set a memory cap in `%UserProfile%\.wslconfig` |
+| Docker Desktop with WSL2 | fallback for P3, P4 (HAPI) | missing; optional | Owner decision 2026-09-25: HAPI runs on the portable JDK 21 first. Install Docker only if that fails; set a memory cap in `%UserProfile%\.wslconfig`. GitHub CI uses Docker on its own runners |
 | SUSHI | P3 | project-local 3.20.1 verified | From dysphagia-screen-fhir: `npm ci --ignore-scripts`, then `npm run verify` (also runs the Maven CQL build, so set JAVA_HOME to the portable JDK first); no global install needed |
 | GitHub CLI | optional | missing | `winget install GitHub.cli` |
 
 Other things the owner sets up: LLM API keys as user environment variables,
 a loinc.org account, SNOMED browser access, and a GitHub account (already
 exists). RAM is 32 GB and Qwen runs manually, so check free memory and stop
-Qwen before Docker-heavy work.
+Qwen before running HAPI (Java or Docker).
 
 ## 3. Work-session protocol
 

@@ -16,8 +16,8 @@ superseded, replace it and add a new review file rather than editing history.
 | P0 Nurse Handoff | `8ab0cce` (loop) | tickets 001–008 of 12 | the loop continues with 009 | G1 release gate when `DONE` appears |
 | P1 NurseBench | `053d96f` | M0; Track 1 spec, calculators, 150 items, task, scorer, report; Track 4 spec draft, rules, sampler | P1-M2-6 Track 4 task and scorer (Wave C) | D-3, API keys, M1-5 hand items, calculator sign-off, Q-10–Q-25, Track 4 spec and rule review |
 | P2 Charge Assign | `6b08d18` | rubric, calculator, 50 scenarios, H1–H5, M1, S1–S4, baselines, benchmark results | P2-M4-1 floor map, M4-2 reasons, M5-1 replanning (Wave C) | M1-4 spot-check, M2-2 review, M3-4 results and limitations, Q015–Q027 |
-| P3 Dysphagia | `b1228b1` | spec, Questionnaire, page, 15 fixtures, CQL library with ELM build and fixture tests | none until Docker (P3-M4-1) | Q019, Q020–Q022, M2-4 wording, CQL review, Docker |
-| P4 Grounded Handoff | `bfe05aa` | spec, citation check, Synthea pin, overlay, fact sheet, value fidelity, omission check | P4-M3-4 citation view, M5-4 Provenance output (Wave D) | Q021–Q031, inventory review, Docker, model and budget |
+| P3 Dysphagia | `b1228b1` | spec, Questionnaire, page, 15 fixtures, CQL library with ELM build and fixture tests | P3-M4-1..3 HAPI on the portable JDK, PlanDefinition, `$apply` fixture runner (Wave C) | Q019, Q020–Q022, M2-4 wording, CQL review |
+| P4 Grounded Handoff | `bfe05aa` | spec, citation check, Synthea pin, overlay, fact sheet, value fidelity, omission check | P4-M1-1b/2b/4b HAPI loading (Wave D, after P3-M4-1); M3-4 citation view, M5-4 Provenance | Q021–Q031, inventory review, model and budget |
 | P5 Stroke Agent | `29cccc1` | digest, specs, sampler, gold, segmenter, date checks, packets C01–C20, measure engine | P5-M5-1 router, M5-2 review page (Wave C) | P5-M2-4 review of 20 packets, M4-2 engine review, D-7, Q016–Q023 |
 
 ## Start of the next session
@@ -60,9 +60,13 @@ superseded, replace it and add a new review file rather than editing history.
 
 ### Tier 2: unblocks the other repos
 
-4. **Install Docker Desktop with WSL2.** Needed for P3 M4 (`$apply`) and all
-   HAPI loading in P4. Set a WSL memory cap in `%UserProfile%\.wslconfig`,
-   and stop Qwen while HAPI runs.
+4. **Docker Desktop: now a fallback only.** Owner decision 2026-09-25: Wave C
+   first tries running HAPI on the portable JDK 21 (C1). Install Docker Desktop
+   with WSL2 only if that route fails; then set a WSL memory cap in
+   `%UserProfile%\.wslconfig`. Either way, stop Qwen while HAPI runs.
+   **Also:** the Nurse Handoff loop's ticket 009 run on Sep 25, 23:00 UTC failed
+   with `401 Unauthorized` (Codex API key rejected). Fix the Codex login, or the
+   loop keeps retrying without progress.
 5. **P5-M2-4:** review the 20 chart packets with the form in
    `stroke-abstraction-agent/data/review/P5-M2-4/`. The other 40 cases wait
    for this. Also answer Q020–Q023 (Q023: C14's discharge medicines after
@@ -102,20 +106,23 @@ superseded, replace it and add a new review file rather than editing history.
 Run one wave at a time, at most three agents at once. The parent reviews each
 diff, reruns verification, commits and pushes, then updates PROGRESS.md.
 Waves C and D have no owner dependency, but they build on drafts that are
-still pending owner review; keep every reading easy to change.
+still pending owner review; keep every reading easy to change. Wave C has four
+agents: start C1–C3, then C4 when the first one finishes.
 
 ### Wave C: next session
 
 | Agent | Repo | Tasks | Acceptance | Notes |
 |---|---|---|---|---|
-| C1 | P1 | **P1-M2-6** Track 4 task and scorer: per-item accuracy, confusion matrix, total MAE, major-error %, hallucinated-item rate | Unit tests with hand-built fixtures; mock-model run only | Use the Track 4 spec draft and `rules.py`; no narratives (M2-3 is owner-written, M2-4 needs a model decision). Reuse `nursebench/common/report.py`. |
-| C2 | P2 | **P2-M4-1** floor-map grid and load bars, **P2-M4-2** plain-language reasons, **P2-M5-1** replanning demo | Renders for any scenario; one reason per assignment; test shows minimum reassignments | Timefold Community lacks `SolutionManager.analyze`: build reasons from the plain-Java replay. Wording stays agent-drafted for owner review (M4-3). |
-| C3 | P5 | **P5-M5-1** router with confidence and conflict thresholds, **P5-M5-2** local review page with accept/override and a decision log | Configurable and tested; works locally | No LLM: drive both from synthetic extractor outputs derived from C01–C20 truth vectors with seeded noise, clearly marked as fixtures. |
+| C1 | P3 | **P3-M4-1** HAPI FHIR JPA server on the portable JDK 21 (no Docker), **P3-M4-2** PlanDefinition and ActivityDefinitions, **P3-M4-3** `$apply` fixture runner | HAPI starts locally with Clinical Reasoning; resources load; `$apply` matches the expected actions for all 15 fixtures | Owner decision 2026-09-25. Pin the HAPI starter version; embedded H2; a start/stop script and a JVM heap cap; record free RAM and stop Qwen first. Check that the pinned HAPI's CQL engine matches the Library (CQL 1.5, cqframework 5.3.0) and keep the Library as CQL text (round-3 finding). Keep a `docker-compose.yml` with the same pinned version only for GitHub CI (P3-M5-1). If the Java route cannot work, stop and report why; do not install Docker. |
+| C2 | P1 | **P1-M2-6** Track 4 task and scorer: per-item accuracy, confusion matrix, total MAE, major-error %, hallucinated-item rate | Unit tests with hand-built fixtures; mock-model run only | Use the Track 4 spec draft and `rules.py`; no narratives (M2-3 is owner-written, M2-4 needs a model decision). Reuse `nursebench/common/report.py`. |
+| C3 | P2 | **P2-M4-1** floor-map grid and load bars, **P2-M4-2** plain-language reasons, **P2-M5-1** replanning demo | Renders for any scenario; one reason per assignment; test shows minimum reassignments | Timefold Community lacks `SolutionManager.analyze`: build reasons from the plain-Java replay. Wording stays agent-drafted for owner review (M4-3). |
+| C4 | P5 | **P5-M5-1** router with confidence and conflict thresholds, **P5-M5-2** local review page with accept/override and a decision log | Configurable and tested; works locally | No LLM: drive both from synthetic extractor outputs derived from C01–C20 truth vectors with seeded noise, clearly marked as fixtures. |
 
 ### Wave D: after Wave C lands
 
 | Agent | Repo | Tasks | Acceptance | Notes |
 |---|---|---|---|---|
+| D0 | P4 | **P4-M1-1b**, **2b**, **4b**: load the Synthea and overlay bundles into the same Java-run HAPI and validate against US Core 6.1.0 | Patients queryable; validator results recorded | Only after C1 works. Reuse P3's start script (copied, with a note of its origin). Loading must keep resource ids (round-3 P4 finding). |
 | D1 | P4 | **P4-M3-4** handoff view with clickable citations, **P4-M5-4** DocumentReference plus Provenance output | Works on the demo patient from overlay files; Provenance validates structurally | No HAPI, no LLM: use a hand-written demo handoff that passes layers 1–2. |
 | D2 | P1 | **P1-M3-1** Track 2 spec under D-9 (provenance pending), then the deterministic part of **P1-M3-3** `perturb.py` | Spec complete with citations; templated perturbations tested | MedlinePlus and BE FAST only; no Schmitt-Thompson. M3-2 scenarios are owner-adjudicated; LLM-assisted variants wait for a model decision. |
 | D3 | P1 | **P1-M4-2** `readability.py` and the numeric-fidelity regex | Tests, including numbers that must survive unchanged | Source snapshots wait for the owner's page list (P1-M4-1). Optional if usage is tight. |
@@ -126,8 +133,8 @@ still pending owner review; keep every reading easy to change.
 |---|---|
 | P1-M1-8 model runs, then M1-9 results | D-3, API keys, Q-16/Q-17, the owner's go-ahead after the 20-item smoke run |
 | P1-M2-4 narrative generator; P1-M3-5 grader; P1-M4-3 checklist grader | D-3 (models and budget) |
-| P3-M4-1 to M4-3 HAPI and `$apply`; P3-M5-1 CI | Docker Desktop |
-| P4-M1-1b, 2b, 4b HAPI loading and US Core validation; P4-M2 SMART launch | Docker Desktop, then P3-M4-1 |
+| P4-M2 SMART launch | P4 HAPI loading (Wave D0), which needs P3-M4-1 (Wave C1) |
+| Docker Desktop install | Only if the Java HAPI route in C1 fails |
 | P4-M3-3 LLM generation; P4-M4-3 judge; P4-M5 evaluation | A model and budget decision (as for D-3) |
 | P5-M3-3 extractors, then M4-3 end-to-end; P5-M6 | D-7 and a model and budget decision |
 | P5-M2-5 remaining 40 charts | Owner review of the first 20 (P5-M2-4) |

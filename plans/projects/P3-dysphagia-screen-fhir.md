@@ -6,16 +6,16 @@
 |---|---|
 | Repo | `dysphagia-screen-fhir`, a new repo at `C:\Users\14087\Desktop\dysphagia-screen-fhir` |
 | Design authority | [docs/portfolio/dysphagia-screen-fhir.md](../../docs/portfolio/dysphagia-screen-fhir.md) |
-| Stack | FHIR R4; FSH compiled with SUSHI (Node); CQL with cql-to-elm (Java/Maven); HAPI FHIR JPA server in Docker with Clinical Reasoning `$apply`; LHC-Forms |
+| Stack | FHIR R4; FSH compiled with SUSHI (Node); CQL with cql-to-elm (Java/Maven); HAPI FHIR JPA server (run on the portable JDK 21 locally; Docker image in CI) with Clinical Reasoning `$apply`; LHC-Forms |
 | v0.1 | after M4: `$apply` on local HAPI returns the right CarePlan for every fixture |
 | Finish line | v1.0.0: CI running HAPI in Docker against all fixtures, README, demo GIF, write-up |
 | Window | Mar 2027, ~40 h |
 
 ## Before starting
 
-- Owner: install Docker Desktop with WSL2 by the end of February; it was not
-  installed on 2026-09-24. Check free RAM, and stop the manually run Qwen
-  server while HAPI runs.
+- Owner decision 2026-09-25: run HAPI locally on the portable JDK 21 (no
+  Docker Desktop); install Docker only if that route fails. Check free RAM,
+  and stop the manually run Qwen server while HAPI runs.
 - Owner: JDK and Maven (installed for P2). SUSHI: `npm install -g fsh-sushi`
   (Node 24 is present).
 - Owner: free loinc.org account; SNOMED CT browser access.
@@ -54,7 +54,7 @@
 
 | Task | Type | Deliverable | Acceptance |
 |---|---|---|---|
-| P3-M4-1 | AGENT | `docker-compose.yml` for HAPI JPA with a pinned image and Clinical Reasoning enabled; load script | Server up and resources loaded. P4 reuses this file. |
+| P3-M4-1 | AGENT | Pinned HAPI JPA server run on the portable JDK 21 with Clinical Reasoning enabled (start/stop script, embedded H2), plus a `docker-compose.yml` with the same pinned version for CI; load script | Server up and resources loaded. P4 reuses the script. |
 | P3-M4-2 | AGENT | PlanDefinition (ECA rule) and ActivityDefinitions: NutritionOrder NPO, ServiceRequest SLP consult, CommunicationRequest to notify | Load without errors |
 | P3-M4-3 | AGENT | Fixture runner: `$apply` per fixture, with the CarePlan/RequestGroup actions compared to the expected table (JUnit, or bash + curl + jq) | All fixtures pass |
 | P3-M4-4 | OWNER | Release v0.1.0 | Release checklist |
@@ -77,5 +77,5 @@
 | Risk | Response |
 |---|---|
 | `$apply` behavior differs across HAPI versions | Pin the image tag; record it in the README |
-| Docker on Windows Home uses too much memory | Stop Qwen and cap WSL memory in `.wslconfig` |
+| HAPI uses too much memory | Cap the JVM heap and stop Qwen while it runs; with the Docker fallback, cap WSL memory in `.wslconfig` |
 | No LOINC panel exists | Local CodeSystem with a documented rationale, which is itself a finding |

@@ -46,7 +46,7 @@ At about 10 hours a week, the target is **end of June 2027** (about 330 hours).
       Dec 9  ─ Dec 31   P1 M3 Track 2 escalation red-team
 2027  Jan               P1 M4 Track 5 → NurseBench v1.0
       Feb               P2 Charge Assign (Java/Maven scaffold started Sep 24)
-      Mar               P3 Dysphagia FHIR CDS (install Docker Desktop in February)
+      Mar               P3 Dysphagia FHIR CDS (HAPI on the portable JDK; Docker only as fallback)
       Apr ─ mid-May     P4 Grounded Handoff (reuses P3's HAPI server)
       mid-May ─ Jun     P5 Stroke Abstraction Agent (reuses P1's seeded generator)
       end of Jun        portfolio close-out: hub README, write-ups, résumé
@@ -67,7 +67,7 @@ P0 missing-data rules ─────────► P4 required-content checkli
 P1 seeded-truth generator ─────► P5 chart generator
 P1 T4 NIHSS rule work ─────────► P5 stroke clinical context
 P1 grader-vs-RN kappa method ──► P4 judge validation, P5 human agreement
-P3 HAPI server in Docker ──────► P4 M1 server setup
+P3 local HAPI server ──────────► P4 M1 server setup
 P3 AHASTR8 dysphagia logic ────► P5 AHASTR8 measure
 ```
 
@@ -146,7 +146,7 @@ These come from the overview's ground rules.
 | Schedule slips during exam months | P1 M1 not code-complete by Oct 24 | Use the P1 scope-cut ladder. v0.1 ships smaller rather than late. |
 | LLM grader disagrees with RN labels | kappa below the owner's threshold | Revise the grader prompt once, then report human-scored results for that metric and state the limitation |
 | API cost overrun | The 20-item smoke run projects over the cap | Fewer models or items; use the local open-weights model for iteration |
-| Tooling gaps on RGB | Docker and optional gh are missing; portable Java/Maven and project-local SUSHI were verified Sep 24 | Install remaining tools when their integration task is ready ([RUNBOOK §2](RUNBOOK.md#2-prerequisites)) |
-| RAM contention (32 GB; Qwen runs manually) | HAPI or Docker fails while Qwen is loaded | Stop Qwen during Docker work and check free memory first |
+| Tooling gaps on RGB | Docker (now a fallback: owner decision 2026-09-25 runs HAPI on the portable JDK) and optional gh are missing; portable Java/Maven and project-local SUSHI were verified Sep 24 | Install remaining tools when their integration task is ready ([RUNBOOK §2](RUNBOOK.md#2-prerequisites)) |
+| RAM contention (32 GB; Qwen runs manually) | HAPI fails while Qwen is loaded | Stop Qwen while HAPI runs, cap the HAPI heap, and check free memory first |
 | Source or standard changes (Specs Manual, US Core, Timefold 2.x) | Newer version at milestone start | Each plan's first milestone includes a "verify current version" task |
 | Employer named or implied in a public file | A release-time search finds the name or an abbreviation | Remove it before the repo goes public. Outside work is permitted off shift (owner, 2026-09-24). |
