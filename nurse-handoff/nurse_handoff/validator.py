@@ -1,6 +1,12 @@
 """Validate the documented field requirements of a synthetic patient record."""
 
+import re
+
 from .schema import FIELD_TYPES, REQUIRED_FIELDS
+
+
+# PATIENT-SCHEMA.md: patient_id is `SYNTH-###` (ASCII digits only).
+_PATIENT_ID = re.compile(r"SYNTH-[0-9]{3}")
 
 
 def _is_expected_type(value, expected_type):
@@ -74,7 +80,10 @@ def validate(record: dict) -> list[str]:
             errors.append(f"{field_path} must be {_type_label(expected_type)}")
             continue
 
-        # PATIENT-SCHEMA.md: age is an integer >= 0 and every list holds strings.
+        # PATIENT-SCHEMA.md: patient_id is SYNTH-###, age is an integer >= 0,
+        # and every list holds strings.
+        if field_path == "patient_id" and not _PATIENT_ID.fullmatch(value):
+            errors.append("patient_id must match SYNTH-###")
         if field_path == "age" and value < 0:
             errors.append("age must be a non-negative integer")
         if expected_type is list and not all(type(item) is str for item in value):

@@ -25,7 +25,11 @@ as PATIENT-SCHEMA.md requires; tests added in `test_validator.py` and
 Verification: pytest 242 passed; `tests/verify.ps1` passed. Every v0.1
 Definition of Done box is ticked and `DONE` exists.
 
-Open questions: Q-002, now only the empty optional strings part
+Review (2026-09-26): `validate` also rejects a patient_id that is not
+`SYNTH-###` (schema type column); pytest 244 passed.
+
+Open questions: Q-003 (newline in list items, whitespace-only strings,
+UTF-8 BOM); Q-002, now only the empty optional strings part
 (`mobility: ""` renders `Mobility: ` with trailing whitespace); negative age
 is fixed. Decide whether it blocks tagging.
 

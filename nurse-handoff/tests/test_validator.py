@@ -81,6 +81,12 @@ def test_nested_respiratory_type_error_is_reported():
     assert validate(record) == ["respiratory.oxygen must be a boolean"]
 
 
+def test_patient_id_must_match_the_synthetic_form():
+    for bad in ("MRN-12345", "SYNTH-1", "SYNTH-0001", "synth-001", "   ", "SYNTH-00١"):
+        assert validate({**VALID_RECORD, "patient_id": bad}) == ["patient_id must match SYNTH-###"]
+    assert validate({**VALID_RECORD, "patient_id": "SYNTH-000"}) == []
+
+
 def test_negative_age_is_rejected_and_zero_is_accepted():
     assert validate({**VALID_RECORD, "age": -1}) == ["age must be a non-negative integer"]
     assert validate({**VALID_RECORD, "age": 0}) == []
