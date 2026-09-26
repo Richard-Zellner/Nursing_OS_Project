@@ -193,13 +193,18 @@ Report back concisely: files changed, coverage, test counts, ambiguities logged,
 | P4 with HAPI | `.\scripts\hapi\hapi.ps1 start`; `.\scripts\smart\smart.ps1 start`; `.\mvnw.cmd -B -ntp verify "-Dgroundedhandoff.hapi.required=true"`; `.\scripts\smart\smart.ps1 stop`; `.\scripts\hapi\hapi.ps1 stop` (cohort already loaded; a full `hapi.ps1 test` reloads for about 25 minutes) |
 | P5 | `uv sync --locked`; `uv run --locked pytest -q`; `uv run --locked verify-evidence tests/fixtures/mechanical-valid.json`; `uv run --locked python -m stroke_abstraction.packets --check`; `uv run --locked python -m stroke_abstraction.extractor_fixtures --check` |
 
-Test counts at this checkpoint (after the 2026-09-26 edge-case review):
+Test counts at this checkpoint (after the owner decisions of 2026-09-26):
 - hub: 244
 - P1: 1731 locally (1712 + 19 skipped without `private/`)
-- P2: 135 (2 opt-in skips)
-- P3: 93 Node + 58 JUnit (2 HAPI skips; 88 with HAPI)
-- P4: 196 (11 skipped without HAPI and the launcher)
-- P5: 984
+- P2: 143 (2 opt-in skips)
+- P3: 94 Node + 84 JUnit (8 HAPI skips; 129 with HAPI)
+- P4: 207 (16 skipped without HAPI and the launcher)
+- P5: 1023
+
+2026-09-26 owner decisions ("yes to all"): Nurse Handoff v0.1.0 released; Q-29, P2-Q037, P3-Q029, P4-Q049
+(and Q051), P5-Q034 implemented; GitHub CLI installed (owner must run `gh auth login`); private folders backed up
+locally; the owner has a private checklist of the remaining decisions and actions. Next agent step once gh is
+logged in: check and fix CI in all six repos, then unpark E4 (P3 HAPI workflow).
 
 The edge-case review (PROGRESS session log, 2026-09-26) added owner questions hub Q-003, P2-Q037/Q038,
 P3-Q029–Q031, P4-Q048–Q050 and P5-Q034. P4-Q049 is a hardening choice for the local HAPI servers
