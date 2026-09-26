@@ -11,7 +11,7 @@ each task, and where things stand.
 ## Reading order
 
 **Resuming work?** The one-page card is [CONTINUE.md](../CONTINUE.md). Then read [RESUME.md](RESUME.md), the continue-from-here
-plan, and the latest review, [REVIEW-2026-09-25-round3.md](REVIEW-2026-09-25-round3.md).
+plan, and the latest review, [REVIEW-2026-09-25-round4.md](REVIEW-2026-09-25-round4.md).
 
 1. [MASTER-PLAN.md](MASTER-PLAN.md): finish line, calendar, dependencies,
    source precedence, open owner decisions, shared rules
@@ -30,6 +30,7 @@ plans/
   RESUME.md                      continue-from-here plan: owner queue, agent waves, blockers
   REVIEW-2026-09-25.md           record of Sep 24–25 work, decisions, verification, findings
   REVIEW-2026-09-25-round3.md    record of round 3 (Waves A and B), findings
+  REVIEW-2026-09-25-round4.md    record of round 4 (Waves C and D, P0 009-015), findings
   projects/
     P0-nurse-handoff.md          finish v0.1 and v0.2 (loop-driven, in this hub)
     P1-nursebench.md             4-track nursing AI benchmark (Oct 2026 – Jan 2027)

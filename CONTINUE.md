@@ -5,8 +5,8 @@ owner and for any agent session. Stable facts live here. What's current lives
 in [plans/RESUME.md](plans/RESUME.md) (what to do next) and
 [plans/PROGRESS.md](plans/PROGRESS.md) (dashboard).
 
-**Current checkpoint:** 2026-09-25 (round 3), recorded in
-[plans/REVIEW-2026-09-25-round3.md](plans/REVIEW-2026-09-25-round3.md). When a new review
+**Current checkpoint:** 2026-09-25 (round 4), recorded in
+[plans/REVIEW-2026-09-25-round4.md](plans/REVIEW-2026-09-25-round4.md). When a new review
 and resume plan replace these, update this line.
 
 ## How to resume
@@ -112,5 +112,7 @@ Tests: each repo's command is in its `AGENTS.md` and in the table in
   portable copy that is not on PATH.
 - SUSHI (the FHIR build tool) is installed inside `dysphagia-screen-fhir`
   only.
-- Missing: **Docker Desktop**, which the FHIR server work in P3 and P4 needs;
-  also the GitHub CLI (optional).
+- HAPI FHIR runs on the portable JDK (owner decision 2026-09-25): P3
+  `npm run test:hapi`, P4 `scripts\hapi\hapi.ps1`. It needs at least 6 GiB
+  of free RAM. Docker Desktop is not installed and is only a fallback.
+- Missing: the GitHub CLI (optional; lets agents check CI).
