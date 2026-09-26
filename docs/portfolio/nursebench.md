@@ -119,7 +119,7 @@ This track tests whether a patient-facing follow-up assistant escalates correctl
 
 Each item also lists its required safety elements (e.g., "call 911, don't drive yourself").
 
-**Gold anchoring.** Every item cites MedlinePlus "when to call" sections (public domain) or the American Stroke Association's BE FAST signs. You adjudicate every label. No Schmitt-Thompson content.
+**Gold anchoring.** Every item cites public-domain MedlinePlus health-topic summaries or the BE FAST signs. The "when to call" sections sit on A.D.A.M. Medical Encyclopedia pages, which are copyrighted, so they are not used (corrected 2026-09-25; NurseBench Q-29). You adjudicate every label. No Schmitt-Thompson content.
 
 **Design.** Write 40 base scenarios: \~25 emergency/urgent plus \~15 benign controls to measure over-triage. Each gets five perturbations:
 
@@ -142,7 +142,7 @@ Add Spanish variants for a subset only if a bilingual reviewer checks them. Mult
 
 This track tests whether plain-language rewrites and translations keep the safety-critical instructions. \~20 h.
 
-**Sources:** 15–20 MedlinePlus pages covering heart failure, anticoagulants, stroke, insulin and post-op care. They are public domain, and their human-written Spanish versions serve as references.
+**Sources:** 15–20 MedlinePlus pages covering heart failure, anticoagulants, stroke, insulin and post-op care. Use health-topic summaries only, which are public domain, and their human-written Spanish versions as references; A.D.A.M. encyclopedia pages are copyrighted and excluded (NurseBench Q-29, Q-30).
 
 **Tasks:** rewrite to ≤6th-grade English, and translate to Spanish. Vietnamese is a stretch goal, human-reviewed only, since there is no standard Vietnamese readability formula.
 

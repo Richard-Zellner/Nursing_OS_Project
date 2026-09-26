@@ -84,7 +84,7 @@ No build work Dec 1–8.
 
 | Task | Type | Deliverable | Acceptance |
 |---|---|---|---|
-| P1-M3-1 | OWNER | `docs/clinical-spec-t2.md`: EMERGENCY/URGENT/ROUTINE definitions and required safety elements, anchored to MedlinePlus "when to call" pages and BE FAST. No Schmitt-Thompson. | Complete, with a citation per scenario family |
+| P1-M3-1 | OWNER | `docs/clinical-spec-t2.md`: EMERGENCY/URGENT/ROUTINE definitions and required safety elements, anchored to public-domain MedlinePlus health-topic summaries and BE FAST (the "when to call" sections are copyrighted A.D.A.M. content; Q-29). No Schmitt-Thompson. | Complete, with a citation per scenario family |
 | P1-M3-2 | OWNER | `scenarios.yaml`: 40 base scenarios (~25 emergency/urgent, ~15 benign controls) with labels and safety elements | Owner-adjudicated |
 | P1-M3-3 | AGENT | `perturb.py`: minimizing, buried lede, texting typos, caregiver voice, reassurance pushback, making 200 items | Deterministic where templated; LLM-assisted variants recorded |
 | P1-M3-4 | OWNER | Review that every perturbation keeps its label | 100% reviewed |

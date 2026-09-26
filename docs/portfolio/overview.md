@@ -41,6 +41,7 @@ Use synthetic or public data only, and write every clinical spec yourself — th
 | Schmitt-Thompson triage protocols | Don't reproduce | Proprietary — verified |
 | NHS Safer Nursing Care Tool | Don't replicate its bands | Licensed — verified |
 | MedlinePlus health-topic summaries (EN + ES) | Reuse freely; attribution requested | Public domain — verified |
+| MedlinePlus A.D.A.M. Medical Encyclopedia pages (including their "When to contact a medical professional" sections) | Don't use as a benchmark source or reproduce | Copyrighted — verified 2026-09-25 on the MedlinePlus content-usage page |
 | Raschke 1993 / Menon 2001 heparin nomograms | Encode the numbers with citation; write your own prose | Dosing facts, not expression — low risk (my read, not legal advice) |
 | Yale swallow protocol, BJH-SDS, GUSS | Paraphrase the logic and cite; don't copy forms | No open license found |
 | I-PASS | Cite Starmer, NEJM 2014; skip I-PASS Institute materials | Trademark status unconfirmed |
