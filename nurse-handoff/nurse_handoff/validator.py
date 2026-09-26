@@ -72,5 +72,12 @@ def validate(record: dict) -> list[str]:
             continue
         if not _is_expected_type(value, expected_type):
             errors.append(f"{field_path} must be {_type_label(expected_type)}")
+            continue
+
+        # PATIENT-SCHEMA.md: age is an integer >= 0 and every list holds strings.
+        if field_path == "age" and value < 0:
+            errors.append("age must be a non-negative integer")
+        if expected_type is list and not all(type(item) is str for item in value):
+            errors.append(f"{field_path} must be a list of strings")
 
     return errors

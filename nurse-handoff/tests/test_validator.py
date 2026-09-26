@@ -81,6 +81,18 @@ def test_nested_respiratory_type_error_is_reported():
     assert validate(record) == ["respiratory.oxygen must be a boolean"]
 
 
+def test_negative_age_is_rejected_and_zero_is_accepted():
+    assert validate({**VALID_RECORD, "age": -1}) == ["age must be a non-negative integer"]
+    assert validate({**VALID_RECORD, "age": 0}) == []
+
+
+def test_list_items_must_be_strings():
+    for field in ("access", "medications_of_note", "recent_events", "pending_tasks"):
+        record = {**VALID_RECORD, field: ["Synthetic item", 17]}
+
+        assert validate(record) == [f"{field} must be a list of strings"]
+
+
 def test_missing_optional_values_and_unknown_keys_are_accepted():
     record = {
         "patient_id": "SYNTH-900",

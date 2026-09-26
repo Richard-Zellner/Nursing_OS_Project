@@ -202,6 +202,29 @@ def test_type_error_exits_1_without_coercion(tmp_path):
 
 
 @pytest.mark.parametrize(
+    ("fields", "error"),
+    [
+        ('"age": -1', "ERROR: age must be a non-negative integer\n"),
+        ('"age": 35, "medications_of_note": [17]',
+         "ERROR: medications_of_note must be a list of strings\n"),
+    ],
+)
+def test_out_of_schema_values_exit_1_without_a_handoff(tmp_path, fields, error):
+    path = tmp_path / "out_of_schema.json"
+    path.write_text(
+        '{"patient_id": "SYNTH-900", "primary_problem": "Synthetic test condition", '
+        + fields + "}",
+        encoding="utf-8",
+    )
+
+    code, stdout, stderr = run_cli(str(path))
+
+    assert code == 1
+    assert stdout == ""
+    assert stderr == error
+
+
+@pytest.mark.parametrize(
     "args",
     [(), ("data/simple_patient.json", "data/chf_patient.json")],
     ids=["no-path", "two-paths"],
