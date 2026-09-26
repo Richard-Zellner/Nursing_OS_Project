@@ -7,6 +7,7 @@ import pytest
 
 from nurse_handoff.rules import IV_ACCESS_WARNING, MOBILITY_WARNING, OXYGEN_WARNING
 from nurse_handoff.schema import IMPORTANT_FIELDS
+from nurse_handoff import __version__
 
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
@@ -20,6 +21,7 @@ REQUIRED_SECTIONS = (
     "## Synthetic patients",
     "## Rules",
     "## Running tests",
+    "## Version history",
     "## Roadmap",
     "## Disclaimer",
 )
@@ -49,6 +51,13 @@ def test_readme_opens_with_the_spec_opening():
 def test_readme_install_uses_venv_and_requirements():
     assert "python -m venv .venv\n" in README
     assert "pip install -r requirements.txt\n" in README
+
+
+def test_readme_version_history_matches_package_version():
+    assert __version__ == "0.2.0-dev"
+    assert "Version 0.2.0-dev." in README
+    assert "| 0.1.0 | Released 2026-09-26 | Deterministic handoff |" in README
+    assert "| 0.2.0-dev | In development | More clinical validation rules |" in README
 
 
 def test_readme_sample_output_matches_patient_b_cli_output():

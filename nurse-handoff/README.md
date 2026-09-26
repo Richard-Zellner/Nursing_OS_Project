@@ -16,7 +16,7 @@ information, but it must not invent undocumented information.*
 All patient records included in this repository are synthetic and the
 software is not intended for clinical use.
 
-Version 0.1.0. Python standard library only; `pytest` is the single test
+Version 0.2.0-dev. Python standard library only; `pytest` is the single test
 dependency. The specification lives in
 [`docs/NURSE-HANDOFF-SPEC.md`](../docs/NURSE-HANDOFF-SPEC.md), with the field
 list in [`PATIENT-SCHEMA.md`](../docs/PATIENT-SCHEMA.md) and the exact report
@@ -181,12 +181,19 @@ real-patient identifiers, and a map from every test listed in spec section 12
 to a named test. The hub's `tests/verify.ps1` runs the suite and the CLI on
 patient B.
 
+## Version history
+
+| Version | Status | Notes |
+|---|---|---|
+| 0.1.0 | Released 2026-09-26 | Deterministic handoff |
+| 0.2.0-dev | In development | More clinical validation rules |
+
 ## Roadmap
 
 | Version | Scope | Status |
 |---|---|---|
-| v0.1 | Deterministic handoff | This release |
-| v0.2 | More clinical validation rules | Planned next |
+| v0.1 | Deterministic handoff | Released |
+| v0.2 | More clinical validation rules | In development |
 | v0.3 | Simple web interface | Needs the owner's decision |
 | v0.4 | FHIR resources | Later |
 | v0.5 | LLM handoff generation | Later |

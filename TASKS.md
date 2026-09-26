@@ -157,7 +157,7 @@ the README rules list, and (if needed) new synthetic patients numbered
 `SYNTH-005` onward. Rules must be simple, explainable in one sentence, and
 never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 
-- [ ] **101 Version bump.** `__init__.py` to `0.2.0-dev`; README "Version
+- [x] **101 Version bump.** `__init__.py` to `0.2.0-dev`; README "Version
   history" section. Blocked by: v0.1 released.
 - [ ] **102 Rule 5 code status.** Missing `code_status` also emits
   `WARNING: Code status not documented; confirm before handoff.` in addition
