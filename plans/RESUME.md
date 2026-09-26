@@ -18,12 +18,12 @@ small set of agent work that does not.
 
 | ID | Last commit | Built | Next agent task | Waiting on the owner |
 |---|---|---|---|---|
-| P0 Nurse Handoff | `e2ecbe4` | v0.1 build complete (tickets 001–015); `DONE` present; validator repair | none until v0.2 | the controller's DONE check, then **G1 release**; Q-002 |
-| P1 NurseBench | `b9d4601` | Track 1 harness; Track 4 spec draft, rules, sampler, scorer; Track 2 spec draft, private scenarios, perturbations; Track 5 tools | P1-M3-7 triage metrics and kappa code (Wave E) | D-3, API keys, M1-5, calculator sign-off, Q-10–Q-43 (Q-29 licensing, Q-37 held-out), spec reviews |
+| P0 Nurse Handoff | `e2ecbe4` | v0.1 build complete (tickets 001–015); `DONE` present; controller baseline and trusted acceptance PASS (2026-09-26 07:00 UTC) | none until v0.2 | **G1 release**; Q-002 |
+| P1 NurseBench | `0585cc7` | Track 1 harness; Track 4 spec draft, rules, sampler, scorer; Track 2 spec draft, private scenarios, perturbations, triage metrics, kappa and trust gate; Track 5 tools | none unblocked | D-3, API keys, M1-5, calculator sign-off, Q-10–Q-45 (Q-29 licensing, Q-36 kappa minimum, Q-37 held-out), spec reviews |
 | P2 Charge Assign | `5c93e63` | M1–M3 built, benchmark results, floor map, reasons, replanning | none (M5-2 packet waits for M3-4) | M1-4, M2-2, M3-4 results and limitations, M4-3 wording, Q015–Q030 |
 | P3 Dysphagia | `81bc905` | M1–M4 built: Questionnaire, CQL, HAPI on Java, `$apply` passing all 15 fixtures | P3-M5-1 HAPI CI (Wave E, needs CI observation) | M2-4 wording, CQL and action wording review, Q019–Q024, **v0.1.0 release** |
-| P4 Grounded Handoff | `ccd1b9e` | M1 done (HAPI load with ids kept, US Core report); fact sheet; verifiers 1–2; omissions; citation view; Provenance export | rerun the HAPI view test; P4-M2 SMART launch (Wave E) | Q021–Q039, inventory and doc reviews, model and budget |
-| P5 Stroke Agent | `b739469` | digest, sampler, gold, segmenter, date checks, packets C01–C20, engine, router, review page | P5-M6-2 metrics code on fixtures (Wave E) | **P5-M2-4 review of 20 packets**, M4-2 engine review, D-7, Q016–Q026 |
+| P4 Grounded Handoff | `821c693` | M1–M2 done: HAPI load with ids kept, US Core report, SMART EHR launch (local pinned launcher), backend fetch; fact sheet; verifiers 1–2; omissions; citation view; Provenance export | none unblocked | Q021–Q043 (Q041 local launcher, Q042 unauthenticated backend), doc reviews, model and budget |
+| P5 Stroke Agent | `791ff72` | digest, sampler, gold, segmenter, date checks, packets C01–C20, engine, router, review page, evaluation/kappa/run-cost metric code | none unblocked | **P5-M2-4 review of 20 packets**, M4-2 engine review, D-7, price table, Q016–Q030 |
 
 ## Start of the next session
 
@@ -120,7 +120,17 @@ Run at most three agents at once. The parent reviews each diff, reruns
 verification, commits and pushes, then updates PROGRESS.md. Two agents must
 never work in the same repo at the same time.
 
-### Wave E: no owner dependency
+### Wave E: done 2026-09-26 except E4
+
+E1 `0585cc7`, E2 `791ff72` and E3 `821c693` landed (see the PROGRESS session log). E4 stays parked until CI
+can be observed. After Wave E there is no unblocked agent work left; every next step waits on an owner item
+above.
+
+| Agent | Repo | Tasks | Acceptance | Notes |
+|---|---|---|---|---|
+| E4 | P3 | **P3-M5-1** CI job running HAPI (Java route or the pinned `docker-compose.yml` service) against all fixtures | Green on GitHub | Only once CI can be observed (the GitHub CLI installed, or the owner checks Actions). |
+
+### Wave E as planned (for reference)
 
 | Agent | Repo | Tasks | Acceptance | Notes |
 |---|---|---|---|---|
@@ -172,16 +182,16 @@ Report back concisely: files changed, coverage, test counts, ambiguities logged,
 | P2, P4 | PowerShell: `$env:JAVA_HOME='C:\Users\14087\.local\share\nursing-os-tools\jdk21\jdk-21.0.12.1+1'; $env:Path="$env:JAVA_HOME\bin;$env:Path"; .\mvnw.cmd -B -ntp verify` |
 | P2 benchmark | `.\mvnw.cmd -B -ntp test -Dtest=BenchmarkRunnerTest "-Dcharge.benchmark=true"` (about 4 minutes; rewrites `results/`) |
 | P3 | JAVA_HOME as above; `npm ci --ignore-scripts`; `npm run verify`. With HAPI: `.\scripts\hapi\hapi.ps1 test` (about 2 minutes) |
-| P4 with HAPI | `.\scripts\hapi\hapi.ps1 start`; `.\mvnw.cmd -B -ntp verify "-Dgroundedhandoff.hapi.required=true"`; `.\scripts\hapi\hapi.ps1 stop` (cohort already loaded; a full `hapi.ps1 test` reloads for about 25 minutes) |
+| P4 with HAPI | `.\scripts\hapi\hapi.ps1 start`; `.\scripts\smart\smart.ps1 start`; `.\mvnw.cmd -B -ntp verify "-Dgroundedhandoff.hapi.required=true"`; `.\scripts\smart\smart.ps1 stop`; `.\scripts\hapi\hapi.ps1 stop` (cohort already loaded; a full `hapi.ps1 test` reloads for about 25 minutes) |
 | P5 | `uv sync --locked`; `uv run --locked pytest -q`; `uv run --locked verify-evidence tests/fixtures/mechanical-valid.json`; `uv run --locked python -m stroke_abstraction.packets --check`; `uv run --locked python -m stroke_abstraction.extractor_fixtures --check` |
 
-Test counts at this checkpoint:
+Test counts at this checkpoint (after Wave E):
 - hub: 242
-- P1: 1480 locally (1462 + 18 skipped without `private/`)
+- P1: 1643 locally (1624 + 19 skipped without `private/`)
 - P2: 125 (1 skipped)
 - P3: 85 Node + 55 JUnit (86 with HAPI)
-- P4: 150 (8 skipped without HAPI)
-- P5: 752
+- P4: 164 (11 skipped without HAPI and the launcher; 1 opt-in skip with them)
+- P5: 918
 
 ## Operating rules for resumed work
 

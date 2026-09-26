@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-25 by Claude Code (round 4: Waves C and D, Nurse Handoff 009-015; see REVIEW-2026-09-25-round4.md)
+Last updated: 2026-09-26 by Claude Code (Wave E: P1 triage metrics, P5 metrics code, P4 SMART launch; see RESUME.md)
 
 ## Dashboard
 
@@ -16,12 +16,12 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | M1 v0.1 build complete (001–015); `DONE` present; validator repair `e2ecbe4` | review | Controller re-verifies `DONE`; owner G1 release (tag `v0.1.0`), Q-002 | v0.1 ~Sep 26, v0.2 ~Oct 9 |
-| P1 | NurseBench | M1 Track 1 harness built; Track 4 spec draft, rules, sampler, scorer; Track 2 spec draft, private scenarios, perturbations; Track 5 tools | review | Owner: D-3, M1-5, calculator sign-off, Q-10–Q-43 (Q-29 licensing, Q-37 held-out), spec reviews. Agent next: P1-M3-7 triage metrics (Wave E) | v0.1 Oct 31 |
+| P0 | Nurse Handoff | M1 v0.1 build complete (001–015); controller baseline and trusted acceptance PASS (run 2026-09-26 07:00 UTC) | review | Owner G1 release (tag `v0.1.0`), Q-002 | v0.1 ~Sep 26, v0.2 ~Oct 9 |
+| P1 | NurseBench | Track 1 harness; Track 4 spec, rules, sampler, scorer; Track 2 spec, private scenarios, perturbations, triage metrics and kappa gate; Track 5 tools | review | Owner: D-3, M1-5, calculator sign-off, Q-10–Q-45 (Q-29 licensing, Q-36 kappa minimum, Q-37 held-out), spec reviews | v0.1 Oct 31 |
 | P2 | Charge Assign | M1–M3 built with benchmark results; M4 floor map and reasons; M5-1 replanning | review | Owner: M1-4, M2-2, M3-4 results and limitations, M4-3 reason wording, Q015–Q030 | Feb 2027 |
 | P3 | Dysphagia Screen FHIR | M4 done: HAPI on the portable JDK, `$apply` passes all 15 fixtures | review | Owner: M2-4 wording, CQL and action wording (Q024), Q019–Q023, then v0.1.0 release. Agent next: P3-M5-1 HAPI CI once CI can be observed | Mar 2027 |
-| P4 | Grounded Handoff | M1 done (HAPI load with ids kept, US Core report); fact sheet; verifier layers 1–2; omissions; citation view; Provenance export | in-progress | Owner: Q021–Q039, doc reviews, model and budget. Agent next: HAPI view test when RAM allows, P4-M2 SMART launch (Wave E) | Apr – mid-May 2027 |
-| P5 | Stroke Abstraction Agent | Packets C01–C20, measure engine, router and review page built | review | Owner: P5-M2-4 packet review, M4-2 engine review, D-7, Q016–Q026. Agent next: P5-M6-2 metrics code on fixtures (Wave E) | mid-May – Jun 2027 |
+| P4 | Grounded Handoff | M1–M2 done (HAPI load, US Core report, SMART EHR launch with a local launcher, backend fetch); fact sheet; verifiers 1–2; omissions; citation view; Provenance export | review | Owner: Q021–Q043, doc reviews, model and budget (M3-3 generation, M4-3 judge, M5) | Apr – mid-May 2027 |
+| P5 | Stroke Abstraction Agent | Packets C01–C20, measure engine, router, review page, evaluation and kappa metric code | review | Owner: P5-M2-4 packet review, M4-2 engine review, D-7, Q016–Q030 (price table Q030) | mid-May – Jun 2027 |
 
 All five separate repositories now exist privately, are registered for project
 recall, and have reviewed work pushed to `main`. Parallel technical work does
@@ -89,7 +89,7 @@ handoffs contain the check evidence and task-level state.
 
 ### P4 Grounded Handoff ([plan](projects/P4-grounded-handoff.md))
 - [x] M1 HAPI, Synthea, nursing overlay (`8f32925`; US Core 6.1.0 report in docs/us-core-validation.md)
-- [ ] M2 SMART launch and bundle view
+- [x] M2 SMART launch and bundle view (`821c693`; local pinned SMART launcher v2, owner question P4-Q041)
 - [ ] M3 fact sheet, cited generation, citation UI
 - [ ] M4 three-layer verifier, omission checklist
 - [ ] v0.1.0 released
@@ -146,3 +146,4 @@ Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not h
 | 2026-09-25 | Claude Code (owner decision) | P3, P4 | Owner chose to try running HAPI on the portable JDK instead of Docker; added as Wave C1 (P3-M4-1..3) and Wave D0 (P4 HAPI loading); Docker is now a fallback. Loop ticket 009 failed with a Codex 401 (API key), noted in RESUME | `tests/verify.ps1` run | Owner fixes the Codex login; Wave C when approved |
 | 2026-09-25 | Claude Code + subagents (owner request during the Codex outage) | P0 | Loop paused with a session-owned `STOP`; tickets 009–015 done in ledger order (`e8dee59`); `DONE` created. The controller's trusted acceptance then rejected `DONE` (negative age, non-string list item accepted); validator repaired (`e2ecbe4`), counters reset with `controller.ps1 reset`, `STOP` removed | verify.ps1 PASS (242 pytest); trusted acceptance PASS on a copy | Controller re-verifies `DONE`; owner G1 |
 | 2026-09-25 | Claude Code + subagents (round 4) | P1–P5 | Waves C and D: P3 HAPI on Java + `$apply` (`81bc905`); P1 Track 4 scorer (`382b104`), Track 2 draft (`fb9abe4`), Track 5 tools (`b9d4601`); P2 floor map, reasons, replanning (`5c93e63`); P5 router and review page (`b739469`); P4 HAPI load + US Core (`8f32925`), citation view + Provenance export (`ccd1b9e`). Hub: MedlinePlus licensing correction (`3df643d`). Recorded in [REVIEW-2026-09-25-round4.md](REVIEW-2026-09-25-round4.md); RESUME refreshed with Wave E | Parent reruns per repo (see the review); P4 HAPI view test not run (free RAM below the 6 GiB guard); CI not observed | Owner Tier 1 (P0 G1, D-3, M1-5, Q-16/Q-17, Q-29); Wave E when approved |
+| 2026-09-26 | Claude Code + three subagents (owner: "keep going") | P1, P4, P5 | Wave E: P5-M6-2a evaluation/agreement/run-cost metric code (`791ff72`); P1-M3-7a Track 2 triage metrics, kappa and grader trust gate (`0585cc7`); P4-M2-1/2 SMART EHR launch via a pinned local launcher and backend fetch, plus fixes found by the first HAPI view-test run (`821c693`). E4 (P3 HAPI CI) parked until CI can be observed. P0: controller baseline and trusted acceptance passed at 07:00 UTC | Parent reruns: P5 918 pytest + checks; P1 1643 pytest (1624 + 19 skipped without private/), Track 1 report unchanged; P4 Maven 164 with HAPI and launcher (1 opt-in skip), 164/11 skipped without | Owner Tier 1; install gh to unpark E4 |
