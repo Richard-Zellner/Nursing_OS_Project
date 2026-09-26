@@ -193,13 +193,17 @@ Report back concisely: files changed, coverage, test counts, ambiguities logged,
 | P4 with HAPI | `.\scripts\hapi\hapi.ps1 start`; `.\scripts\smart\smart.ps1 start`; `.\mvnw.cmd -B -ntp verify "-Dgroundedhandoff.hapi.required=true"`; `.\scripts\smart\smart.ps1 stop`; `.\scripts\hapi\hapi.ps1 stop` (cohort already loaded; a full `hapi.ps1 test` reloads for about 25 minutes) |
 | P5 | `uv sync --locked`; `uv run --locked pytest -q`; `uv run --locked verify-evidence tests/fixtures/mechanical-valid.json`; `uv run --locked python -m stroke_abstraction.packets --check`; `uv run --locked python -m stroke_abstraction.extractor_fixtures --check` |
 
-Test counts at this checkpoint (after Wave F):
-- hub: 242
-- P1: 1684 locally (1665 + 19 skipped without `private/`)
-- P2: 131 (2 opt-in skips)
-- P3: 90 Node + 56 JUnit (1 HAPI skip; 86 with HAPI)
-- P4: 191 (11 skipped without HAPI and the launcher)
-- P5: 966
+Test counts at this checkpoint (after the 2026-09-26 edge-case review):
+- hub: 244
+- P1: 1731 locally (1712 + 19 skipped without `private/`)
+- P2: 135 (2 opt-in skips)
+- P3: 93 Node + 58 JUnit (2 HAPI skips; 88 with HAPI)
+- P4: 196 (11 skipped without HAPI and the launcher)
+- P5: 984
+
+The edge-case review (PROGRESS session log, 2026-09-26) added owner questions hub Q-003, P2-Q037/Q038,
+P3-Q029–Q031, P4-Q048–Q050 and P5-Q034. P4-Q049 is a hardening choice for the local HAPI servers
+(they bind 127.0.0.1 only, but accept any CORS origin and an open shutdown endpoint while running).
 
 ## Operating rules for resumed work
 
