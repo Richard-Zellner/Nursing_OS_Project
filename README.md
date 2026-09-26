@@ -22,7 +22,7 @@ repository is synthetic; nothing here is intended for clinical use.
 
 | Project | Status | Summary |
 |---|---|---|
-| [`nurse-handoff/`](nurse-handoff/) | v0.1 in progress | Deterministic JSON-to-shift-handoff generator that preserves missing data as missing. Spec: [`docs/NURSE-HANDOFF-SPEC.md`](docs/NURSE-HANDOFF-SPEC.md). |
+| [`nurse-handoff/`](nurse-handoff/) | v0.1 ready for release | Deterministic JSON-to-shift-handoff generator that preserves missing data as missing. Spec: [`docs/NURSE-HANDOFF-SPEC.md`](docs/NURSE-HANDOFF-SPEC.md). |
 
 The broader portfolio plans live in [`docs/portfolio/`](docs/portfolio/README.md).
 The planned `grounded-handoff` FHIR/AI app is separate from the existing

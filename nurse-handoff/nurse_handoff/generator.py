@@ -68,7 +68,12 @@ def render_list_section(title: str, items: list[str] | None) -> str:
 
 
 def render_handoff(record: dict) -> str:
-    """Render the handoff sections in their fixed output order."""
+    """Render every handoff section in fixed order.
+
+    Sections are separated by exactly one blank line and the report ends with
+    a single LF. Missing or null fields render as ``Not documented``; the
+    record is read only and never filled in.
+    """
     sections = [
         render_overview(record),
         render_assessment(record),
@@ -80,3 +85,9 @@ def render_handoff(record: dict) -> str:
         render_list_section("PENDING", record.get("pending_tasks")),
     ]
     return "\n\n".join(sections) + "\n"
+
+
+def render_warnings(warnings: list[str]) -> str:
+    """Render the WARNINGS block; an empty list renders the body ``None``."""
+    body = "\n".join(warnings) if warnings else "None"
+    return f"WARNINGS\n--------\n{body}"

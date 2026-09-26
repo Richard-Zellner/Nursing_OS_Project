@@ -27,6 +27,22 @@ def test_each_required_field_is_reported_when_missing():
         assert validate(record) == [f"{field} is required"]
 
 
+def _without(field):
+    return {key: value for key, value in VALID_RECORD.items() if key != field}
+
+
+def test_missing_patient_id_fails():
+    assert validate(_without("patient_id")) == ["patient_id is required"]
+
+
+def test_missing_age_fails():
+    assert validate(_without("age")) == ["age is required"]
+
+
+def test_missing_primary_problem_fails():
+    assert validate(_without("primary_problem")) == ["primary_problem is required"]
+
+
 def test_null_and_empty_required_fields_are_reported_as_required():
     for field in REQUIRED_FIELDS:
         for missing_value in (None, ""):

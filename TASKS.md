@@ -83,7 +83,7 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   lines in input order. Acceptance: tests for all three states and for
   section order in `render_handoff`. Blocked by: 006.
 
-- [ ] **009 Missing-data pass.** `render_handoff(record) -> str` assembles
+- [x] **009 Missing-data pass.** `render_handoff(record) -> str` assembles
   all sections with exactly one blank line between them and a single
   trailing LF. Run it against all four patients and a record containing only
   the three required fields. Acceptance: no exception for any of them; the
@@ -91,25 +91,25 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   tests for patients A and B stored under `tests/snapshots/` and compared
   byte for byte. Blocked by: 007, 008.
 
-- [ ] **010 Rule 1 oxygen.** `rules.py`: `check_oxygen(record) -> list[str]`
+- [x] **010 Rule 1 oxygen.** `rules.py`: `check_oxygen(record) -> list[str]`
   emitting the exact spec wording when `oxygen` is `true` and `device` or
   `flow_lpm` is missing. `oxygen` absent or `false` emits nothing.
   Acceptance: `tests/test_rules.py` cases: device missing, flow missing, both
   missing, both present, oxygen false, respiratory absent. Blocked by: 005.
 
-- [ ] **011 Rule 2 IV access.** `check_iv_access(record)`: any medication
+- [x] **011 Rule 2 IV access.** `check_iv_access(record)`: any medication
   containing the word-bounded token `IV` with `access` missing or empty →
   spec wording. `"IVF"` or `"Ivabradine"` must not trigger. Acceptance: tests
   for hit, no meds, meds without IV, false positives, access present.
   Blocked by: 010.
 
-- [ ] **012 Rule 3 mobility and Rule 4 pending.** `check_mobility(record)`
+- [x] **012 Rule 3 mobility and Rule 4 pending.** `check_mobility(record)`
   with spec wording. Rule 4 is a rendering rule already covered by 008;
   add a test that a missing `pending_tasks` renders `Not documented` and
   produces the important-field warning, and that `[]` renders `None` with
   no warning. Blocked by: 011.
 
-- [ ] **013 Warnings block and CLI.** `rules.py`: `collect_warnings(record)
+- [x] **013 Warnings block and CLI.** `rules.py`: `collect_warnings(record)
   -> list[str]` = important-field warnings (schema order, `⚠ ` prefix) then
   rule warnings, with the mobility de-duplication from `OUTPUT-FORMAT.md`.
   `__main__.py`: load → validate (print ERRORs to stderr, exit 1) → render
@@ -119,13 +119,13 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
   patient B produces `WARNINGS` / `None`; patient D produces both rule
   warnings. Blocked by: 009, 012.
 
-- [ ] **014 Test coverage audit.** Walk spec §12 and confirm every listed
+- [x] **014 Test coverage audit.** Walk spec §12 and confirm every listed
   test exists by name in `tests/`; add any missing. Add
   `tests/test_no_real_data.py` that scans `data/` for the forbidden keys and
   for anything matching a date-of-birth pattern. Acceptance: every §12
   bullet maps to a named test; `pytest -q` passes. Blocked by: 013.
 
-- [ ] **015 README complete.** `nurse-handoff/README.md`: §15 opening,
+- [x] **015 README complete.** `nurse-handoff/README.md`: §15 opening,
   install (`python -m venv .venv`, `pip install -r requirements.txt`), usage,
   sample output for patient B, the known-vs-unknown principle with the
   `oxygen: false` vs `respiratory: null` example, the four patients table,
@@ -138,13 +138,13 @@ v0.2 extension section of PATIENT-SCHEMA.md, preserving the v0.1 text.
 - [x] four synthetic patients exist (003)
 - [x] patient JSON loads correctly (004)
 - [x] required fields are validated (005)
-- [ ] missing information is preserved as unknown (007, 009)
-- [ ] handoff is generated (009)
-- [ ] basic clinical rules run (010–012)
-- [ ] warnings are shown (013)
-- [ ] `pytest -q` passes with zero failures (014)
-- [ ] README explains the project (015)
-- [ ] no real patient information is used (014)
+- [x] missing information is preserved as unknown (007, 009)
+- [x] handoff is generated (009)
+- [x] basic clinical rules run (010–012)
+- [x] warnings are shown (013)
+- [x] `pytest -q` passes with zero failures (014)
+- [x] README explains the project (015)
+- [x] no real patient information is used (014)
 
 When all ten are ticked and pytest passed this run: create `DONE`, state
 "v0.1 ready for human release" in `memory/HANDOFF.md`, and stop.
