@@ -9,12 +9,12 @@ and current: replace it, don't append to it.
 
 | ID | Built | Next | Needs the owner |
 |---|---|---|---|
-| P0 Nurse Handoff | v0.1.0 released (tag `v0.1.0`) | v0.2 tickets 101–110, run by the Codex loop | Q-002/Q-003 input handling for v0.2 |
-| P1 NurseBench | Track 1 harness and items; Track 4, 2 and 5 specs, data, scorers and tools; recommended D-3 roster and cap | 20-item smoke run, then the full run | the four API keys (the D-3 go), Q-50, Q-51, RN review, grader labels, PEMAT-P |
+| P0 Nurse Handoff | v0.1.0 released (tag `v0.1.0`) | v0.2 tickets 101–110, run by the Codex loop, which has been **blocked since 07:00 UTC 2026-09-27** (the Codex sandbox refuses the Store `pwsh.exe`) | a loop fix (options in the private checklist); Q-002/Q-003 input handling for v0.2 |
+| P1 NurseBench | Track 1 harness and items; Track 4, 2 and 5 specs, data, scorers and tools; Track 2 reply task; Track 5 checklists and grader; recommended D-3 roster and cap | open agent tasks (sampler, perturbations, Track 5 task, narrative generator); then the smoke and full runs | the four API keys (the D-3 go), Q-50, Q-51, RN review, grader labels, PEMAT-P |
 | P2 Charge Assign | solver, baselines, benchmark results, floor map, reasons, replanning, review packet | polish | the blinded charge-nurse review, RN read |
 | P3 Dysphagia | spec 0.2, CQL, HAPI `$apply` (178 tests), HAPI CI green; v0.1.0 prepared | polish | RN re-read, dentures question, then tag v0.1.0 and go public |
-| P4 Grounded Handoff | FHIR load (US Core 0 errors), fact sheet, verifier layers 1-2, view, SMART launch, export, harness, isolated claude-cli model adapter | real generation and judge run (in progress 2026-09-27) | labels and ratings, RN review |
-| P5 Stroke Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor; real 60-case run done (98.8% element accuracy, 99.1% measure agreement) | real-data metrics, review-page usability | P5-Q035 (GWTG login), P5-Q036, RN review, blind abstraction |
+| P4 Grounded Handoff | FHIR load (US Core 0 errors), fact sheet, three verifier layers, view, SMART launch, export, harness; first model run (25 patients, 4 arms; loop cut value errors per handoff 1.48 → 0.04) | judge the primary and loop-on arms for the headline; prompt v2 (P4-Q055) | support labels and ratings (packets ready), A-13 and RN review |
+| P5 Stroke Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor; real 60-case run (98.8% element accuracy, 99.1% measure agreement); real-data metrics | rerun with extraction prompt 0.2; open-weights comparison (P5-M6-3) needs a local model server | P5-Q035 (GWTG login), RN review, blind abstraction, engine review |
 
 The owner's delegation (hub DECISIONS, 2026-09-26 and 2026-09-27) lets agents answer questions and give approvals as
 "delegated agent decisions". It never covers:

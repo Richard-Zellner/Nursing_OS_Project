@@ -16,12 +16,12 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | v0.1.0 released 2026-09-26; M2 v0.2 rules (tickets 101–110) | in-progress | The Codex loop continues; owner: Q-002/Q-003 handling | v0.2 ~Oct 9 |
-| P1 | NurseBench | M1 harness and items ready; Tracks 4, 2 and 5 drafted with specs, data, scorers and tools | review | Owner: set the four API keys (D-3 go), then the smoke and full runs; RN review of drafts | v0.1 Oct 31 |
+| P0 | Nurse Handoff | v0.1.0 released 2026-09-26; M2 v0.2 rules (tickets 101–110) | blocked | The loop has been blocked since 07:00 UTC 2026-09-27 (the Codex sandbox refuses the Store `pwsh.exe`); owner: apply a fix from the checklist, then Q-002/Q-003 | v0.2 ~Oct 9 |
+| P1 | NurseBench | M1 harness and items ready; Tracks 4, 2 and 5 drafted with specs, data, scorers and tools; Track 2 reply task and Track 5 checklist grader built; hostile-input hardening | review | Owner: set the four API keys (D-3 go), then the smoke and full runs; RN review of drafts | v0.1 Oct 31 |
 | P2 | Charge Assign | M1–M4 done (delegated reviews); M5 replanning and review packet ready | review | Owner: blinded charge-nurse review (M5-3), RN read | Feb 2027 |
 | P3 | Dysphagia Screen FHIR | M1–M4 done; HAPI CI green; v0.1.0 prepared | review | Owner: RN re-read, then tag v0.1.0 and go public | Mar 2027 |
-| P4 | Grounded Handoff | M1–M2 done; fact sheet, verifier layers 1–2, view, export, harness; generation and judge code | in-progress | Model adapter and a real generation run; owner: labels and ratings | Apr – mid-May 2027 |
-| P5 | Stroke Abstraction Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor | in-progress | Full 60-case run (approved 2026-09-27); owner: blind abstraction, RN review | mid-May – Jun 2027 |
+| P4 | Grounded Handoff | M1–M3 done; first model run (25 patients, 4 arms, `claude-sonnet-5` and `claude-haiku-4-5`), judge on 8 handoffs | in-progress | Judge the primary and loop-on arms for the headline; owner: support labels and ratings (packets ready) | Apr – mid-May 2027 |
+| P5 | Stroke Abstraction Agent | M1–M3 and M5 done; real 60-chart run (98.8% element accuracy, 99.1% measure agreement); real-data metrics (P5-M6-2b) | in-progress | Rerun with extraction prompt 0.2; owner: blind abstraction, engine review, RN review | mid-May – Jun 2027 |
 
 All five separate repositories now exist privately, are registered for project
 recall, and have reviewed work pushed to `main`. Parallel technical work does
@@ -90,8 +90,8 @@ handoffs contain the check evidence and task-level state.
 ### P4 Grounded Handoff ([plan](projects/P4-grounded-handoff.md))
 - [x] M1 HAPI, Synthea, nursing overlay (`8f32925`; US Core 6.1.0 report in docs/us-core-validation.md)
 - [x] M2 SMART launch and bundle view (`821c693`; local pinned SMART launcher v2, owner question P4-Q041)
-- [ ] M3 fact sheet, cited generation, citation UI
-- [ ] M4 three-layer verifier, omission checklist
+- [x] M3 fact sheet, cited generation, citation UI (first model run `23f5068`, 2026-09-27)
+- [ ] M4 three-layer verifier, omission checklist (agent parts done 2026-09-27; owner labels M4-4 and release M4-6 open)
 - [ ] v0.1.0 released
 - [ ] M5 evaluation on 25 patients, ablations, Provenance
 - [ ] v1.0.0 released with write-up
@@ -99,8 +99,8 @@ handoffs contain the check evidence and task-level state.
 ### P5 Stroke Abstraction Agent ([plan](projects/P5-stroke-abstraction-agent.md))
 - [x] M1 measure digest (Specs Manual v2026B1; agent-drafted under D-9, RN-reviewed 2026-09-24)
 - [x] M2 60 synthetic chart packets (C01–C20 validated by an agent under delegation; owner review pending)
-- [ ] M3 segmenter, extractors, evidence verifier
-- [ ] M4 measure engine, end-to-end run
+- [x] M3 segmenter, extractors, evidence verifier (D-7 claude-cli extractor; verified in the real run, 2026-09-27)
+- [ ] M4 measure engine, end-to-end run (real 60-chart run done 2026-09-27; owner engine review M4-2 and release M4-4 open)
 - [ ] v0.1.0 released
 - [x] M5 review queue and router (`b739469`; thresholds are placeholders pending P5-Q024)
 - [ ] M6 evaluation, kappa, cost per chart
