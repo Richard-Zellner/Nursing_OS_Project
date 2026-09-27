@@ -42,6 +42,7 @@ INCOMPLETE_PATIENT_OUTPUT = (
     "⚠ Code status not documented\n"
     "⚠ Respiratory assessment not documented\n"
     "WARNING: Mobility status not documented.\n"
+    "WARNING: Code status not documented; confirm before handoff.\n"
 )
 
 COMPLEX_PATIENT_OUTPUT = (

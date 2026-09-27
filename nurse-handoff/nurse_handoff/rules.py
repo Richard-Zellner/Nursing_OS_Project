@@ -12,6 +12,9 @@ IV_ACCESS_WARNING = (
     "WARNING: IV medication listed but no vascular access documented."
 )
 MOBILITY_WARNING = "WARNING: Mobility status not documented."
+CODE_STATUS_WARNING = (
+    "WARNING: Code status not documented; confirm before handoff."
+)
 
 # Case-sensitive, word-bounded: "IV" and "IV/PO" match; "IVF", "IVIG",
 # "PIV", and "Ivabradine" do not.
@@ -63,6 +66,13 @@ def check_mobility(record: dict) -> list[str]:
     return []
 
 
+def check_code_status(record: dict) -> list[str]:
+    """Rule 5: missing code status gets an additional, intentional warning."""
+    if record.get("code_status") is None:
+        return [CODE_STATUS_WARNING]
+    return []
+
+
 def check_important_fields(record: dict) -> list[str]:
     """Return the glyph warning for each absent or null important field.
 
@@ -83,7 +93,10 @@ def collect_warnings(record: dict) -> list[str]:
     so only the rule wording is kept when mobility is not documented.
     """
     rule_warnings = (
-        check_oxygen(record) + check_iv_access(record) + check_mobility(record)
+        check_oxygen(record)
+        + check_iv_access(record)
+        + check_mobility(record)
+        + check_code_status(record)
     )
     field_warnings = check_important_fields(record)
     if MOBILITY_WARNING in rule_warnings:

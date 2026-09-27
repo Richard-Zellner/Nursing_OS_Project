@@ -128,7 +128,7 @@ documented "nothing" and renders `None`.
 |---|---|---|---|
 | `data/simple_patient.json` | SYNTH-001 | Patient A. Routine postoperative recovery; every field present, no supplemental oxygen. | None |
 | `data/chf_patient.json` | SYNTH-002 | Patient B. CHF exacerbation on telemetry with 2 L/min oxygen, IV diuretic, intake and output, daily weight, and pending labs. | None |
-| `data/incomplete_patient.json` | SYNTH-003 | Patient C. Omits code status, mobility, and the respiratory assessment. | `⚠ Code status not documented`, `⚠ Respiratory assessment not documented`, `WARNING: Mobility status not documented.` |
+| `data/incomplete_patient.json` | SYNTH-003 | Patient C. Omits code status, mobility, and the respiratory assessment. | `⚠ Code status not documented`, `⚠ Respiratory assessment not documented`, `WARNING: Mobility status not documented.`, `WARNING: Code status not documented; confirm before handoff.` |
 | `data/complex_patient.json` | SYNTH-004 | Patient D. Oxygen documented without device or flow, and an IV medication with no vascular access. | Rule 1 and Rule 2 warnings |
 
 Patient IDs use the `SYNTH-###` form. No names, dates of birth, MRNs, or
@@ -165,6 +165,9 @@ Clinical consistency rules are deterministic and intentionally simple:
    pending": the `PENDING` section shows `Not documented` and the
    important-field warning fires. An explicit `[]` shows `None` with no
    warning.
+5. **Code status.** If `code_status` is missing, the warning
+   `WARNING: Code status not documented; confirm before handoff.` is added
+   after the important-field warning. Both warnings are intentionally shown.
 
 ## Running tests
 

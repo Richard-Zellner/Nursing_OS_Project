@@ -159,7 +159,7 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 
 - [x] **101 Version bump.** `__init__.py` to `0.2.0-dev`; README "Version
   history" section. Blocked by: v0.1 released.
-- [ ] **102 Rule 5 code status.** Missing `code_status` also emits
+- [x] **102 Rule 5 code status.** Missing `code_status` also emits
   `WARNING: Code status not documented; confirm before handoff.` in addition
   to the important-field glyph line (do not de-duplicate this one; it is
   intentionally loud). Blocked by: 101.

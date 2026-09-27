@@ -5,7 +5,12 @@ from pathlib import Path
 
 import pytest
 
-from nurse_handoff.rules import IV_ACCESS_WARNING, MOBILITY_WARNING, OXYGEN_WARNING
+from nurse_handoff.rules import (
+    CODE_STATUS_WARNING,
+    IV_ACCESS_WARNING,
+    MOBILITY_WARNING,
+    OXYGEN_WARNING,
+)
 from nurse_handoff.schema import IMPORTANT_FIELDS
 from nurse_handoff import __version__
 
@@ -78,7 +83,13 @@ def test_readme_explains_oxygen_false_versus_respiratory_null():
 
 
 def test_readme_lists_every_warning_verbatim():
-    for warning in (*IMPORTANT_FIELDS.values(), OXYGEN_WARNING, IV_ACCESS_WARNING, MOBILITY_WARNING):
+    for warning in (
+        *IMPORTANT_FIELDS.values(),
+        OXYGEN_WARNING,
+        IV_ACCESS_WARNING,
+        MOBILITY_WARNING,
+        CODE_STATUS_WARNING,
+    ):
         assert warning in README
 
 

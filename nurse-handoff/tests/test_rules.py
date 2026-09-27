@@ -10,6 +10,8 @@ from nurse_handoff.rules import (
     IV_ACCESS_WARNING,
     MOBILITY_WARNING,
     OXYGEN_WARNING,
+    CODE_STATUS_WARNING,
+    check_code_status,
     check_important_fields,
     check_iv_access,
     check_mobility,
@@ -25,6 +27,7 @@ MINIMAL_RECORD = {
     "primary_problem": "Synthetic test condition",
 }
 PENDING_WARNING = "⚠ Pending tasks not documented"
+CODE_STATUS_FIELD_WARNING = "⚠ Code status not documented"
 
 
 def test_oxygen_warning_uses_exact_spec_wording():
@@ -234,6 +237,26 @@ def test_documented_mobility_does_not_warn():
     assert check_mobility({"mobility": "1-person assist"}) == []
 
 
+def test_code_status_warning_uses_exact_rule_5_wording():
+    assert (
+        CODE_STATUS_WARNING
+        == "WARNING: Code status not documented; confirm before handoff."
+    )
+
+
+@pytest.mark.parametrize(
+    "record",
+    [{}, {"code_status": None}],
+    ids=["code-status-absent", "code-status-null"],
+)
+def test_missing_code_status_emits_rule_5_warning(record):
+    assert check_code_status(record) == [CODE_STATUS_WARNING]
+
+
+def test_documented_code_status_does_not_emit_rule_5_warning():
+    assert check_code_status({"code_status": "Full Code"}) == []
+
+
 @pytest.mark.parametrize(
     ("filename", "expected"),
     [
@@ -313,9 +336,10 @@ def test_documented_or_explicitly_empty_important_fields_do_not_warn():
         (
             "incomplete_patient.json",
             [
-                "⚠ Code status not documented",
+                CODE_STATUS_FIELD_WARNING,
                 "⚠ Respiratory assessment not documented",
                 MOBILITY_WARNING,
+                CODE_STATUS_WARNING,
             ],
         ),
         ("complex_patient.json", [OXYGEN_WARNING, IV_ACCESS_WARNING]),
@@ -340,6 +364,7 @@ def test_collect_warnings_lists_field_warnings_before_rule_warnings():
         OXYGEN_WARNING,
         IV_ACCESS_WARNING,
         MOBILITY_WARNING,
+        CODE_STATUS_WARNING,
     ]
 
 
@@ -355,4 +380,17 @@ def test_missing_mobility_prints_only_the_rule_wording():
         "⚠ Vascular access not documented",
         "⚠ Pending tasks not documented",
         MOBILITY_WARNING,
+        CODE_STATUS_WARNING,
     ]
+
+
+def test_missing_code_status_keeps_both_field_and_rule_warnings():
+    warnings = collect_warnings(MINIMAL_RECORD)
+
+    assert warnings.count(CODE_STATUS_FIELD_WARNING) == 1
+    assert warnings.count(CODE_STATUS_WARNING) == 1
+    assert (
+        warnings.index(CODE_STATUS_FIELD_WARNING)
+        < warnings.index(CODE_STATUS_WARNING)
+    )
+    assert warnings[-1] == CODE_STATUS_WARNING
