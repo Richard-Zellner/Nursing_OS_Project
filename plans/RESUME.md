@@ -2,28 +2,56 @@
 
 [Plans index](README.md) · [Progress](PROGRESS.md) · [Session log](SESSION-LOG.md) · [Runbook](RUNBOOK.md)
 
-Current as of 2026-09-27. History lives in the [session log](SESSION-LOG.md) and the review files. Keep this file short
-and current: replace it, don't append to it.
+Current as of the end of 2026-09-27. History lives in the [session log](SESSION-LOG.md). Keep this file short and
+current: replace it, don't append to it.
 
 ## Where things stand
 
-| ID | Built | Next | Needs the owner |
-|---|---|---|---|
-| P0 Nurse Handoff | v0.1.0 released (tag `v0.1.0`); v0.2 tickets 101–103 accepted | v0.2 tickets 104–110, run by the Codex loop (blocked 07:00–15:00 UTC 2026-09-27 until the worker ran without WindowsApps on PATH; see `loops/supervisor.py` `worker_env`) | Q-002/Q-003 input handling for v0.2 |
-| P1 NurseBench | Track 1 harness and items; Track 4, 2 and 5 specs, data, scorers and tools; NIHSS sampler (P1-M2-2); Track 2 reply task and 200 phrasing variants of the 40 base messages (P1-M3-3; 240 items, 60 held out); Track 5 task with a language check; narrative generator built (not run, Q-55); recommended D-3 roster and cap | smoke and full runs after the D-3 go | the four API keys (the D-3 go), Q-50, Q-51, Q-55, Q-56, RN review, label review of the variants, grader labels, PEMAT-P |
-| P2 Charge Assign | solver, baselines, benchmark results, floor map, reasons, replanning, review packet | polish | the blinded charge-nurse review, RN read |
-| P3 Dysphagia | spec 0.2, CQL, HAPI `$apply`; HAPI workflow 220/220 with none skipped (`5f04661`); v0.1.0 prepared | polish | RN re-read, dentures question, then tag v0.1.0 and go public |
-| P4 Grounded Handoff | FHIR load (US Core 0 errors), fact sheet, three verifier layers, view, SMART launch, export, harness; model runs with prompts v1 and v2 (25 patients); judge on 13 patients per arm (6.45% vs 5.91%, not validated); blinded rating packet; A-13 extended for P4-Q056, with a post-hoc re-reading where v2 has 0.28 value errors per handoff against v1's 1.48 | a same-prompt repeat run would measure run-to-run variation | support labels and ratings (packets ready), A-13 (with the P4-Q056 readings) and RN review |
-| P5 Stroke Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor; three real 60-case runs (prompt 0.1: 98.8% elements; prompt 0.2: 99.1% and 99.6%; same-prompt runs agree on 99.1% of values); run comparison tool | open-weights comparison (P5-M6-3): the local Qwen llama-server listens on 127.0.0.1:65060 when started and needs about 15–19 GB of RAM, so run it when nothing else is heavy | P5-Q035 (GWTG login), RN review, blind abstraction, engine review |
+All six repos are clean, pushed and green on CI.
+
+| ID | Built | State |
+|---|---|---|
+| P0 Nurse Handoff | v0.1.0 released; v0.2 tickets 101–103 accepted | The Codex loop runs tickets 104–110 on its own. It was fixed on 2026-09-27: the worker now runs without WindowsApps on PATH (`loops/supervisor.py` `worker_env`). |
+| P1 NurseBench | Track 1 harness and 180 items; Tracks 4, 2 and 5 with specs, data, scorers, tasks and tools; NIHSS sampler; 240 Track 2 items (60 held out); Track 5 language check; narrative generator (built, not run) | Waiting for the owner's D-3 go (four API keys), then the smoke and full runs. |
+| P2 Charge Assign | solver, baselines, benchmark, floor map (WCAG AA), reasons, replanning, blinded review packet, hardened API | Done until the owner's blinded review. |
+| P3 Dysphagia | spec 0.2, CQL, HAPI `$apply` (220/220 on GitHub), accessible form, third-party notices; v0.1.0 prepared | Done until the owner's RN re-read, then release. |
+| P4 Grounded Handoff | FHIR load (US Core 0 errors), fact sheet, three verifier layers, view, SMART launch, export, harness; model runs with prompts v1 and v2; judge on 13 patients per arm (not validated); blinded rating packet; P4-Q056 post-hoc re-reading | One stopped task to finish (below); then the owner's labels and ratings. |
+| P5 Stroke Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor; three real 60-chart runs (98.8%, 99.1% and 99.6% element accuracy; same-prompt runs agree on 99.1% of values); run comparison tool | Waiting for the owner's blind abstraction; the open-weights run needs PC time. |
 
 The owner's delegation (hub DECISIONS, 2026-09-26 and 2026-09-27) lets agents answer questions and give approvals as
-"delegated agent decisions". It never covers:
-- RN attestation;
-- human measurement;
-- the owner's first-person writing;
-- releases and visibility.
+"delegated agent decisions". It never covers RN attestation, human measurement, the owner's first-person writing,
+releases or visibility.
 
-The owner's own to-do list is a private checklist on the owner's Desktop.
+## What's next
+
+**Agent work, unblocked:**
+1. **P4:** finish recording the same-prompt repeat of the v2 run, with no new model calls. All 25 handoffs are
+   generated and parked, unverified, in the git-ignored `grounded-handoff/output/stopped-2026-09-27-v2-repeat/`. The
+   steps are in P4's HANDOFF, and the analysis plan is in P4's DECISIONS (2026-09-27).
+2. **P4-M5-4b:** the model's Device and AI Provenance in the export.
+3. **P0:** check each loop acceptance, and keep hub edits between runs.
+4. **Loops:** `test_nursing_ticket_001_skeleton_is_valid` fails because its fixture predates the newer verifier checks.
+   This is not a loop fault.
+5. **P5-M6-3:** the open-weights comparison, only when the owner frees the PC. The local Qwen llama-server is on
+   127.0.0.1:65060 and needs about 15–19 GB of RAM.
+6. **Optional model work:** the P4 judge on v2 and on patients 14–25; a Haiku and citations-off judge.
+
+**Owner work** (the private checklist on the owner's Desktop has the details):
+1. **NurseBench D-3 go:** set the four API keys by about Oct 25 for v0.1 on Oct 31.
+2. **Questions:**
+   - hub Q-002/Q-003;
+   - NurseBench Q-50, Q-51, Q-55 (the narrative model) and Q-56;
+   - the Dysphagia dentures question;
+   - Stroke Agent P5-Q035.
+3. **RN review of agent drafts** in every repo. They are marked "Owner RN review: pending".
+4. **Human measurement:**
+   - the Charge Assign blinded review;
+   - the Grounded Handoff labels and ratings (packets ready);
+   - the Stroke Agent blind abstraction;
+   - the NurseBench grader labels and PEMAT-P.
+5. **First-person writing and releases:**
+   - "Why a nurse built it" in each README;
+   - releases and visibility (Dysphagia v0.1.0 is ready).
 
 ## Start a session
 
@@ -33,25 +61,31 @@ The owner's own to-do list is a private checklist on the owner's Desktop.
    ```bash
    cd ~/Desktop && for r in Nursing_OS_Project nursebench charge-assign dysphagia-screen-fhir grounded-handoff stroke-abstraction-agent; do git -C $r fetch -q origin; echo "$r dirty=$(git -C $r status --porcelain | wc -l) head=$(git -C $r rev-parse --short HEAD) remote=$(git -C $r rev-parse --short origin/main)"; done
    ```
-4. Check the loop with `powershell -NoProfile -File "$HOME\Desktop\loops\controller.ps1" status` (PowerShell), and don't edit
-   the hub during a run. The controller runs every 4 hours on the hour (03, 07, 11, 15, 19 and 23 UTC).
-5. Check CI with `gh run list --repo Richard-Zellner/<repo>`. `gh` is installed per-user and logged in.
+4. Check the loop with `powershell -NoProfile -File "$HOME\Desktop\loops\controller.ps1" status` (PowerShell), and don't
+   edit the hub during a run. The controller runs every 4 hours on the hour (03, 07, 11, 15, 19 and 23 UTC).
+5. Check CI with `gh run list --repo Richard-Zellner/<repo>`. In an older shell, `gh` may not be on PATH; it is in
+   `%LOCALAPPDATA%\Microsoft\WinGet\Packages\GitHub.cli_Microsoft.Winget.Source_8wekyb3d8bbwe\bin\`.
 6. Apply any new owner answers in each repo's `memory/QUESTIONS.md` first.
 
 ## How agent work runs
 
-- **One agent per repo.** Several can run in parallel if the owner asks; the owner asked for five on 2026-09-27.
+- **One agent per repo,** up to five in parallel when the owner asks.
 - **Agents commit locally and never push.** The parent reruns verification, pushes, checks CI, then records the round
   in [SESSION-LOG.md](SESSION-LOG.md).
 - **Brief each agent with:**
   - the repo;
   - the owner's instruction, quoted;
   - the limits above;
-  - the environment (JDK, HAPI ports and the RAM guard);
+  - the environment (JDK, ports, the RAM guard);
   - the verification commands below;
-  - "local commits only".
-- **CI runs on Windows and Linux.** Tests must write files with explicit bytes or newlines; a Windows-only pass once
-  hid a Linux failure.
+  - a token cap for any model run.
+- **Tell agents:**
+  - not to spawn helpers or worktrees;
+  - to write commit messages and docs with file tools, never through shell quoting. A quoting slip once ran
+    `npm version`.
+- **An independent review after each round pays off.** On 2026-09-27 reviews found real bugs in P1, P2, P4 and P5, and
+  the P3 HAPI workflow caught a server-only failure.
+- **CI runs on Windows and Linux.** Tests must write files with explicit bytes or newlines.
 
 ## Verification
 
@@ -60,7 +94,7 @@ The owner's own to-do list is a private checklist on the owner's Desktop.
 | Hub | `powershell -NoProfile -ExecutionPolicy Bypass -File tests/verify.ps1` |
 | P1 | `uv sync --locked`; `uv run --locked pytest -q` (again with `private/t2_escalation/` hidden); `uv run --locked python -m nursebench.validate`; hello_world mock eval with `scripts/check_mock_eval.py` |
 | P2, P4 | `$env:JAVA_HOME="$env:USERPROFILE\.local\share\nursing-os-tools\jdk21\jdk-21.0.12.1+1"; $env:Path="$env:JAVA_HOME\bin;$env:Path"; .\mvnw.cmd -B -ntp verify` |
-| P3 | JAVA_HOME as above; `npm ci --ignore-scripts`; `npm run verify`; with HAPI, `.\scripts\hapi\hapi.ps1 test` |
+| P3 | JAVA_HOME as above; `npm ci --ignore-scripts`; `npm run verify`; HAPI through the `hapi-fixtures.yml` workflow (`gh workflow run hapi-fixtures.yml -f route=java`) or locally with `.\scripts\hapi\hapi.ps1 test` |
 | P4 with servers | `hapi.ps1 start`; `smart.ps1 start`; `mvnw verify "-Dgroundedhandoff.hapi.required=true"`; stop both |
 | P5 | `uv sync --locked`; `uv run --locked pytest -q`; `verify-evidence tests/fixtures/mechanical-valid.json`; `packets --check`; `extractor_fixtures --check` |
 
@@ -73,10 +107,12 @@ The owner's own to-do list is a private checklist on the owner's Desktop.
 | 8082 | P4 HAPI |
 | 8083 | P4 SMART launcher |
 | 8084 | P2 app |
+| 65060 | the owner's local Qwen (start only with the owner's OK) |
 
 ## Rules
 
-- **Evidence:** results come only from real runs, with the model ID and date. Mock and smoke runs never go in `results/`.
+- **Evidence:** results come only from real runs, with the model ID and date. Mock and smoke runs never go in
+  `results/`, and neither does an unrecorded run.
 - **Sources:** public domain or properly licensed only. No A.D.A.M. encyclopedia content (NurseBench Q-29).
 - **Held-out data:** it stays in Git-ignored `private/`, backed up in `%USERPROFILE%\Documents\Nursing-OS-backups\`.
 - **Hub edits:** commit and push them promptly, between loop runs. Hub files use LF line endings.
