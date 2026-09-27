@@ -18,11 +18,17 @@ CODE_STATUS_WARNING = (
 TELEMETRY_WARNING = (
     "WARNING: Telemetry documented but no cardiac rhythm documented."
 )
+DIURETIC_WARNING = (
+    "WARNING: Diuretic listed but no urine output documented this shift."
+)
 
 # Case-sensitive, word-bounded: "IV" and "IV/PO" match; "IVF", "IVIG",
 # "PIV", and "Ivabradine" do not.
 _IV_TOKEN = re.compile(r"\bIV\b")
 _TELEMETRY_TOKEN = re.compile(r"\btelemetry\b", re.IGNORECASE)
+_DIURETIC_NAMES = ("furosemide", "bumetanide", "torsemide")
+_URINE_OUTPUT_PHRASE = "urine output"
+_UO_ABBREVIATION = "UO"
 
 
 def check_oxygen(record: dict) -> list[str]:
@@ -87,6 +93,33 @@ def check_telemetry(record: dict) -> list[str]:
     return []
 
 
+def check_diuretic_output(record: dict) -> list[str]:
+    """Rule 7: a listed loop diuretic needs documented urine output this shift."""
+    medications = record.get("medications_of_note")
+    if not isinstance(medications, list):
+        return []
+
+    has_diuretic = any(
+        isinstance(medication, str)
+        and any(name in medication.casefold() for name in _DIURETIC_NAMES)
+        for medication in medications
+    )
+    if not has_diuretic:
+        return []
+
+    recent_events = record.get("recent_events")
+    has_urine_output = isinstance(recent_events, list) and any(
+        isinstance(event, str)
+        and (
+            _URINE_OUTPUT_PHRASE in event or _UO_ABBREVIATION in event
+        )
+        for event in recent_events
+    )
+    if not has_urine_output:
+        return [DIURETIC_WARNING]
+    return []
+
+
 def check_important_fields(record: dict) -> list[str]:
     """Return the glyph warning for each absent or null important field.
 
@@ -112,6 +145,7 @@ def collect_warnings(record: dict) -> list[str]:
         + check_mobility(record)
         + check_code_status(record)
         + check_telemetry(record)
+        + check_diuretic_output(record)
     )
     field_warnings = check_important_fields(record)
     if MOBILITY_WARNING in rule_warnings:

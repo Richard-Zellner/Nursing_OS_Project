@@ -167,7 +167,7 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
   `monitoring` (string). If it contains the token `telemetry` and `cardiac`
   is missing → `WARNING: Telemetry documented but no cardiac rhythm
   documented.` Update `PATIENT-SCHEMA.md`. Blocked by: 101.
-- [ ] **104 Rule 7 diuretic without output.** If any medication contains
+- [x] **104 Rule 7 diuretic without output.** If any medication contains
   `furosemide`, `bumetanide`, or `torsemide` (case-insensitive) and no
   `recent_events` entry contains `urine output` or `UO` → `WARNING: Diuretic
   listed but no urine output documented this shift.` Blocked by: 101.

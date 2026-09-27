@@ -172,6 +172,11 @@ Clinical consistency rules are deterministic and intentionally simple:
    case-insensitive, word-bounded token `telemetry` and `cardiac` is absent or
    `null`, the warning
    `WARNING: Telemetry documented but no cardiac rhythm documented.` is added.
+7. **Diuretic without urine output.** If a medication contains `furosemide`,
+   `bumetanide`, or `torsemide` (case-insensitive) and no `recent_events`
+   entry contains `urine output` or `UO`,
+   the warning `WARNING: Diuretic listed but no urine output documented this
+   shift.` is added.
 
 ## Running tests
 

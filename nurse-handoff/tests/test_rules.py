@@ -11,8 +11,10 @@ from nurse_handoff.rules import (
     MOBILITY_WARNING,
     OXYGEN_WARNING,
     CODE_STATUS_WARNING,
+    DIURETIC_WARNING,
     TELEMETRY_WARNING,
     check_code_status,
+    check_diuretic_output,
     check_important_fields,
     check_iv_access,
     check_mobility,
@@ -304,6 +306,99 @@ def test_telemetry_rule_does_not_warn_without_both_conditions(record):
     assert check_telemetry(record) == []
 
 
+def test_diuretic_warning_uses_exact_rule_7_wording():
+    assert (
+        DIURETIC_WARNING
+        == "WARNING: Diuretic listed but no urine output documented this shift."
+    )
+
+
+@pytest.mark.parametrize(
+    "medication",
+    [
+        "Furosemide 40 mg daily",
+        "BUMETANIDE 1 mg daily",
+        "Torsemide 20 mg daily",
+    ],
+    ids=["furosemide", "bumetanide-case-insensitive", "torsemide"],
+)
+@pytest.mark.parametrize(
+    "recent_event_fields",
+    [{}, {"recent_events": None}, {"recent_events": []}],
+    ids=["events-absent", "events-null", "events-empty"],
+)
+def test_diuretic_without_recent_output_warns(medication, recent_event_fields):
+    record = {"medications_of_note": [medication], **recent_event_fields}
+
+    assert check_diuretic_output(record) == [DIURETIC_WARNING]
+
+
+@pytest.mark.parametrize(
+    "event",
+    [
+        "900 mL urine output this shift",
+        "UO 900 mL this shift",
+    ],
+    ids=["phrase", "abbreviation"],
+)
+def test_documented_urine_output_suppresses_diuretic_warning(event):
+    record = {
+        "medications_of_note": ["Furosemide 40 mg IV"],
+        "recent_events": ["Synthetic event", event],
+    }
+
+    assert check_diuretic_output(record) == []
+
+
+@pytest.mark.parametrize(
+    "record",
+    [
+        {},
+        {"medications_of_note": None},
+        {"medications_of_note": []},
+        {"medications_of_note": ["Synthetic medication 1 mg daily"]},
+        {
+            "medications_of_note": ["Synthetic medication 1 mg daily"],
+            "recent_events": [],
+        },
+    ],
+    ids=["meds-absent", "meds-null", "meds-empty", "non-diuretic", "no-diuretic"],
+)
+def test_no_diuretic_does_not_warn(record):
+    assert check_diuretic_output(record) == []
+
+
+def test_unrelated_recent_event_does_not_suppress_diuretic_warning():
+    record = {
+        "medications_of_note": ["Furosemide 40 mg daily"],
+        "recent_events": ["Daily weight completed"],
+    }
+
+    assert check_diuretic_output(record) == [DIURETIC_WARNING]
+
+
+def test_uo_is_matched_as_a_contained_abbreviation():
+    record = {
+        "medications_of_note": ["Torsemide 20 mg daily"],
+        "recent_events": ["Synthetic UOstatus reviewed"],
+    }
+
+    assert check_diuretic_output(record) == []
+
+
+@pytest.mark.parametrize(
+    ("filename", "expected"),
+    [
+        ("simple_patient.json", []),
+        ("chf_patient.json", []),
+        ("incomplete_patient.json", []),
+        ("complex_patient.json", []),
+    ],
+)
+def test_diuretic_rule_on_synthetic_patients(filename, expected):
+    assert check_diuretic_output(load_patient(DATA_DIR / filename)) == expected
+
+
 @pytest.mark.parametrize(
     ("filename", "expected"),
     [
@@ -400,7 +495,10 @@ def test_collect_warnings_lists_field_warnings_before_rule_warnings():
     record = {
         **MINIMAL_RECORD,
         "respiratory": {"oxygen": True},
-        "medications_of_note": ["Synthetic medication 1 mg IV once"],
+        "medications_of_note": [
+            "Synthetic medication 1 mg IV once",
+            "Furosemide 40 mg daily",
+        ],
         "monitoring": "Telemetry",
     }
 
@@ -414,6 +512,7 @@ def test_collect_warnings_lists_field_warnings_before_rule_warnings():
         MOBILITY_WARNING,
         CODE_STATUS_WARNING,
         TELEMETRY_WARNING,
+        DIURETIC_WARNING,
     ]
 
 
