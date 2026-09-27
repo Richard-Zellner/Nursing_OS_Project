@@ -20,7 +20,7 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 | P1 | NurseBench | M1 harness and items ready; Tracks 4, 2 and 5 drafted with specs, data, scorers and tools; Track 2 reply task and Track 5 checklist grader built; hostile-input hardening | review | Owner: set the four API keys (D-3 go), then the smoke and full runs; RN review of drafts | v0.1 Oct 31 |
 | P2 | Charge Assign | M1–M4 done (delegated reviews); M5 replanning and review packet ready | review | Owner: blinded charge-nurse review (M5-3), RN read | Feb 2027 |
 | P3 | Dysphagia Screen FHIR | M1–M4 done; HAPI CI green; v0.1.0 prepared | review | Owner: RN re-read, then tag v0.1.0 and go public | Mar 2027 |
-| P4 | Grounded Handoff | M1–M3 done; first model run (25 patients, 4 arms, `claude-sonnet-5` and `claude-haiku-4-5`), judge on 8 handoffs | in-progress | Judge the primary and loop-on arms for the headline; owner: support labels and ratings (packets ready) | Apr – mid-May 2027 |
+| P4 | Grounded Handoff | M1–M3 done; first model run (25 patients, 4 arms); judge on 13 patients per arm: loop off 6.45%, loop on 5.91%, paired difference −0.54 points [−2.98, +1.96] (judge not validated) | in-progress | Prompt v2 generation run (P4-Q055); owner: support labels and ratings (packets ready) | Apr – mid-May 2027 |
 | P5 | Stroke Abstraction Agent | M1–M3 and M5 done; real 60-chart runs with prompts 0.1 and 0.2 (element accuracy 773/782 and 775/782); real-data metrics (P5-M6-2b) | in-progress | Owner: blind abstraction, engine review, RN review; open-weights comparison (P5-M6-3) needs a local model server | mid-May – Jun 2027 |
 
 All five separate repositories now exist privately, are registered for project
