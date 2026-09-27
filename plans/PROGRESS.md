@@ -16,12 +16,12 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | v0.1.0 released 2026-09-26; M2 v0.2 rules (tickets 101–110) | in-progress | The loop was blocked 07:00–13:15 UTC 2026-09-27 (Codex sandbox refuses the Store `pwsh.exe`); fixed in `loops/supervisor.py` and reset; ticket 103 next; owner: Q-002/Q-003 | v0.2 ~Oct 9 |
+| P0 | Nurse Handoff | v0.1.0 released 2026-09-26; M2 v0.2 rules (tickets 101–110) | in-progress | Ticket 103 accepted at 15:00 UTC 2026-09-27, the first run after the loop fix; the loop continues with 104; owner: Q-002/Q-003 | v0.2 ~Oct 9 |
 | P1 | NurseBench | M1 harness and items ready; Tracks 4, 2 and 5 drafted with specs, data, scorers and tools; Track 2 reply task and Track 5 checklist grader built; hostile-input hardening | review | Owner: set the four API keys (D-3 go), then the smoke and full runs; RN review of drafts | v0.1 Oct 31 |
 | P2 | Charge Assign | M1–M4 done (delegated reviews); M5 replanning and review packet ready | review | Owner: blinded charge-nurse review (M5-3), RN read | Feb 2027 |
 | P3 | Dysphagia Screen FHIR | M1–M4 done; HAPI CI green; v0.1.0 prepared | review | Owner: RN re-read, then tag v0.1.0 and go public | Mar 2027 |
-| P4 | Grounded Handoff | M1–M3 done; first model run (25 patients, 4 arms); judge on 13 patients per arm: loop off 6.45%, loop on 5.91%, paired difference −0.54 points [−2.98, +1.96] (judge not validated) | in-progress | Prompt v2 generation run (P4-Q055); owner: support labels and ratings (packets ready) | Apr – mid-May 2027 |
-| P5 | Stroke Abstraction Agent | M1–M3 and M5 done; real 60-chart runs with prompts 0.1 and 0.2 (element accuracy 773/782 and 775/782); real-data metrics (P5-M6-2b) | in-progress | Owner: blind abstraction, engine review, RN review; open-weights comparison (P5-M6-3) needs a local model server | mid-May – Jun 2027 |
+| P4 | Grounded Handoff | M1–M3 done; model runs with prompts v1 and v2 (25 patients); judge on 13 patients per arm found no measurable loop effect (not validated); rating packet blinded | in-progress | Owner: support labels and ratings (packets ready); P4-Q056 (layer 2 reads fact-sheet wording strictly) | Apr – mid-May 2027 |
+| P5 | Stroke Abstraction Agent | M1–M3 and M5 done; three real 60-chart runs (prompt 0.1: 773/782 elements; prompt 0.2: 775/782 and 779/782; same-prompt runs agree on 99.1% of values); real-data metrics | in-progress | Owner: blind abstraction, engine review, RN review; open-weights comparison (P5-M6-3) when the local Qwen server can run | mid-May – Jun 2027 |
 
 All five separate repositories now exist privately, are registered for project
 recall, and have reviewed work pushed to `main`. Parallel technical work does
