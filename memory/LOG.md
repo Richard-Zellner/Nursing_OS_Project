@@ -65,3 +65,4 @@ Use the DATE line the loop runner puts at the top of the prompt. End the file wi
 - 2026-09-27 16:30 | P4-Q056 recorded (Claude Code, owner-requested; no ticket) | plans/SESSION-LOG.md, plans/PROGRESS.md, plans/RESUME.md, memory/LOG.md | verify: pass
 - 2026-09-27 16:45 | Session closed at the owner's request; end state and next steps recorded (Claude Code; no ticket) | plans/RESUME.md, plans/PROGRESS.md, plans/SESSION-LOG.md, memory/LOG.md | verify: pass
 - 2026-09-27 12:00 | Ticket 104 Rule 7 diuretic without output | nurse-handoff/nurse_handoff/rules.py, nurse-handoff/tests/test_rules.py, nurse-handoff/README.md, TASKS.md, memory/HANDOFF.md, memory/DECISIONS.md, memory/LOG.md | verify: pass
+- 2026-09-27 16:00 | Ticket 105 Rule 8 NPO conflict | nurse-handoff/nurse_handoff/rules.py, nurse-handoff/tests/test_rules.py, nurse-handoff/README.md, TASKS.md, memory/HANDOFF.md, memory/DECISIONS.md, memory/LOG.md | verify: pass

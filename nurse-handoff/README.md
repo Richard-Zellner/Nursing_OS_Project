@@ -177,6 +177,9 @@ Clinical consistency rules are deterministic and intentionally simple:
    entry contains `urine output` or `UO`,
    the warning `WARNING: Diuretic listed but no urine output documented this
    shift.` is added.
+8. **NPO conflict.** If `diet` contains `NPO` and any `pending_tasks` entry
+   contains `meal` or `tray` (case-insensitive), the warning
+   `WARNING: NPO diet documented but a meal-related task is pending.` is added.
 
 ## Running tests
 

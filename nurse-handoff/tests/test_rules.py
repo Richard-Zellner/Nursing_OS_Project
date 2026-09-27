@@ -9,6 +9,7 @@ from nurse_handoff.loader import load_patient
 from nurse_handoff.rules import (
     IV_ACCESS_WARNING,
     MOBILITY_WARNING,
+    NPO_CONFLICT_WARNING,
     OXYGEN_WARNING,
     CODE_STATUS_WARNING,
     DIURETIC_WARNING,
@@ -18,6 +19,7 @@ from nurse_handoff.rules import (
     check_important_fields,
     check_iv_access,
     check_mobility,
+    check_npo_conflict,
     check_oxygen,
     check_telemetry,
     collect_warnings,
@@ -397,6 +399,67 @@ def test_uo_is_matched_as_a_contained_abbreviation():
 )
 def test_diuretic_rule_on_synthetic_patients(filename, expected):
     assert check_diuretic_output(load_patient(DATA_DIR / filename)) == expected
+
+
+def test_npo_conflict_warning_uses_exact_rule_8_wording():
+    assert (
+        NPO_CONFLICT_WARNING
+        == "WARNING: NPO diet documented but a meal-related task is pending."
+    )
+
+
+@pytest.mark.parametrize(
+    ("diet", "pending_tasks"),
+    [
+        ("NPO", ["Confirm meal delivery"]),
+        ("Strict npo", ["Prepare a tray"]),
+        ("NPO after midnight", ["Review MEAL order", "Other task"]),
+    ],
+    ids=["meal-task", "tray-task-case-insensitive", "match-once"],
+)
+def test_npo_with_meal_related_pending_task_warns(diet, pending_tasks):
+    assert check_npo_conflict(
+        {"diet": diet, "pending_tasks": pending_tasks}
+    ) == [NPO_CONFLICT_WARNING]
+
+
+@pytest.mark.parametrize(
+    "record",
+    [
+        {},
+        {"diet": None, "pending_tasks": ["Prepare tray"]},
+        {"diet": "Regular diet", "pending_tasks": ["Prepare tray"]},
+        {"diet": "NPO", "pending_tasks": None},
+        {"diet": "NPO", "pending_tasks": []},
+        {"diet": "NPO", "pending_tasks": ["Obtain morning weight"]},
+        {"diet": "NPO", "pending_tasks": [None, 42]},
+    ],
+    ids=[
+        "both-absent",
+        "diet-null",
+        "non-npo-diet",
+        "tasks-null",
+        "tasks-empty",
+        "unrelated-task",
+        "non-string-tasks",
+    ],
+)
+def test_npo_rule_does_not_warn_without_both_conditions(record):
+    assert check_npo_conflict(record) == []
+
+
+def test_rule_8_follows_rule_7_in_collected_warnings():
+    record = {
+        **MINIMAL_RECORD,
+        "diet": "NPO",
+        "medications_of_note": ["Furosemide 40 mg daily"],
+        "pending_tasks": ["Arrange meal tray"],
+    }
+
+    assert collect_warnings(record)[-2:] == [
+        DIURETIC_WARNING,
+        NPO_CONFLICT_WARNING,
+    ]
 
 
 @pytest.mark.parametrize(

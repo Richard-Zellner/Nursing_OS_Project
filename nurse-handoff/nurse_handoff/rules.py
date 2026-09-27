@@ -21,6 +21,9 @@ TELEMETRY_WARNING = (
 DIURETIC_WARNING = (
     "WARNING: Diuretic listed but no urine output documented this shift."
 )
+NPO_CONFLICT_WARNING = (
+    "WARNING: NPO diet documented but a meal-related task is pending."
+)
 
 # Case-sensitive, word-bounded: "IV" and "IV/PO" match; "IVF", "IVIG",
 # "PIV", and "Ivabradine" do not.
@@ -120,6 +123,23 @@ def check_diuretic_output(record: dict) -> list[str]:
     return []
 
 
+def check_npo_conflict(record: dict) -> list[str]:
+    """Rule 8: flag meal-related pending tasks when the diet documents NPO."""
+    diet = record.get("diet")
+    if not isinstance(diet, str) or "npo" not in diet.casefold():
+        return []
+
+    pending_tasks = record.get("pending_tasks")
+    if not isinstance(pending_tasks, list):
+        return []
+    has_meal_related_task = any(
+        isinstance(task, str)
+        and ("meal" in task.casefold() or "tray" in task.casefold())
+        for task in pending_tasks
+    )
+    return [NPO_CONFLICT_WARNING] if has_meal_related_task else []
+
+
 def check_important_fields(record: dict) -> list[str]:
     """Return the glyph warning for each absent or null important field.
 
@@ -146,6 +166,7 @@ def collect_warnings(record: dict) -> list[str]:
         + check_code_status(record)
         + check_telemetry(record)
         + check_diuretic_output(record)
+        + check_npo_conflict(record)
     )
     field_warnings = check_important_fields(record)
     if MOBILITY_WARNING in rule_warnings:

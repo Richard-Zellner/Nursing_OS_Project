@@ -171,7 +171,7 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
   `furosemide`, `bumetanide`, or `torsemide` (case-insensitive) and no
   `recent_events` entry contains `urine output` or `UO` → `WARNING: Diuretic
   listed but no urine output documented this shift.` Blocked by: 101.
-- [ ] **105 Rule 8 NPO conflict.** If `diet` contains `NPO` and any
+- [x] **105 Rule 8 NPO conflict.** If `diet` contains `NPO` and any
   `pending_tasks` entry contains `meal` or `tray` → `WARNING: NPO diet
   documented but a meal-related task is pending.` Blocked by: 101.
 - [ ] **106 Rule 9 fall risk without mobility.** New optional field
