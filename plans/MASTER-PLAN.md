@@ -102,11 +102,11 @@ own.
 |---|---|---|---|
 | D-1 | Separate repos (overview) or hub subfolders (Sep 4 decision) | **Decided 2026-09-24 by the owner: separate repos**, with the hub kept as the index | Done |
 | D-2 | Treat Nurse Handoff as finished at v0.2, with its roadmap v0.3+ covered by P4 | Yes | At the P0 v0.2 release |
-| D-3 | NurseBench model roster and API budget cap | 3 frontier API models plus 1 open-weights model; cap set by the owner (the blueprint estimated about $50) | Before the P1 M1 runs (~Oct 25) |
+| D-3 | NurseBench model roster and API budget cap | **Recommended 2026-09-27 as a delegated agent decision:** the roster and a USD 100 cap in `nursebench/config/runs.toml`; the owner's four API keys are the go | Before the P1 M1 runs (~Oct 25) |
 | D-4 | Repo visibility during development | **Decided 2026-09-24 by the owner: private until ready**, then public at release (the résumé rule only needs v0.1 public) | Done |
 | D-5 | Enroll new repos in the unattended loop | No. Use interactive agent sessions. Enrolling a repo needs owner-authorized controller work. | Any time |
 | D-6 | Confirm the CAHIMS and NCA-GENL exam dates | Keep the overview's dates | Now |
-| D-7 | P5 orchestration: Claude Agent SDK, `claude -p` scripts, or Java (LangChain4j / Spring AI) | Decide at the P5 M3 start | May 2027 |
+| D-7 | P5 orchestration: Claude Agent SDK, `claude -p` scripts, or Java (LangChain4j / Spring AI) | **Decided 2026-09-26 as a delegated agent decision: the `claude-cli` extractor**; real 60-chart runs done | Done |
 | D-8 | Build later projects alongside NurseBench instead of in sequence | **Decided 2026-09-24 by the owner: yes, parallel work on all projects.** Release targets are unchanged. | Done |
 | D-9 | Who drafts clinical content | **Decided 2026-09-24 by the owner: agents draft it**; the owner signs off as RN before each release | Done |
 
@@ -146,7 +146,7 @@ These come from the overview's ground rules.
 | Schedule slips during exam months | P1 M1 not code-complete by Oct 24 | Use the P1 scope-cut ladder. v0.1 ships smaller rather than late. |
 | LLM grader disagrees with RN labels | kappa below the owner's threshold | Revise the grader prompt once, then report human-scored results for that metric and state the limitation |
 | API cost overrun | The 20-item smoke run projects over the cap | Fewer models or items; use the local open-weights model for iteration |
-| Tooling gaps on RGB | Docker (now a fallback: owner decision 2026-09-25 runs HAPI on the portable JDK) and optional gh are missing; portable Java/Maven and project-local SUSHI were verified Sep 24 | Install remaining tools when their integration task is ready ([RUNBOOK §2](RUNBOOK.md#2-prerequisites)) |
+| Tooling gaps on RGB | Docker is missing (only a fallback: HAPI runs on the portable JDK, owner decision 2026-09-25); gh, portable Java/Maven and project-local SUSHI are in place | Install Docker only if the Java route fails ([RUNBOOK §2](RUNBOOK.md#2-prerequisites)) |
 | RAM contention (32 GB; Qwen runs manually) | HAPI fails while Qwen is loaded | Stop Qwen while HAPI runs, cap the HAPI heap, and check free memory first |
 | Source or standard changes (Specs Manual, US Core, Timefold 2.x) | Newer version at milestone start | Each plan's first milestone includes a "verify current version" task |
 | Employer named or implied in a public file | A release-time search finds the name or an abbreviation | Remove it before the repo goes public. Outside work is permitted off shift (owner, 2026-09-24). |
