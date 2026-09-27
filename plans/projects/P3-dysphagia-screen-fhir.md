@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Repo | `dysphagia-screen-fhir`, a new repo at `C:\Users\14087\Desktop\dysphagia-screen-fhir` |
+| Repo | `dysphagia-screen-fhir`, a new repo at `%USERPROFILE%\Desktop\dysphagia-screen-fhir` |
 | Design authority | [docs/portfolio/dysphagia-screen-fhir.md](../../docs/portfolio/dysphagia-screen-fhir.md) |
 | Stack | FHIR R4; FSH compiled with SUSHI (Node); CQL with cql-to-elm (Java/Maven); HAPI FHIR JPA server (run on the portable JDK 21 locally; Docker image in CI) with Clinical Reasoning `$apply`; LHC-Forms |
 | v0.1 | after M4: `$apply` on local HAPI returns the right CarePlan for every fixture |

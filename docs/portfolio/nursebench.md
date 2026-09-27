@@ -168,4 +168,4 @@ v0.1 (Track 1) by end of October is the résumé gate. The rest fits around NCA-
 - [ ] M3 Track 2 escalation red-team (starts after CAHIMS) — by Dec 31, 2026
 - [ ] M4 Track 5 + **v1.0**: full results table, failure galleries, write-up — by Jan 31, 2027
 
-**Résumé line, to fill in from real runs:** "Built NurseBench, an open-source benchmark of \[n\] RN-authored items across 4 tracks, evaluating \[k\] LLMs on nursing protocol math, NIHSS scoring, post-discharge escalation and plain-language fidelity; found \[x\]% critical-error rate on \[track\] and \[finding\]."
+**Résumé line, to fill in from real runs:** "Built NurseBench, an open-source benchmark of \[n\] RN-reviewed items across 4 tracks, evaluating \[k\] LLMs on nursing protocol math, NIHSS scoring, post-discharge escalation and plain-language fidelity; found \[x\]% critical-error rate on \[track\] and \[finding\]."

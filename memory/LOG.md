@@ -51,3 +51,4 @@ Use the DATE line the loop runner puts at the top of the prompt. End the file wi
 - 2026-09-26 21:10 | Owner delegation recorded (Claude Code; no ticket) | memory/DECISIONS.md, memory/LOG.md | verify: pass
 - 2026-09-27 06:00 | Delegated round recorded (Claude Code, owner-requested; no ticket) | plans/PROGRESS.md, plans/RESUME.md, memory/LOG.md; P1-P5 repos committed separately | verify: pass
 - 2026-09-27 06:30 | Hub docs readability pass (Claude Code, owner-requested; no ticket) | CONTINUE.md, plans/RESUME.md, plans/PROGRESS.md, plans/SESSION-LOG.md, plans/README.md, plans/RUNBOOK.md, memory/LOG.md | verify: pass
+- 2026-09-27 07:40 | Public-hub hygiene from the portfolio audit (Claude Code, owner-requested; no ticket) | docs/portfolio/overview.md, docs/portfolio/nursebench.md, docs/portfolio/stroke-abstraction-agent.md, README.md, CONTINUE.md, plans/RESUME.md, plans/RUNBOOK.md, plans/projects/*.md, LICENSE, DISCLAIMER.md, memory/LOG.md | verify: pass

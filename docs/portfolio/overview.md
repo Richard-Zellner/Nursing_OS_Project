@@ -60,12 +60,12 @@ Every repo ships with:
 
 ## What each repo proves
 
-Each repo targets a different hiring signal, and together they cover the role families on your job scan.
+Each repo shows a different skill a clinical-informatics or clinical-AI role asks for.
 
-| Repo | Hiring signal | Role types it maps to (examples from roles you've tracked) |
+| Repo | What it demonstrates | Role family |
 | --- | --- | --- |
-| NurseBench | Clinical AI evaluation: RN-authored gold data, rubrics, critical-error taxonomies | AI clinical safety / validation / testing (Hippocratic AI AI Clinical Solutions Specialist, OutcomesAI Clinical Testing Manager, SmarterDx Clinical AI Data Specialist) |
-| Optimizer (11) | Java + operations research on a real charge-nurse problem | Inpatient-flow implementation (LeanTaaS iQueue roles) |
-| Dysphagia CDS (7) | FHIR Questionnaire, CQL, clinical decision support logic, terminology | Clinical informatics analyst / informaticist (hospital IT, Aledade, Verantos) |
-| Handoff (6) | SMART on FHIR + grounded, verifiable LLM output | Clinical AI implementation / product (Abridge, Knowtex ambient-AI rollouts) |
-| Stroke agent (13) | Agentic abstraction with evidence spans + human review | Quality / registry AI (Layer Health, SmarterDx quality roles) |
+| NurseBench | Clinical AI evaluation: RN-reviewed gold data, rubrics, critical-error taxonomies | AI clinical safety, validation and testing |
+| Optimizer (11) | Java and operations research on a real charge-nurse problem | Inpatient-flow and operations |
+| Dysphagia CDS (7) | FHIR Questionnaire, CQL, clinical decision support logic, terminology | Clinical informatics and CDS |
+| Handoff (6) | SMART on FHIR and grounded, verifiable LLM output | Clinical AI implementation and product |
+| Stroke agent (13) | LLM abstraction with evidence spans and human review | Quality and registry AI |

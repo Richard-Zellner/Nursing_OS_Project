@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Repo | `stroke-abstraction-agent`, a new repo at `C:\Users\14087\Desktop\stroke-abstraction-agent` |
+| Repo | `stroke-abstraction-agent`, a new repo at `%USERPROFILE%\Desktop\stroke-abstraction-agent` |
 | Design authority | [docs/portfolio/stroke-abstraction-agent.md](../../docs/portfolio/stroke-abstraction-agent.md) |
 | Stack | Python, with orchestration chosen at M3 (D-7); JSON-schema structured outputs; one local open-weights model; a small review-queue web page |
 | Measures (v1) | STK-2, STK-5, STK-6, STK-10 (Joint Commission) plus AHASTR8 (GWTG dysphagia) |

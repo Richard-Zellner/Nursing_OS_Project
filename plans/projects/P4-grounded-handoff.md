@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Repo | `grounded-handoff`, a new repo at `C:\Users\14087\Desktop\grounded-handoff` |
+| Repo | `grounded-handoff`, a new repo at `%USERPROFILE%\Desktop\grounded-handoff` |
 | Design authority | [docs/portfolio/grounded-handoff.md](../../docs/portfolio/grounded-handoff.md) |
 | Stack | Local HAPI (from P3); Synthea v4 (Java); Spring Boot backend with the HAPI FHIR client; static frontend using fhirclient.js; SMART Health IT launcher; LLM API |
 | v0.1 | after M4: working app with citations, all three verifier layers and the omission checklist |

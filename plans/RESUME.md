@@ -13,8 +13,8 @@ and current: replace it, don't append to it.
 | P1 NurseBench | Track 1 harness and items; Track 4, 2 and 5 specs, data, scorers and tools; recommended D-3 roster and cap | 20-item smoke run, then the full run | the four API keys (the D-3 go), Q-50, Q-51, RN review, grader labels, PEMAT-P |
 | P2 Charge Assign | solver, baselines, benchmark results, floor map, reasons, replanning, review packet | polish | the blinded charge-nurse review, RN read |
 | P3 Dysphagia | spec 0.2, CQL, HAPI `$apply` (178 tests), HAPI CI green; v0.1.0 prepared | polish | RN re-read, dentures question, then tag v0.1.0 and go public |
-| P4 Grounded Handoff | FHIR load (US Core 0 errors), fact sheet, verifier layers 1–2, view, SMART launch, export, harness | model adapter, then a real generation run | labels and ratings, RN review |
-| P5 Stroke Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor | full 60-case run (approved 2026-09-27) | P5-Q035 (GWTG login), RN review, blind abstraction |
+| P4 Grounded Handoff | FHIR load (US Core 0 errors), fact sheet, verifier layers 1-2, view, SMART launch, export, harness, isolated claude-cli model adapter | real generation and judge run (in progress 2026-09-27) | labels and ratings, RN review |
+| P5 Stroke Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor; real 60-case run done (98.8% element accuracy, 99.1% measure agreement) | real-data metrics, review-page usability | P5-Q035 (GWTG login), P5-Q036, RN review, blind abstraction |
 
 The owner's delegation (hub DECISIONS, 2026-09-26 and 2026-09-27) lets agents answer questions and give approvals as
 "delegated agent decisions". It never covers:
@@ -28,12 +28,12 @@ The owner's own to-do list is a private checklist on the owner's Desktop.
 ## Start a session
 
 1. Say **"Resume the Nursing OS portfolio from plans/RESUME.md."**
-2. Boot: `node C:/Users/14087/.agent-memory/project-system/project-memory.cjs boot "resume nursing os portfolio" --owner --json`
+2. Boot: `node ~/.agent-memory/project-system/project-memory.cjs boot "resume nursing os portfolio" --owner --json`
 3. Check that all six repos are clean and synced:
    ```bash
-   cd C:/Users/14087/Desktop && for r in Nursing_OS_Project nursebench charge-assign dysphagia-screen-fhir grounded-handoff stroke-abstraction-agent; do git -C $r fetch -q origin; echo "$r dirty=$(git -C $r status --porcelain | wc -l) head=$(git -C $r rev-parse --short HEAD) remote=$(git -C $r rev-parse --short origin/main)"; done
+   cd ~/Desktop && for r in Nursing_OS_Project nursebench charge-assign dysphagia-screen-fhir grounded-handoff stroke-abstraction-agent; do git -C $r fetch -q origin; echo "$r dirty=$(git -C $r status --porcelain | wc -l) head=$(git -C $r rev-parse --short HEAD) remote=$(git -C $r rev-parse --short origin/main)"; done
    ```
-4. Check the loop with `powershell -NoProfile -File C:/Users/14087/Desktop/loops/controller.ps1 status`, and don't edit
+4. Check the loop with `powershell -NoProfile -File "$HOME\Desktop\loops\controller.ps1" status` (PowerShell), and don't edit
    the hub during a run. The controller runs every 4 hours on the hour (03, 07, 11, 15, 19 and 23 UTC).
 5. Check CI with `gh run list --repo Richard-Zellner/<repo>`. `gh` is installed per-user and logged in.
 6. Apply any new owner answers in each repo's `memory/QUESTIONS.md` first.
@@ -59,7 +59,7 @@ The owner's own to-do list is a private checklist on the owner's Desktop.
 |---|---|
 | Hub | `powershell -NoProfile -ExecutionPolicy Bypass -File tests/verify.ps1` |
 | P1 | `uv sync --locked`; `uv run --locked pytest -q` (again with `private/t2_escalation/` hidden); `uv run --locked python -m nursebench.validate`; hello_world mock eval with `scripts/check_mock_eval.py` |
-| P2, P4 | `$env:JAVA_HOME='C:\Users\14087\.local\share\nursing-os-tools\jdk21\jdk-21.0.12.1+1'; $env:Path="$env:JAVA_HOME\bin;$env:Path"; .\mvnw.cmd -B -ntp verify` |
+| P2, P4 | `$env:JAVA_HOME="$env:USERPROFILE\.local\share\nursing-os-tools\jdk21\jdk-21.0.12.1+1"; $env:Path="$env:JAVA_HOME\bin;$env:Path"; .\mvnw.cmd -B -ntp verify` |
 | P3 | JAVA_HOME as above; `npm ci --ignore-scripts`; `npm run verify`; with HAPI, `.\scripts\hapi\hapi.ps1 test` |
 | P4 with servers | `hapi.ps1 start`; `smart.ps1 start`; `mvnw verify "-Dgroundedhandoff.hapi.required=true"`; stop both |
 | P5 | `uv sync --locked`; `uv run --locked pytest -q`; `verify-evidence tests/fixtures/mechanical-valid.json`; `packets --check`; `extractor_fixtures --check` |
@@ -78,7 +78,7 @@ The owner's own to-do list is a private checklist on the owner's Desktop.
 
 - **Evidence:** results come only from real runs, with the model ID and date. Mock and smoke runs never go in `results/`.
 - **Sources:** public domain or properly licensed only. No A.D.A.M. encyclopedia content (NurseBench Q-29).
-- **Held-out data:** it stays in Git-ignored `private/`, backed up in `C:\Users\14087\Documents\Nursing-OS-backups\`.
+- **Held-out data:** it stays in Git-ignored `private/`, backed up in `%USERPROFILE%\Documents\Nursing-OS-backups\`.
 - **Hub edits:** commit and push them promptly, between loop runs. Hub files use LF line endings.
 - **The employer is never named** (G0).
 

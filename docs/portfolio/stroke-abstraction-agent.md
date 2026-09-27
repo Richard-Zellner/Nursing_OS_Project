@@ -102,4 +102,4 @@ The router is the lever: raising its confidence threshold trades automation for 
 - "Show Your Work" (2026): verbatim-evidence requirements for biomedical extraction.
 - Layer Health: industry proof that the category is real.
 
-**Résumé line:** "Built a multi-agent LLM pipeline that abstracts Joint Commission and GWTG stroke measures from synthetic charts with verbatim evidence spans and a human-review queue; \[x\]% element accuracy, \[y\]% of cases auto-closed at \[z\]% accuracy, κ = \[k\] vs RN abstraction."
+**Résumé line:** "Built an LLM extraction pipeline that abstracts Joint Commission and GWTG stroke measures from synthetic charts with verbatim evidence spans and a human-review queue; \[x\]% element accuracy, \[y\]% of cases auto-closed at \[z\]% accuracy, κ = \[k\] vs RN abstraction."

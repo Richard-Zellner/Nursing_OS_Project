@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Repo | `charge-assign`, a new repo at `C:\Users\14087\Desktop\charge-assign` |
+| Repo | `charge-assign`, a new repo at `%USERPROFILE%\Desktop\charge-assign` |
 | Design authority | [docs/portfolio/charge-assign.md](../../docs/portfolio/charge-assign.md) |
 | Stack | JDK 21, Maven, Timefold Solver 2.x Community (Apache-2.0), started from the timefold-quickstarts Employee Scheduling example |
 | v0.1 | after M3: solver, baselines and a benchmark results table |

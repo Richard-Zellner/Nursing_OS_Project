@@ -79,7 +79,7 @@ Use this for every session, owner or agent.
 
 **Start**
 1. Resolve the project:
-   `node C:/Users/14087/.agent-memory/project-system/project-memory.cjs boot "<task>" --owner --json`
+   `node ~/.agent-memory/project-system/project-memory.cjs boot "<task>" --owner --json`
    (owner sessions only; other sessions omit `--owner`).
 2. Read [RESUME.md](RESUME.md) (the current continue-from-here plan), then
    [PROGRESS.md](PROGRESS.md), then the project's plan in `projects/`,
@@ -116,7 +116,7 @@ agent can run it once the owner says to.
 1. **Owner:** create the GitHub repo as **private** (D-4; public only at release).
    D-1 is decided: separate repos. Create the GitHub repo
    `Richard-Zellner/<repo>` with no template files.
-2. Clone it to `C:\Users\14087\Desktop\<repo>`.
+2. Clone it to `%USERPROFILE%\Desktop\<repo>`.
 3. **Agent:** scaffold from [templates/repo-scaffold.md](templates/repo-scaffold.md),
    including the repo `AGENTS.md`, `TASKS.md`, `memory/` files and CI.
 4. **Agent:** copy the plan's milestone tasks into the repo `TASKS.md`, using
@@ -125,7 +125,7 @@ agent can run it once the owner says to.
 5. Configure a repository-local Git identity (the hub uses the GitHub
    noreply address). Make the first commit and push.
 6. Register the repo so later sessions resolve it. Follow the "Start a new
-   project" steps in `C:/Users/14087/AGENTS.md`: a source brief, then a
+   project" steps in `~/AGENTS.md`: a source brief, then a
    registry entry with purpose, aliases, path and a pointer back to this hub
    (`nursing-os`).
 7. Add a row to the hub [README](../README.md) projects table (status "in
@@ -159,7 +159,7 @@ clinical spec (OWNER) → build (AGENT) → verify (tests + CI) → owner review
 | A P0 loop ticket | nothing extra; the loop updates `TASKS.md` and `memory/LOG.md` |
 
 A continuity receipt can also be added with the project-memory `handoff`
-command (see `C:/Users/14087/.agent-memory/project-system/README.md`).
+command (see `~/.agent-memory/project-system/README.md`).
 
 ## 7. The hub, the loop and Git
 
@@ -173,7 +173,7 @@ The hub is loop-driven and auto-pushed, which puts constraints on edits here:
   `tests/verify.ps1`, `.gitignore`, `.gitattributes`, the three
   `docs/*` specs, the rules text of `TASKS.md`, and
   `memory/ACTIVE-DECISIONS.md` (owner only).
-- Controller commands, from `C:\Users\14087\Desktop\loops`:
+- Controller commands, from `%USERPROFILE%\Desktop\loops`:
   `powershell -NoProfile -File controller.ps1 status` and
   `controller.ps1 git-sync --project Nursing_OS_Project`.
 - The hub is **public**. Anything written in `plans/` becomes public when it

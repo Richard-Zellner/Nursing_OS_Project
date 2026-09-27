@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Repo | `nursebench`, a new repo at `C:\Users\14087\Desktop\nursebench` (D-1: separate repos) |
+| Repo | `nursebench`, a new repo at `%USERPROFILE%\Desktop\nursebench` (D-1: separate repos) |
 | Design authority | [docs/portfolio/nursebench.md](../../docs/portfolio/nursebench.md) |
 | Stack | Python 3.11, [Inspect](https://inspect.aisi.org.uk/) (`inspect_ai`), pytest, uv; textstat for Track 5 |
 | Finish line | v1.0.0: all four tracks, full results table, failure galleries, methodology, write-up |

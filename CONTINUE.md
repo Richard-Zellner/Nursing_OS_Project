@@ -15,7 +15,7 @@ The agent then:
 
 ## Projects
 
-All folders are on the Desktop (`C:\Users\14087\Desktop\`). GitHub account: `Richard-Zellner`.
+All folders are on the Desktop (`%USERPROFILE%\Desktop\`). GitHub account: `Richard-Zellner`.
 
 | ID | Project | Folder | Visibility | Plan |
 |---|---|---|---|---|
@@ -65,7 +65,7 @@ Details: [memory/DECISIONS.md](memory/DECISIONS.md).
 
 - **On PATH:** Python 3.11, uv, Node 24, Git and the GitHub CLI (`gh`, logged in).
 - **Portable JDK 21 and Maven**, not on PATH. For the Java repos, run
-  `$env:JAVA_HOME='C:\Users\14087\.local\share\nursing-os-tools\jdk21\jdk-21.0.12.1+1'; $env:Path="$env:JAVA_HOME\bin;$env:Path"`.
+  `$env:JAVA_HOME="$env:USERPROFILE\.local\share\nursing-os-tools\jdk21\jdk-21.0.12.1+1"; $env:Path="$env:JAVA_HOME\bin;$env:Path"`.
 - **HAPI FHIR** runs on the portable JDK (P3 on port 8080, P4 on 8082) and needs at least 6 GiB of free RAM. Docker
   Desktop is only a fallback.
 - **Dysphagia form:** `npm run site` in `dysphagia-screen-fhir`, then open http://127.0.0.1:8123/site/.
