@@ -49,3 +49,4 @@ Use the DATE line the loop runner puts at the top of the prompt. End the file wi
 - 2026-09-26 16:00 | Ticket 101 Version bump | nurse-handoff/nurse_handoff/__init__.py, nurse-handoff/README.md, nurse-handoff/tests/test_readme.py, TASKS.md, memory/HANDOFF.md, memory/LOG.md; pytest 246 passed and tests/verify.ps1 passed | verify: pass
 - 2026-09-26 20:00 | Ticket 102 Rule 5 code status | nurse-handoff/nurse_handoff/rules.py, nurse-handoff/tests/test_rules.py, nurse-handoff/tests/test_cli.py, nurse-handoff/README.md, nurse-handoff/tests/test_readme.py, TASKS.md, memory/HANDOFF.md, memory/LOG.md; pytest 251 passed and tests/verify.ps1 passed | verify: pass
 - 2026-09-26 21:10 | Owner delegation recorded (Claude Code; no ticket) | memory/DECISIONS.md, memory/LOG.md | verify: pass
+- 2026-09-27 06:00 | Delegated round recorded (Claude Code, owner-requested; no ticket) | plans/PROGRESS.md, plans/RESUME.md, memory/LOG.md; P1-P5 repos committed separately | verify: pass

@@ -19,11 +19,15 @@ small set of agent work that does not.
 | ID | Last commit | Built | Next agent task | Waiting on the owner |
 |---|---|---|---|---|
 | P0 Nurse Handoff | `e2ecbe4` | v0.1 build complete (tickets 001–015); `DONE` present; controller baseline and trusted acceptance PASS (2026-09-26 07:00 UTC) | none until v0.2 | **G1 release**; Q-002 |
-| P1 NurseBench | `db23296` | Track 1 harness plus pre-run check and cost projection; Track 4 spec draft, rules, sampler, scorer; Track 2 spec draft, private scenarios, perturbations, triage metrics, kappa gate; Track 5 tools; v0.1 README drafts | none unblocked | D-3 (fill `config/runs.toml` from the template), API keys, M1-5, calculator sign-off, Q-10–Q-48, README draft approval |
-| P2 Charge Assign | `f5bbd5c` | M1–M3 built with benchmark results; floor map (now port 8084), reasons, replanning; blinded review packet generator; README draft | none unblocked | M1-4, M2-2, M3-4 results and limitations, M4-3 wording, README draft approval, Q015–Q036 |
-| P3 Dysphagia | `cf47395` | M1–M4 built; manual "HAPI $apply fixtures" workflow; README and CHANGELOG drafts | none (P3-M5-1 ticks after one green manual run) | run the workflow once (Actions, route `java`), M2-4 wording, CQL and action wording, README approval, Q019–Q028, v0.1.0 release |
-| P4 Grounded Handoff | `6abcd99` | M1–M2 done; fact sheet; verifiers 1–2; omissions; citation view; Provenance export; evaluation harness; README draft | none unblocked | Q021–Q047, doc and README reviews, model and budget |
-| P5 Stroke Agent | `0e9877c` | packets C01–C20, engine, router, review page, metric code, end-to-end runner with a pluggable extractor, extractor contract, README draft | none unblocked | **P5-M2-4 packet review**, M4-2 engine review, D-7 (implement against docs/extractor-contract.md), price table, README approval, Q016–Q033 |
+| P1 NurseBench | `43702e8` | Track 1 harness, 30 drafted hand items, audited calculators, recommended D-3 roster and cap; Track 4 spec, rules, sampler, scorer, 20 narratives; Track 2 spec, scenarios (30 public, 10 held out), perturbations, metrics, kappa gate, grader prompt; Track 5 spec, tools, 40 snapshots | smoke run after the owner sets keys | API keys (D-3 go), Q-50, Q-51, RN review of all drafts, grader labels, PEMAT-P |
+| P2 Charge Assign | `2432920` | M1–M5-2 built; delegated reviews; README results and limitations; accessible floor map; packet 9353-ccde-9545 | none | blinded charge-nurse review (M5-3), RN read of amended lines, own-words README section |
+| P3 Dysphagia | `cba1a6d` | spec 0.2, CQL, HAPI `$apply` 178 tests, HAPI CI green on both routes, v0.1.0 prepared | none | RN re-read of spec 0.2 and wording, dentures question, then tag v0.1.0 and go public |
+| P4 Grounded Handoff | `7352ae1` | M1–M2 done; US Core validation 0 errors; verifiers, omissions, view, export, harness, generation and judge code (no model calls) | model runs once authorized | authorize model calls, labels and ratings, RN review of amendment 1 |
+| P5 Stroke Agent | `5ccb60d` | 60 cases with agent validation, engine, router, review page, metrics, pipeline, D-7 claude-cli extractor (1-chart smoke) | full extraction run once authorized | authorize the run and its mode, P5-Q035 (GWTG login), RN review, blind abstraction |
+
+**2026-09-27:** the owner's delegation (hub DECISIONS `d183355`) closed most questions as delegated agent decisions.
+The owner's remaining items are in a private checklist on the owner's Desktop. Weekly usage was about 87% at the end
+of the round.
 
 ## Start of the next session
 
