@@ -10,6 +10,7 @@ from nurse_handoff.rules import (
     IV_ACCESS_WARNING,
     MOBILITY_WARNING,
     OXYGEN_WARNING,
+    TELEMETRY_WARNING,
 )
 from nurse_handoff.schema import IMPORTANT_FIELDS
 from nurse_handoff import __version__
@@ -89,6 +90,7 @@ def test_readme_lists_every_warning_verbatim():
         IV_ACCESS_WARNING,
         MOBILITY_WARNING,
         CODE_STATUS_WARNING,
+        TELEMETRY_WARNING,
     ):
         assert warning in README
 

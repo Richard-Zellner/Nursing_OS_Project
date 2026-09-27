@@ -168,6 +168,10 @@ Clinical consistency rules are deterministic and intentionally simple:
 5. **Code status.** If `code_status` is missing, the warning
    `WARNING: Code status not documented; confirm before handoff.` is added
    after the important-field warning. Both warnings are intentionally shown.
+6. **Telemetry without rhythm.** If `monitoring` contains the
+   case-insensitive, word-bounded token `telemetry` and `cardiac` is absent or
+   `null`, the warning
+   `WARNING: Telemetry documented but no cardiac rhythm documented.` is added.
 
 ## Running tests
 

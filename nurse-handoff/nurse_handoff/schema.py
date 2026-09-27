@@ -1,4 +1,4 @@
-"""Field metadata for the v0.1 synthetic patient record."""
+"""Field metadata for the synthetic patient record."""
 
 # Keep these in the order used by PATIENT-SCHEMA.md and the handoff output.
 REQUIRED_FIELDS = ["patient_id", "age", "primary_problem"]
@@ -14,7 +14,13 @@ IMPORTANT_FIELDS = {
     "pending_tasks": "⚠ Pending tasks not documented",
 }
 
-OPTIONAL_FIELDS = ["cardiac", "diet", "medications_of_note", "recent_events"]
+OPTIONAL_FIELDS = [
+    "cardiac",
+    "diet",
+    "medications_of_note",
+    "recent_events",
+    "monitoring",
+]
 
 # Each JSON field path maps to its expected Python type. All fields may be
 # absent or null; callers should skip type checks for those values. A tuple
@@ -36,4 +42,5 @@ FIELD_TYPES = {
     "medications_of_note": list,
     "recent_events": list,
     "pending_tasks": list,
+    "monitoring": str,
 }

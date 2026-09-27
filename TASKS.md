@@ -163,7 +163,7 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
   `WARNING: Code status not documented; confirm before handoff.` in addition
   to the important-field glyph line (do not de-duplicate this one; it is
   intentionally loud). Blocked by: 101.
-- [ ] **103 Rule 6 telemetry without rhythm.** New optional field
+- [x] **103 Rule 6 telemetry without rhythm.** New optional field
   `monitoring` (string). If it contains the token `telemetry` and `cardiac`
   is missing → `WARNING: Telemetry documented but no cardiac rhythm
   documented.` Update `PATIENT-SCHEMA.md`. Blocked by: 101.

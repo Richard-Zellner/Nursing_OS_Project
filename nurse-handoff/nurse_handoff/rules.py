@@ -15,10 +15,14 @@ MOBILITY_WARNING = "WARNING: Mobility status not documented."
 CODE_STATUS_WARNING = (
     "WARNING: Code status not documented; confirm before handoff."
 )
+TELEMETRY_WARNING = (
+    "WARNING: Telemetry documented but no cardiac rhythm documented."
+)
 
 # Case-sensitive, word-bounded: "IV" and "IV/PO" match; "IVF", "IVIG",
 # "PIV", and "Ivabradine" do not.
 _IV_TOKEN = re.compile(r"\bIV\b")
+_TELEMETRY_TOKEN = re.compile(r"\btelemetry\b", re.IGNORECASE)
 
 
 def check_oxygen(record: dict) -> list[str]:
@@ -73,6 +77,16 @@ def check_code_status(record: dict) -> list[str]:
     return []
 
 
+def check_telemetry(record: dict) -> list[str]:
+    """Rule 6: telemetry without a documented cardiac rhythm gets a warning."""
+    monitoring = record.get("monitoring")
+    if not isinstance(monitoring, str) or not _TELEMETRY_TOKEN.search(monitoring):
+        return []
+    if record.get("cardiac") is None:
+        return [TELEMETRY_WARNING]
+    return []
+
+
 def check_important_fields(record: dict) -> list[str]:
     """Return the glyph warning for each absent or null important field.
 
@@ -97,6 +111,7 @@ def collect_warnings(record: dict) -> list[str]:
         + check_iv_access(record)
         + check_mobility(record)
         + check_code_status(record)
+        + check_telemetry(record)
     )
     field_warnings = check_important_fields(record)
     if MOBILITY_WARNING in rule_warnings:

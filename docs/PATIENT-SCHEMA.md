@@ -50,3 +50,12 @@ documented fact; `oxygen` absent is an unknown. Keep them distinct in code
 A field of the wrong type (for example `age: "seventy"`, `access: "20G"`)
 is a validation ERROR in v0.1: `ERROR: age must be an integer`. Do not
 coerce.
+
+## v0.2 field extensions
+
+These optional fields extend the v0.1 schema. Absent or `null` values remain
+not documented.
+
+| Field | Type | Class | `null`/absent means | Use |
+|---|---|---|---|---|
+| `monitoring` | string | optional | not documented | Rule 6 checks for telemetry when cardiac rhythm is not documented |

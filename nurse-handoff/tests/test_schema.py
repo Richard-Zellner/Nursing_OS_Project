@@ -24,7 +24,13 @@ def test_important_fields_and_warnings_match_patient_schema():
 
 
 def test_optional_fields_and_expected_types_are_documented():
-    assert OPTIONAL_FIELDS == ["cardiac", "diet", "medications_of_note", "recent_events"]
+    assert OPTIONAL_FIELDS == [
+        "cardiac",
+        "diet",
+        "medications_of_note",
+        "recent_events",
+        "monitoring",
+    ]
     assert FIELD_TYPES == {
         "patient_id": str,
         "age": int,
@@ -42,4 +48,5 @@ def test_optional_fields_and_expected_types_are_documented():
         "medications_of_note": list,
         "recent_events": list,
         "pending_tasks": list,
+        "monitoring": str,
     }

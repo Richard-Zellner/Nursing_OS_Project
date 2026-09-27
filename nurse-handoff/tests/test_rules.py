@@ -11,11 +11,13 @@ from nurse_handoff.rules import (
     MOBILITY_WARNING,
     OXYGEN_WARNING,
     CODE_STATUS_WARNING,
+    TELEMETRY_WARNING,
     check_code_status,
     check_important_fields,
     check_iv_access,
     check_mobility,
     check_oxygen,
+    check_telemetry,
     collect_warnings,
 )
 
@@ -257,6 +259,51 @@ def test_documented_code_status_does_not_emit_rule_5_warning():
     assert check_code_status({"code_status": "Full Code"}) == []
 
 
+def test_telemetry_warning_uses_exact_rule_6_wording():
+    assert (
+        TELEMETRY_WARNING
+        == "WARNING: Telemetry documented but no cardiac rhythm documented."
+    )
+
+
+@pytest.mark.parametrize(
+    "monitoring",
+    ["telemetry", "Continuous telemetry monitoring", "Telemetry"],
+    ids=["exact-token", "in-sentence", "capitalized-token"],
+)
+def test_telemetry_without_cardiac_rhythm_warns(monitoring):
+    assert check_telemetry({"monitoring": monitoring}) == [TELEMETRY_WARNING]
+
+
+def test_null_cardiac_rhythm_with_telemetry_warns():
+    assert check_telemetry(
+        {"monitoring": "Telemetry monitoring", "cardiac": None}
+    ) == [TELEMETRY_WARNING]
+
+
+@pytest.mark.parametrize(
+    "monitoring",
+    ["telemetric monitoring", "nontelemetry monitoring"],
+    ids=["longer-word", "embedded-token"],
+)
+def test_telemetry_rule_requires_a_whole_token(monitoring):
+    assert check_telemetry({"monitoring": monitoring}) == []
+
+
+@pytest.mark.parametrize(
+    "record",
+    [
+        {},
+        {"monitoring": None},
+        {"monitoring": "continuous cardiac monitoring"},
+        {"monitoring": "Telemetry monitoring", "cardiac": "Normal sinus rhythm"},
+    ],
+    ids=["monitoring-absent", "monitoring-null", "other-monitoring", "rhythm-documented"],
+)
+def test_telemetry_rule_does_not_warn_without_both_conditions(record):
+    assert check_telemetry(record) == []
+
+
 @pytest.mark.parametrize(
     ("filename", "expected"),
     [
@@ -354,6 +401,7 @@ def test_collect_warnings_lists_field_warnings_before_rule_warnings():
         **MINIMAL_RECORD,
         "respiratory": {"oxygen": True},
         "medications_of_note": ["Synthetic medication 1 mg IV once"],
+        "monitoring": "Telemetry",
     }
 
     assert collect_warnings(record) == [
@@ -365,6 +413,7 @@ def test_collect_warnings_lists_field_warnings_before_rule_warnings():
         IV_ACCESS_WARNING,
         MOBILITY_WARNING,
         CODE_STATUS_WARNING,
+        TELEMETRY_WARNING,
     ]
 
 

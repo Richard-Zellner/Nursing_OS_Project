@@ -72,6 +72,13 @@ def test_wrong_types_in_other_schema_fields_are_reported():
     assert validate(record) == ["access must be a list"]
 
 
+def test_monitoring_must_be_a_string_when_documented():
+    assert validate({**VALID_RECORD, "monitoring": "telemetry"}) == []
+    assert validate({**VALID_RECORD, "monitoring": 17}) == [
+        "monitoring must be a string"
+    ]
+
+
 def test_nested_respiratory_type_error_is_reported():
     record = {
         **VALID_RECORD,
