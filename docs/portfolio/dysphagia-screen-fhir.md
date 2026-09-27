@@ -1,5 +1,7 @@
 # Dysphagia screen as FHIR CDS (project 7)
 
+> Original research plan (2026-09-24), kept as written; the build differs in places. Current state and milestones: [P3](../../plans/projects/P3-dysphagia-screen-fhir.md).
+
 A published bedside swallow screen encoded as a FHIR Questionnaire plus CQL logic that returns NPO + SLP consult, proceed with PO per order, or unable to screen — tested against edge-case fixtures on a local HAPI FHIR server. Your FHIR on-ramp before the handoff app. \~40 h.
 
 ## Clinical spec (write this first)

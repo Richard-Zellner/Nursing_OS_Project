@@ -1,5 +1,7 @@
 # Stroke measure abstraction agent (project 13)
 
+> Original research plan (2026-09-24), kept as written; the build differs in places. Current state and milestones: [P5](../../plans/projects/P5-stroke-abstraction-agent.md).
+
 A multi-agent pipeline that reads synthetic stroke charts, extracts measure data elements with verbatim evidence spans, lets deterministic code compute the measures, and routes shaky cases to a human review queue. Capstone; reuses NurseBench's case generator. \~70 h.
 
 ## Measure scope

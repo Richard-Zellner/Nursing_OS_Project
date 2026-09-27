@@ -1,5 +1,7 @@
 # Acuity-based assignment optimizer (project 11)
 
+> Original research plan (2026-09-24), kept as written; the build differs in places. Current state and milestones: [P2](../../plans/projects/P2-charge-assign.md).
+
 A Timefold (Java) solver that builds a charge nurse's shift assignment — CA ratios, competencies, isolation, geography, continuity, balanced acuity — benchmarked against round-robin and a greedy heuristic. \~45 h.
 
 ## Design

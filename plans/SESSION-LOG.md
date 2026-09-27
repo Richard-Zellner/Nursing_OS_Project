@@ -2,10 +2,8 @@
 
 [Plans index](README.md) · [Progress](PROGRESS.md) · [Resume plan](RESUME.md)
 
-One row per work session, newest last. Loop runs log in `memory/LOG.md`, not here. Moved out of PROGRESS.md on
-2026-09-27 to keep the dashboard short; rows are unchanged.
-
-Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not here.
+Append one row per work session, newest last. Loop runs log in `memory/LOG.md`, not here. (Moved out of PROGRESS.md
+on 2026-09-27; earlier rows are unchanged.)
 
 | Date | Who | Project | Work done | Verification | Next |
 |---|---|---|---|---|---|

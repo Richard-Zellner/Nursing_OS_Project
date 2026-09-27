@@ -1,61 +1,52 @@
 # Nursing OS Project
 
-Portfolio hub for the move from bedside nursing into nursing informatics and
-clinical AI. Nurse Handoff lives here; the five other projects have separate
-private repositories with their own READMEs and tests. All patient data in this
-repository is synthetic; nothing here is intended for clinical use.
+A nurse's portfolio for the move from bedside nursing into nursing informatics and clinical AI. This public hub holds
+the plans and the first project, Nurse Handoff. The other five projects live in their own repositories, private until
+each is released.
 
-## Start here
-
-- **[Continue here](CONTINUE.md)** — one-page reference for resuming the
-  portfolio: where everything is, rules, commands, and the current checkpoint.
-- [Portfolio plans](docs/portfolio/README.md) — overview, five separate repos,
-  and research sources.
-- [Delivery plan](plans/README.md) — master plan, per-project milestones,
-  progress tracker, and runbook for finishing all six projects.
-- [Nurse Handoff](nurse-handoff/README.md) — the existing Python project.
-- [Documentation](docs/README.md) — implementation specs and portfolio plans.
-- [Task ledger](TASKS.md) and [latest handoff](memory/HANDOFF.md) — implementation
-  progress and the next unit of work.
+All patient data is synthetic. Nothing here is for clinical use ([DISCLAIMER.md](DISCLAIMER.md)).
 
 ## Projects
 
-| Project | Status | Summary |
+| Project | What it is | Status |
 |---|---|---|
-| [`nurse-handoff/`](nurse-handoff/) | v0.1.0 released | Deterministic JSON-to-shift-handoff generator that preserves missing data as missing. Spec: [`docs/NURSE-HANDOFF-SPEC.md`](docs/NURSE-HANDOFF-SPEC.md). |
+| [Nurse Handoff](nurse-handoff/README.md) | Deterministic JSON-to-shift-handoff generator that keeps missing data visible | v0.1.0 released; v0.2 in progress |
+| NurseBench | Benchmark of nursing tasks for AI models: protocol math, NIHSS, escalation, patient education | private until release |
+| Charge Assign | Acuity-based nurse assignment optimizer (Java, Timefold) | private until release |
+| Dysphagia Screen FHIR | Bedside swallow screen as a FHIR Questionnaire with CQL decision support | private until release |
+| Grounded Handoff | SMART on FHIR app that drafts a handoff and cites the FHIR resource behind each sentence | private until release |
+| Stroke Abstraction Agent | LLM extraction of stroke quality-measure data with evidence quotes and human review | private until release |
 
-The broader portfolio plans live in [`docs/portfolio/`](docs/portfolio/README.md).
-The planned `grounded-handoff` FHIR/AI app is separate from the existing
-deterministic `nurse-handoff` package.
+## Start here
 
-## Folder guide
-
-| Location | Contents |
-|---|---|
-| `docs/` | Nurse Handoff specifications and a documentation index |
-| `docs/portfolio/` | Portfolio overview, individual project plans, and research sources |
-| `plans/` | Delivery plan: master plan, project milestone plans, progress, runbook, templates |
-| `nurse-handoff/` | Python package, synthetic-data directory, package tests, and local virtual environment |
-| `tests/` | Repository verification script |
-| `memory/` | Handoff, decisions, iteration log, and owner questions |
-| `.loop/` | Local controller output; ignored by Git |
-
-`AGENTS.md`, `PROMPT.md`, `TASKS.md`, and `loop.sh` stay at the root for the
-development controller. Git metadata and configuration also stay in place.
+- [CONTINUE.md](CONTINUE.md): the one-page card for picking the work back up.
+- [plans/](plans/README.md): current state, milestones and how the work runs.
+- [docs/portfolio/](docs/portfolio/README.md): the original research plan for each project.
+- [docs/](docs/README.md): the Nurse Handoff specs.
 
 ## How this repo is built
 
-An unattended Codex loop (see `../loops/README.md`) runs one ticket from
-`TASKS.md` per iteration (one cycle every 4 hours) under the contract in `AGENTS.md`. Progress and
-handoff notes live in `memory/`. After independent verification, the controller commits and pushes accepted work.
-See [GitHub setup](memory/GIT-SETUP-2026-09-24.md) for synchronization and owner-edit rules.
+A Codex loop (`../loops/`, outside this repo) takes one ticket from [TASKS.md](TASKS.md) every 4 hours under the rules
+in [AGENTS.md](AGENTS.md). A controller verifies each ticket independently, then commits and pushes it. Progress and
+handoff notes are in [memory/](memory/HANDOFF.md). `AGENTS.md`, `PROMPT.md`, `TASKS.md` and `loop.sh` stay at the root
+for the controller.
 
-Verification:
+Verify:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File tests/verify.ps1
 ```
 
+## Folders
+
+| Folder | Holds |
+|---|---|
+| `nurse-handoff/` | the Python package, synthetic data and tests |
+| `docs/` | Nurse Handoff specs; `docs/portfolio/` holds the research plans |
+| `plans/` | resume plan, progress, session log, runbook and project plans |
+| `memory/` | handoff, decisions, questions and the loop's log |
+| `tests/` | the repository check |
+
 ## License
 
-Code is Apache-2.0 ([LICENSE](LICENSE)). Educational only, not for patient care: see [DISCLAIMER.md](DISCLAIMER.md).
+Code is Apache-2.0 ([LICENSE](LICENSE)).

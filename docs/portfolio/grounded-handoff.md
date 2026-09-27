@@ -1,5 +1,7 @@
 # Grounded SBAR / I-PASS handoff on SMART on FHIR (project 6)
 
+> Original research plan (2026-09-24), kept as written; the build differs in places. Current state and milestones: [P4](../../plans/projects/P4-grounded-handoff.md).
+
 A SMART on FHIR app that drafts an SBAR or I-PASS handoff from a synthetic patient, cites the FHIR resource behind every sentence, and flags anything a verifier can't support. This is the FHIR+AI project on your blueprint. \~60 h.
 
 ## Design

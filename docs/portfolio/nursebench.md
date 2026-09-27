@@ -1,5 +1,7 @@
 # NurseBench (projects 1, 2, 4, 5)
 
+> Original research plan (2026-09-24), kept as written; the build differs in places. Current state and milestones: [P1](../../plans/projects/P1-nursebench.md).
+
 One public repo, four tracks that test what a bedside nurse would catch: protocol math (1), NIHSS scoring (4), post-discharge escalation (2) and patient-education rewrites (5). v0.1 ships Track 1 alone; v1.0 ships all four with a results table and write-up. \~110 h.
 
 ## Gap it fills
