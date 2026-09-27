@@ -15,7 +15,7 @@ plan, and the latest review, [REVIEW-2026-09-25-round4.md](REVIEW-2026-09-25-rou
 
 1. [MASTER-PLAN.md](MASTER-PLAN.md): finish line, calendar, dependencies,
    source precedence, open owner decisions, shared rules
-2. [PROGRESS.md](PROGRESS.md): dashboard, milestone checkboxes, owner gates, session log
+2. [PROGRESS.md](PROGRESS.md): dashboard, milestone checkboxes, owner gates; [SESSION-LOG.md](SESSION-LOG.md): one row per session
 3. [RUNBOOK.md](RUNBOOK.md): how to run a work session, start a repo, release and record progress
 4. The plan for the project you are working on
 
@@ -27,7 +27,8 @@ plans/
   MASTER-PLAN.md                 global plan
   PROGRESS.md                    progress: milestone state across all projects
   RUNBOOK.md                     instructions for completing the work
-  RESUME.md                      continue-from-here plan: owner queue, agent waves, blockers
+  RESUME.md                      continue-from-here plan: state, how to start, verification, rules
+  SESSION-LOG.md                 one row per work session (history)
   REVIEW-2026-09-25.md           record of Sep 24–25 work, decisions, verification, findings
   REVIEW-2026-09-25-round3.md    record of round 3 (Waves A and B), findings
   REVIEW-2026-09-25-round4.md    record of round 4 (Waves C and D, P0 009-015), findings

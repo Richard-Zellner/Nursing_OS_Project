@@ -153,9 +153,9 @@ clinical spec (OWNER) → build (AGENT) → verify (tests + CI) → owner review
 |---|---|
 | A task finished | repo `TASKS.md` and repo `memory/HANDOFF.md` |
 | A milestone or gate finished | [PROGRESS.md](PROGRESS.md): tick it and update the dashboard row |
-| Any session | a PROGRESS.md session-log row, and owner hours in the Hours table |
+| Any session | a [SESSION-LOG.md](SESSION-LOG.md) row, and owner hours in the PROGRESS.md Hours table |
 | An owner decision | hub `memory/DECISIONS.md` (append), a tick in PROGRESS.md, and a refresh of `memory/ACTIVE-DECISIONS.md` by the owner |
-| A scope or schedule change | edit the project plan, note why in `memory/DECISIONS.md`, and add a PROGRESS.md log row |
+| A scope or schedule change | edit the project plan, note why in `memory/DECISIONS.md`, and add a SESSION-LOG.md row |
 | A P0 loop ticket | nothing extra; the loop updates `TASKS.md` and `memory/LOG.md` |
 
 A continuity receipt can also be added with the project-memory `handoff`

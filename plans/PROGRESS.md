@@ -1,6 +1,6 @@
 # Portfolio progress
 
-[Plans index](README.md) · [Master plan](MASTER-PLAN.md) · [Runbook](RUNBOOK.md) · [Resume plan](RESUME.md) · [Latest review](REVIEW-2026-09-25-round4.md)
+[Plans index](README.md) · [Master plan](MASTER-PLAN.md) · [Runbook](RUNBOOK.md) · [Resume plan](RESUME.md) · [Session log](SESSION-LOG.md)
 
 This file records **milestone-level** state across all six projects.
 Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
@@ -8,7 +8,7 @@ Task-level state lives in each repo's own `TASKS.md`; for P0 that is the hub
 ([RUNBOOK §6](RUNBOOK.md#6-updating-progress)). Tick a box only when its
 acceptance criteria were checked in that session.
 
-Last updated: 2026-09-27 by Claude Code (delegated round across P1–P5; see the session log)
+Last updated: 2026-09-27 by Claude Code
 
 ## Dashboard
 
@@ -16,12 +16,12 @@ Status values: `not-started` · `in-progress` · `blocked` · `review` (waiting 
 
 | ID | Project | Current milestone | Status | Next action | Target |
 |---|---|---|---|---|---|
-| P0 | Nurse Handoff | v0.1.0 released 2026-09-26; M2 v0.2 rules next (tickets 101–110) | in-progress | The loop continues with ticket 101 (needs a working Codex login); Q-002/Q-003 handling for a v0.2 ticket | v0.2 ~Oct 9 |
-| P1 | NurseBench | Track 1 harness; Track 4 spec, rules, sampler, scorer; Track 2 spec, private scenarios, perturbations, triage metrics and kappa gate; Track 5 tools | review | Owner: D-3, M1-5, calculator sign-off, Q-10–Q-45 (Q-29 licensing, Q-36 kappa minimum, Q-37 held-out), spec reviews | v0.1 Oct 31 |
-| P2 | Charge Assign | M1–M3 built with benchmark results; M4 floor map and reasons; M5-1 replanning | review | Owner: M1-4, M2-2, M3-4 results and limitations, M4-3 reason wording, Q015–Q030 | Feb 2027 |
-| P3 | Dysphagia Screen FHIR | M4 done: HAPI on the portable JDK, `$apply` passes all 15 fixtures | review | Owner: M2-4 wording, CQL and action wording (Q024), Q019–Q023, then v0.1.0 release. Agent next: P3-M5-1 HAPI CI once CI can be observed | Mar 2027 |
-| P4 | Grounded Handoff | M1–M2 done (HAPI load, US Core report, SMART EHR launch with a local launcher, backend fetch); fact sheet; verifiers 1–2; omissions; citation view; Provenance export | review | Owner: Q021–Q043, doc reviews, model and budget (M3-3 generation, M4-3 judge, M5) | Apr – mid-May 2027 |
-| P5 | Stroke Abstraction Agent | Packets C01–C20, measure engine, router, review page, evaluation and kappa metric code | review | Owner: P5-M2-4 packet review, M4-2 engine review, D-7, Q016–Q030 (price table Q030) | mid-May – Jun 2027 |
+| P0 | Nurse Handoff | v0.1.0 released 2026-09-26; M2 v0.2 rules (tickets 101–110) | in-progress | The Codex loop continues; owner: Q-002/Q-003 handling | v0.2 ~Oct 9 |
+| P1 | NurseBench | M1 harness and items ready; Tracks 4, 2 and 5 drafted with specs, data, scorers and tools | review | Owner: set the four API keys (D-3 go), then the smoke and full runs; RN review of drafts | v0.1 Oct 31 |
+| P2 | Charge Assign | M1–M4 done (delegated reviews); M5 replanning and review packet ready | review | Owner: blinded charge-nurse review (M5-3), RN read | Feb 2027 |
+| P3 | Dysphagia Screen FHIR | M1–M4 done; HAPI CI green; v0.1.0 prepared | review | Owner: RN re-read, then tag v0.1.0 and go public | Mar 2027 |
+| P4 | Grounded Handoff | M1–M2 done; fact sheet, verifier layers 1–2, view, export, harness; generation and judge code | in-progress | Model adapter and a real generation run; owner: labels and ratings | Apr – mid-May 2027 |
+| P5 | Stroke Abstraction Agent | 60 cases, engine, router, review page, metrics, runner, D-7 extractor | in-progress | Full 60-case run (approved 2026-09-27); owner: blind abstraction, RN review | mid-May – Jun 2027 |
 
 All five separate repositories now exist privately, are registered for project
 recall, and have reviewed work pushed to `main`. Parallel technical work does
@@ -33,11 +33,11 @@ handoffs contain the check evidence and task-level state.
 - [x] **G0** Employer policy: outside work is permitted off shift; the employer is never named or used (owner, 2026-09-24)
 - [x] **D-1** Separate repos: decided by the owner on 2026-09-24
 - [ ] **D-2** Nurse Handoff ends at v0.2; roadmap v0.3+ goes to P4, at the P0 v0.2 release
-- [ ] **D-3** NurseBench model roster and API budget cap, by ~Oct 25
+- [ ] **D-3** NurseBench model roster and API budget cap, by ~Oct 25 (roster and USD 100 cap recommended as a delegated decision, 2026-09-27; the owner's API keys are the go)
 - [x] **D-4** New repos stay private until ready, then go public at release (owner, 2026-09-24)
 - [ ] **D-5** Loop enrollment for new repos (recommended: no)
 - [ ] **D-6** CAHIMS and NCA-GENL dates confirmed
-- [ ] **D-7** P5 orchestration choice, at P5 M3
+- [x] **D-7** P5 orchestration: the `claude-cli` extractor (delegated agent decision under the owner's 2026-09-26 delegation)
 - [x] **D-8** Build later projects alongside NurseBench instead of in sequence: yes. The owner asked for parallel work on all projects (2026-09-24). Release targets are unchanged.
 - [x] **D-9** Clinical input delegated to agents (owner, 2026-09-24). Agent drafts carry provenance, and the owner signs off as RN before each release ([RUNBOOK §1](RUNBOOK.md#1-roles-and-the-authorship-boundary))
 - [x] Morse Fall Scale dropped; no permission email (owner, 2026-09-24)
@@ -47,9 +47,9 @@ handoffs contain the check evidence and task-level state.
 
 - [x] Python 3.11, uv, Node 24, Git
 - [x] Portable Temurin 21.0.12.1+1 and Maven 3.9.16; P2/P4 builds verified; no global PATH change
-- [ ] Docker Desktop with WSL2, for P3 (by end of February) and P4
+- [x] HAPI on the portable JDK for P3 and P4 (owner decision 2026-09-25); Docker Desktop is only a fallback
 - [x] Project-local SUSHI 3.20.1 in P3, pinned by npm lockfile; no global installation
-- [ ] GitHub CLI `gh` (optional; repos can be created on github.com)
+- [x] GitHub CLI `gh` 2.101.0, per-user install, logged in (2026-09-27)
 
 ## Milestones
 
@@ -70,17 +70,17 @@ handoffs contain the check evidence and task-level state.
 - [ ] v1.0.0 released with write-up
 
 ### P2 Charge Assign ([plan](projects/P2-charge-assign.md))
-- [ ] M1 domain, generator, acuity rubric
-- [ ] M2 hard constraints with ConstraintVerifier tests, CI
-- [ ] M3 soft constraints, baselines, benchmark
+- [x] M1 domain, generator, acuity rubric (M1-4 spot-check as a delegated agent review, 2026-09-27)
+- [x] M2 hard constraints with ConstraintVerifier tests, CI (M2-2 as a delegated agent review)
+- [x] M3 soft constraints, baselines, benchmark (M3-4 results and limitations drafted under delegation)
 - [ ] v0.1.0 released
-- [ ] M4 floor-map UI and explanations
+- [x] M4 floor-map UI and explanations (M4-3 wording review delegated; owner RN read pending)
 - [ ] M5 replanning demo, blinded charge-nurse review
 - [ ] v1.0.0 released with write-up
 
 ### P3 Dysphagia Screen FHIR ([plan](projects/P3-dysphagia-screen-fhir.md))
 - [x] M1 clinical spec, terminology, guideline wording (agent-drafted under D-9, RN-reviewed 2026-09-24)
-- [ ] M2 Questionnaire (FSH, SUSHI, LHC-Forms)
+- [x] M2 Questionnaire (FSH, SUSHI, LHC-Forms) (M2-4 wording check as a delegated agent review; owner RN re-read before release)
 - [x] M3 CQL library, 12–15 fixtures passing (`b1228b1`; CQL agent-drafted under D-9, owner review pending)
 - [x] M4 PlanDefinition, `$apply` on local HAPI (`81bc905`; HAPI on the portable JDK, owner decision 2026-09-25)
 - [ ] v0.1.0 released
@@ -98,7 +98,7 @@ handoffs contain the check evidence and task-level state.
 
 ### P5 Stroke Abstraction Agent ([plan](projects/P5-stroke-abstraction-agent.md))
 - [x] M1 measure digest (Specs Manual v2026B1; agent-drafted under D-9, RN-reviewed 2026-09-24)
-- [ ] M2 60 synthetic chart packets (first 20 hand-validated)
+- [x] M2 60 synthetic chart packets (C01–C20 validated by an agent under delegation; owner review pending)
 - [ ] M3 segmenter, extractors, evidence verifier
 - [ ] M4 measure engine, end-to-end run
 - [ ] v0.1.0 released
@@ -127,27 +127,4 @@ Estimates come from the research plans.
 
 ## Session log
 
-Append one row per session, newest last. Loop runs log in `memory/LOG.md`, not here.
-
-| Date | Who | Project | Work done | Verification | Next |
-|---|---|---|---|---|---|
-| 2026-09-24 | Claude Code (owner request) | all | Created `plans/`: master plan, six project plans, progress file, runbook, templates | Links checked; `tests/verify.ps1` run | Owner: review, decide D-1, commit and push `plans/` before the next loop unit |
-| 2026-09-24 | Claude Code (owner decision) | all | Owner chose separate repos (D-1); recorded in DECISIONS/ACTIVE-DECISIONS; plans committed and pushed | `tests/verify.ps1` run | P1: G0 policy check, create `nursebench` repo |
-| 2026-09-24 | Claude Code (owner decision) | all | G0 satisfied (outside work off shift; employer never named); D-4 private until ready; Morse email made optional; employer name removed from the overview | `tests/verify.ps1` run | P1: create private `nursebench` repo |
-| 2026-09-24 | Claude Code (owner decision) | all | Git history rewritten to remove the employer name (only one overview line changed in 3 commits) and force-pushed; Morse dropped from NurseBench | History diff checked; `tests/verify.ps1` run | P1: create private `nursebench` repo |
-| 2026-09-24 | Codex (owner-delegated setup) | P1 | Created private repo, cloned to Desktop, registered project recall, and pushed the starter scaffold; P1-M0-1 and P1-M0-2 complete | GitHub API confirms private and remote main matches; locked dependency sync, package imports/compilation, Inspect CLI, Git ignores, all 39 task IDs and 13 local links checked | P1-M0-3 schema/validator; remaining M0 tasks and owner wording review stay open |
-| 2026-09-24 | Codex + three subagents (owner-requested parallel round) | P0–P5 | Six scoped assignments reviewed by parent; P0 loader, P1 schema/split/offline eval/full CI, P2 domain, P3 SUSHI build, P4 citation existence, P5 exact evidence spans; four remaining repos created privately and registered | Parent reran 206 tests plus builds/CLI checks; all five separate repos passed Windows/Linux CI; P4 Java-selector failure corrected and green run observed; links, task IDs, exclusions and Git state checked | P0 ticket 005 under existing loop allowance; P1 wording review; owner clinical inputs and P3 HAPI dependency gate further clinical work |
-| 2026-09-24 | Claude Code (owner request) | all | Dashboard fixes (D-8 wording, hours "not logged"); D-9 clinical-drafting delegation recorded | `tests/verify.ps1` run | Draft the clinical inputs |
-| 2026-09-25 | Claude Code + five subagents (D-9) | P1–P5 | Drafted the blocking clinical inputs: P1 M0-7, Track 1 spec, 4 protocols; P2 rubric and constraint spec; P3 spec, terminology, 15 fixtures; P4 overlay and handoff spec; P5 measure digest, truth vector, fixture spec. Parent reviewed each; owner RN sign-off recorded (owner-stated). Source checks stay open in each repo's QUESTIONS.md. Menon citation corrected in the hub | Real runs: P1 86 pytest + validate + mock eval; P2 Maven 6 tests; P3 SUSHI 0 errors, 8 tests; P4 Maven BUILD SUCCESS; P5 69 pytest + verify-evidence. All five pushed; working trees clean | Agent tasks: P1-M1-3, P2-M1-4, P3-M2-2, P4-M1-2, P5-M2-2. Owner: D-7, Docker install, source checks |
-| 2026-09-25 | Claude Code + five subagents | P1–P5 | Implementation round 2: P1 calculators and 150 items (bfffb2f); P2 acuity calculator, 50 scenarios, H1–H5 (68c3e17); P3 Questionnaire, LHC-Forms page, 15 fixture responses (765e202); P4 Synthea pin, inventory, overlay generator (aacdfda); P5 sampler, gold outcomes, segmenter, date checks (48b993c). Parent reviewed each diff, reran checks, fixed two stale README lines | Parent reruns: P1 420 pytest + validate + mock eval; P2 Maven 69 tests; P3 SUSHI 0/0, 71 tests; P4 Maven 47 tests; P5 344 pytest + both verify-evidence fixtures. Signed-off clinical docs unchanged in every repo | Owner reviews listed in the dashboard; weekly usage limit reached during the round |
-| 2026-09-25 | Claude Code (owner request) | all | Full review and record: [REVIEW-2026-09-25.md](REVIEW-2026-09-25.md) (timeline, decisions, per-project state, 11 findings) and [RESUME.md](RESUME.md) (owner queue in 3 tiers, agent waves A/B, blockers, brief template) | Read-only audit of 6 repos: all clean and synced; 1,005 tests at last parent reruns; 58 open questions (31 source checks, 27 owner decisions or reviews) | Owner Tier 1 items; then Wave A (P1-M1-6/7, P3-M3-3/4, P2-M3-1..3) |
-| 2026-09-25 | Claude Code + three subagents | P1–P3 | Wave A of RESUME.md: P1-M1-6/7 Track 1 task, scorer, bootstrap and report (a513968); P2-M3-1..3 M1 and S1–S4, baselines, real benchmark over 50 scenarios (6b08d18); P3-M3-3/4 CQL library with pinned Maven ELM build and fixture tests (b1228b1). Parent reviewed each diff against the spec and reran checks. New owner questions: P1 Q-16–Q-17, P2 Q021–Q027, P3 Q021–Q022 | Parent reruns: P1 629 pytest + validate + mock eval + mock Track 1 report (refused for results/); P2 Maven 107 tests (1 skipped: on-demand benchmark); P3 npm verify incl. Maven 55 JUnit tests. P3 `npm run verify` now needs JDK 21 | Wave B running: P4-M3-2/M4-2/M4-5, P5-M2-3 (20 packets) + M4-1, P1-M2-1/2 |
-| 2026-09-25 | Claude Code + three subagents | P1, P4, P5 | Wave B of RESUME.md: P4-M3-2 fact sheet, M4-2 value fidelity, M4-5 omission check (bfe05aa); P5-M2-3a packets C01–C20 and M4-1 shared measure engine (29cccc1); P1-M2-1 Track 4 spec draft (D-9) and M2-2 rules and sampler (053d96f). Round recorded in [REVIEW-2026-09-25-round3.md](REVIEW-2026-09-25-round3.md); RESUME.md refreshed with Waves C and D. New owner questions: P1 Q-18–Q-25, P4 Q027–Q031, P5 Q020–Q023 | Parent reruns: P4 Maven 106 tests; P5 536 pytest + verify-evidence + packet regeneration check + all 20 case evidence files consistent; P1 756 pytest + validate + mock eval. CI runs not observed (no gh CLI) | Owner Tier 1 and the P5-M2-4 packet review; then Wave C (P1-M2-6, P2-M4-1/2 + M5-1, P5-M5-1/2) |
-| 2026-09-25 | Claude Code (owner decision) | P3, P4 | Owner chose to try running HAPI on the portable JDK instead of Docker; added as Wave C1 (P3-M4-1..3) and Wave D0 (P4 HAPI loading); Docker is now a fallback. Loop ticket 009 failed with a Codex 401 (API key), noted in RESUME | `tests/verify.ps1` run | Owner fixes the Codex login; Wave C when approved |
-| 2026-09-25 | Claude Code + subagents (owner request during the Codex outage) | P0 | Loop paused with a session-owned `STOP`; tickets 009–015 done in ledger order (`e8dee59`); `DONE` created. The controller's trusted acceptance then rejected `DONE` (negative age, non-string list item accepted); validator repaired (`e2ecbe4`), counters reset with `controller.ps1 reset`, `STOP` removed | verify.ps1 PASS (242 pytest); trusted acceptance PASS on a copy | Controller re-verifies `DONE`; owner G1 |
-| 2026-09-25 | Claude Code + subagents (round 4) | P1–P5 | Waves C and D: P3 HAPI on Java + `$apply` (`81bc905`); P1 Track 4 scorer (`382b104`), Track 2 draft (`fb9abe4`), Track 5 tools (`b9d4601`); P2 floor map, reasons, replanning (`5c93e63`); P5 router and review page (`b739469`); P4 HAPI load + US Core (`8f32925`), citation view + Provenance export (`ccd1b9e`). Hub: MedlinePlus licensing correction (`3df643d`). Recorded in [REVIEW-2026-09-25-round4.md](REVIEW-2026-09-25-round4.md); RESUME refreshed with Wave E | Parent reruns per repo (see the review); P4 HAPI view test not run (free RAM below the 6 GiB guard); CI not observed | Owner Tier 1 (P0 G1, D-3, M1-5, Q-16/Q-17, Q-29); Wave E when approved |
-| 2026-09-26 | Claude Code + three subagents (owner: "keep going") | P1, P4, P5 | Wave E: P5-M6-2a evaluation/agreement/run-cost metric code (`791ff72`); P1-M3-7a Track 2 triage metrics, kappa and grader trust gate (`0585cc7`); P4-M2-1/2 SMART EHR launch via a pinned local launcher and backend fetch, plus fixes found by the first HAPI view-test run (`821c693`). E4 (P3 HAPI CI) parked until CI can be observed. P0: controller baseline and trusted acceptance passed at 07:00 UTC | Parent reruns: P5 918 pytest + checks; P1 1643 pytest (1624 + 19 skipped without private/), Track 1 report unchanged; P4 Maven 164 with HAPI and launcher (1 opt-in skip), 164/11 skipped without | Owner Tier 1; install gh to unpark E4 |
-| 2026-09-26 | Claude Code + five parallel subagents (owner: "run 5 subagents in parallel") | P1–P5 | Wave F: P1 run config, pre-run check, cost projection, v0.1 README drafts, Track 1 on shared helpers (`db23296`); P2 blinded review packet generator (key in ignored private/) and README draft (`f868d40`), app moved to port 8084 (`f5bbd5c`); P3 manual HAPI fixture workflow and README draft (`cf47395`); P4 evaluation harness and README draft (`6abcd99`); P5 end-to-end runner, extractor contract and README draft (`0e9877c`). Hub: P2 vendor facts corrected | Parent reruns: P1 1684 (1665 + 19 skipped without private/), Track 1 report unchanged; P2 Maven 131 (2 opt-in skips), app up on 8084; P3 npm verify (90 Node, 55/56 JUnit); P4 Maven 191 (11 skipped); P5 966 + fixture pipeline byte-identical | Owner: approve README drafts, run the P3 HAPI workflow once, Tier 1 items |
-| 2026-09-26 | Claude Code + five parallel reviewers (owner: "double check your work for all of them, check for edge cases") | P0–P5 | Independent review of every change since the session start, each confirmed bug reproduced by a failing test first: hub `4f07c19` (patient_id must be SYNTH-###; Q-003 logged); P1 `4d52fa1` (12 fixes incl. API key echo, mock runs under results/, file-name collisions, OS-dependent CSV order, minus signs, double rounding, zero-token pricing); P2 `f316685` (replan legality wording, "additional RN needed" for H1 or H3, URL-hash crash, 1,500-scenario agreement test); P3 `74661f6` ($apply crash without authored, stale-PID stop, RAM-guard bypass, error causes, CQL tests in UTC); P4 `496b899` (7 fixes incl. hour-24 crash, RC-2 dropping orders, infinite paging loop, stale-PID stop, Unicode units); P5 `888c7a3` (7 crash fixes incl. unhashable values, lone surrogates). New owner questions: hub Q-003; P2-Q037/Q038; P3-Q029–Q031; P4-Q048–Q050; P5-Q034 | Parent reruns: hub 244 + trusted acceptance; P1 1731 (1712 + 19 skipped without private/); P2 135 (2 opt-in skips); P3 npm verify + HAPI suite 88/88 in UTC; P4 196 (11 skipped; reviewer's server run 196/1); P5 984 + regeneration and pipeline checks | Owner Tier 1 items; review-question answers |
-| 2026-09-26 | Claude Code + four subagents (owner: "yes to all" to the suggestions) | P0–P5 | Nurse Handoff v0.1.0 released (`c91242c`, tag `v0.1.0`). Decisions implemented: P1 Q-29 recorded (`8bc2ce9`); P2 charge-nurse overload preferred at equal hard counts, benchmark rerun (2 rows changed, still legal) (`544acdd`); P3 date-only screen time → Incomplete, HAPI hardened (`33d185a`); P4 HAPI and app hardened, tester page neutralised (`2ba7429`); P5 per-case decision logs (`75a14d5`). GitHub CLI 2.101.0 installed (owner login pending); private folders backed up locally; owner checklist written (private file on the owner's Desktop) | Parent reruns: hub verify.ps1 PASS (244); P1 1731; P2 143 (2 opt-in skips); P3 npm verify + HAPI 129/129; P4 207 (16 skipped without servers; agent's server run 207/1); P5 1023 | Owner: `gh auth login`, Codex login, checklist items |
-| 2026-09-27 | Claude Code + five parallel subagents (owner delegation of 2026-09-26: answer questions, approvals granted) | P1–P5 | Nearly every open question answered as delegated agent decisions; P1 `43702e8` (D-3 roster/cap recommended, 30 Track 1 items and 20 Track 4 narratives drafted, calculator audit, NIHSS coma fix, Track 2 split, Track 5 spec and snapshots); P2 `2432920` (source checks, delegated spot-check/constraint/results/wording reviews, accessibility, packet 9353-ccde-9545); P3 `cba1a6d` (spec 0.2, wording review, v0.1.0 prepared, HAPI CI green on both routes); P4 `7352ae1` (US Core 0 errors, layer-2 precision/recall 1.000, T0 local wall clock, generation/judge code); P5 `5ccb60d` (D-7 claude-cli, C01–C60 with agent validation, 1-chart smoke). Linux CI failure in P1 found and fixed. Held for the owner: RN attestation, human measurement, first-person text, releases and visibility, paid runs | Parent reruns: P1 1963 (1940 + 23 skipped without private/); P2 149; P3 npm verify + HAPI 178; P4 235 with servers; P5 1480 + checks; CI green except P1 (fixed in `43702e8`) | Owner checklist (private); weekly usage ~87% |
+One row per session, in [SESSION-LOG.md](SESSION-LOG.md).
