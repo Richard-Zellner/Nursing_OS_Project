@@ -57,7 +57,7 @@ Every repo has the same files:
 
 | Decided | Open |
 |---|---|
-| <ul><li>D-1 separate repos</li><li>G0</li><li>D-4 private until release</li><li>Morse dropped</li><li>D-8 parallel work</li><li>D-9 agent-drafted clinical content</li><li>Java HAPI instead of Docker</li><li>D-7 claude-cli extractor (delegated)</li><li>D-3 roster and cap recommended (delegated; your API keys are the go)</li></ul> | <ul><li>D-2 Nurse Handoff ends at v0.2</li><li>D-5 loop for new repos</li><li>D-6 exam dates</li></ul> |
+| <ul><li>D-1 separate repos</li><li>G0</li><li>D-4 private until release</li><li>Morse dropped</li><li>D-8 parallel work</li><li>D-9 agent-drafted clinical content</li><li>Java HAPI instead of Docker</li><li>D-7 claude-cli extractor (delegated)</li></ul> | <ul><li>D-3 roster and cap: recommended (delegated); your API keys are the go</li><li>D-2 Nurse Handoff ends at v0.2</li><li>D-5 loop for new repos</li><li>D-6 exam dates</li></ul> |
 
 Details: [memory/DECISIONS.md](memory/DECISIONS.md).
 

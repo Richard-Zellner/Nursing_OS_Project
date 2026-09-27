@@ -11,11 +11,10 @@
 | Finish line | v0.2.0 tagged and pushed; hub README shows "v0.2 released" |
 | Owner effort | about 6 h: two release reviews plus a portfolio polish pass |
 
-## Current state (2026-09-24)
+## Current state (2026-09-27)
 
-Tickets 001–003 are done and pushed (`916b48b`). The next ticket is 004 Loader.
-The loop is enabled, but today's six runs are spent, so work resumes after
-the local-day reset.
+v0.1.0 is released (tickets 001–015). For v0.2, tickets 101–103 are accepted and the loop continues with
+104. Ticket state lives in the hub [TASKS.md](../../TASKS.md).
 
 ## Milestones
 

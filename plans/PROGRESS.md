@@ -79,7 +79,7 @@ handoffs contain the check evidence and task-level state.
 - [ ] v1.0.0 released with write-up
 
 ### P3 Dysphagia Screen FHIR ([plan](projects/P3-dysphagia-screen-fhir.md))
-- [x] M1 clinical spec, terminology, guideline wording (agent-drafted under D-9, RN-reviewed 2026-09-24)
+- [x] M1 clinical spec, terminology, guideline wording (agent-drafted under D-9; spec 0.1 RN-reviewed 2026-09-24, the spec 0.2 amendments await the owner's RN review)
 - [x] M2 Questionnaire (FSH, SUSHI, LHC-Forms) (M2-4 wording check as a delegated agent review; owner RN re-read before release)
 - [x] M3 CQL library, 12–15 fixtures passing (`b1228b1`; CQL agent-drafted under D-9, owner review pending)
 - [x] M4 PlanDefinition, `$apply` on local HAPI (`81bc905`; HAPI on the portable JDK, owner decision 2026-09-25)
