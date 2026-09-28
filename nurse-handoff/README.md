@@ -16,7 +16,7 @@ information, but it must not invent undocumented information.*
 All patient records included in this repository are synthetic and the
 software is not intended for clinical use.
 
-Version 0.2.0-dev. Python standard library only; `pytest` is the single test
+Version 0.2.0. Python standard library only; `pytest` is the single test
 dependency. The specification lives in
 [`docs/NURSE-HANDOFF-SPEC.md`](../docs/NURSE-HANDOFF-SPEC.md), with the field
 list in [`PATIENT-SCHEMA.md`](../docs/PATIENT-SCHEMA.md) and the exact report
@@ -152,38 +152,45 @@ Important-field warnings fire when one of these fields is absent or `null`:
 
 Clinical consistency rules are deterministic and intentionally simple:
 
-1. **Oxygen.** `respiratory.oxygen` is `true` but `device` or `flow_lpm` is
-   missing:
+1. **Oxygen.** Supplemental oxygen must include a device and flow rate. When
+   `respiratory.oxygen` is `true` but `device` or `flow_lpm` is missing:
    `WARNING: Supplemental oxygen documented but device/flow information is incomplete.`
-2. **IV medication.** A `medications_of_note` entry contains the
-   word-bounded, case-sensitive token `IV` and `access` is missing or empty:
+2. **IV medication.** An IV medication requires documented vascular access.
+   A `medications_of_note` entry must contain the word-bounded, case-sensitive
+   token `IV` while `access` is missing or empty:
    `WARNING: IV medication listed but no vascular access documented.`
    `IVF` and `Ivabradine` do not match.
-3. **Mobility.** `mobility` is missing:
+3. **Mobility.** Missing mobility status is reported. An absent or `null`
+   `mobility` field triggers the warning:
    `WARNING: Mobility status not documented.`
    This replaces the mobility important-field warning so the same fact is not
    reported twice.
-4. **Pending tasks.** A missing `pending_tasks` is never read as "nothing
-   pending": the `PENDING` section shows `Not documented` and the
-   important-field warning fires. An explicit `[]` shows `None` with no
-   warning.
-5. **Code status.** If `code_status` is missing, the warning
+4. **Pending tasks.** Missing pending tasks stay undocumented; an empty list
+   means none. A missing `pending_tasks` is never read as "nothing pending":
+   the `PENDING` section shows `Not documented` and the important-field
+   warning fires. An explicit `[]` shows `None` with no warning.
+5. **Code status.** Missing code status prompts confirmation before handoff.
+   If `code_status` is missing, the warning
    `WARNING: Code status not documented; confirm before handoff.` is added
    after the important-field warning. Both warnings are intentionally shown.
-6. **Telemetry without rhythm.** If `monitoring` contains the
+6. **Telemetry without rhythm.** Telemetry without a documented cardiac
+   rhythm warns. If `monitoring` contains the
    case-insensitive, word-bounded token `telemetry` and `cardiac` is absent or
    `null`, the warning
    `WARNING: Telemetry documented but no cardiac rhythm documented.` is added.
-7. **Diuretic without urine output.** If a medication contains `furosemide`,
+7. **Diuretic without urine output.** Loop diuretics without documented urine
+   output warn. If a medication contains `furosemide`,
    `bumetanide`, or `torsemide` (case-insensitive) and no `recent_events`
    entry contains `urine output` or `UO`,
    the warning `WARNING: Diuretic listed but no urine output documented this
    shift.` is added.
-8. **NPO conflict.** If `diet` contains `NPO` and any `pending_tasks` entry
+8. **NPO conflict.** An NPO diet with a meal-related task warns. If `diet`
+   contains `NPO` and any `pending_tasks` entry
    contains `meal` or `tray` (case-insensitive), the warning
    `WARNING: NPO diet documented but a meal-related task is pending.` is added.
-9. **Fall risk without mobility.** If `fall_risk` is `true` and `mobility` is
-   absent or `null`, the warning
+9. **Fall risk without mobility.** Documented fall risk requires documented
+   mobility. If `fall_risk` is `true` and `mobility` is absent or `null`, the
+   warning
    `WARNING: Fall risk documented but mobility status not documented.` is added.
 
 ## Running tests
@@ -206,14 +213,14 @@ patient B.
 | Version | Status | Notes |
 |---|---|---|
 | 0.1.0 | Released 2026-09-26 | Deterministic handoff |
-| 0.2.0-dev | In development | More clinical validation rules |
+| 0.2.0 | Complete; pending human release | More clinical validation rules |
 
 ## Roadmap
 
 | Version | Scope | Status |
 |---|---|---|
 | v0.1 | Deterministic handoff | Released |
-| v0.2 | More clinical validation rules | In development |
+| v0.2 | More clinical validation rules | Complete; pending human release |
 | v0.3 | Simple web interface | Needs the owner's decision |
 | v0.4 | FHIR resources | Later |
 | v0.5 | LLM handoff generation | Later |

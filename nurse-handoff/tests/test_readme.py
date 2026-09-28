@@ -11,6 +11,7 @@ from nurse_handoff.rules import (
     IV_ACCESS_WARNING,
     MOBILITY_WARNING,
     OXYGEN_WARNING,
+    RULES,
     TELEMETRY_WARNING,
 )
 from nurse_handoff.schema import IMPORTANT_FIELDS
@@ -61,10 +62,15 @@ def test_readme_install_uses_venv_and_requirements():
 
 
 def test_readme_version_history_matches_package_version():
-    assert __version__ == "0.2.0-dev"
-    assert "Version 0.2.0-dev." in README
+    assert __version__ == "0.2.0"
+    assert "Version 0.2.0." in README
     assert "| 0.1.0 | Released 2026-09-26 | Deterministic handoff |" in README
-    assert "| 0.2.0-dev | In development | More clinical validation rules |" in README
+    assert "| 0.2.0 | Complete; pending human release | More clinical validation rules |" in README
+
+
+def test_readme_documents_every_registered_rule_description():
+    for rule in RULES:
+        assert _flatten(rule.description) in _flatten(README)
 
 
 def test_readme_sample_output_matches_patient_b_cli_output():

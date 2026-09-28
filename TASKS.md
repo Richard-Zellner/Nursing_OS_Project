@@ -183,9 +183,22 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 - [x] **109 Rule registry.** Refactor `rules.py` so every rule is a function
   registered in an ordered `RULES` list with an id and one-line description;
   `python -m nurse_handoff --rules` prints the list. Blocked by: 108.
-- [ ] **110 README and v0.2 Definition of Done.** Document all rules;
+- [x] **110 README and v0.2 Definition of Done.** Document all rules;
   update version to `0.2.0`; add a v0.2 Definition of Done block modeled on
   v0.1 and tick what applies. Blocked by: 109.
+
+### Definition of Done — v0.2 (agent ticks these; DONE file when all ticked)
+
+- [x] Rules 1–9 are registered in order and listed by the CLI (109)
+- [x] Missing pending tasks stay undocumented and an explicit empty list means none (012, 109)
+- [x] Rules 5–9 are implemented, tested, and documented (102–106, 110)
+- [x] The v0.2 optional fields are documented in the patient schema (103, 106)
+- [x] Six synthetic patients exist; Patients E and F exercise the v0.2 rules and have snapshots (003, 108)
+- [x] The README documents all rules, matches package version 0.2.0, and explains setup and use (015, 110)
+- [x] Existing v0.1 behavior and CLI checks remain passing with v0.2 changes (110)
+- [x] `pytest -q` passes with zero failures (110)
+- [x] `tests/verify.ps1` passes, including CLI checks (110)
+- [x] No real patient information is used (014)
 
 ## Human checklist (agent never ticks these)
 

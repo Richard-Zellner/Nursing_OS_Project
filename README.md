@@ -10,7 +10,7 @@ All patient data is synthetic. Nothing here is for clinical use ([DISCLAIMER.md]
 
 | Project | What it is | Status |
 |---|---|---|
-| [Nurse Handoff](nurse-handoff/README.md) | Deterministic JSON-to-shift-handoff generator that keeps missing data visible | v0.1.0 released; v0.2 in progress |
+| [Nurse Handoff](nurse-handoff/README.md) | Deterministic JSON-to-shift-handoff generator that keeps missing data visible | v0.2.0 complete; human release pending |
 | NurseBench | Benchmark of nursing tasks for AI models: protocol math, NIHSS, escalation, patient education | private until release |
 | Charge Assign | Acuity-based nurse assignment optimizer (Java, Timefold) | private until release |
 | Dysphagia Screen FHIR | Bedside swallow screen as a FHIR Questionnaire with CQL decision support | private until release |
