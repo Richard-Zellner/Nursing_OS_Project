@@ -2,16 +2,17 @@
 
 ## Nurse Handoff - v0.2 in development
 
-Ticket 106 complete: Rule 9 warns when `fall_risk` is `true` and `mobility`
-is absent or `null`. Added the optional boolean to v0.2 schema metadata,
-validation, tests, and the README. Rule 9 follows Rule 8.
+Ticket 107 complete: removed the Rule 10 placeholder. The record does not
+explain why vascular access is present, so access without a listed IV
+medication is not a supported mismatch; the report keeps both fields
+independent. Decision recorded in `memory/DECISIONS.md`.
 
 Checks this run: pytest passed (306 tests); `tests/verify.ps1` passed,
-including its CLI checks. No synthetic patient data was added. The v0.2
+including CLI checks. No code or synthetic patient data changed. The v0.2
 Definition of Done is pending ticket 110, so no `DONE` file was created.
 
-Next ticket: 107, remove the Rule 10 placeholder and record why in DECISIONS.md.
+Next ticket: 108, add synthetic patients E and F with snapshots.
 
 Open questions: Q-002 (optional empty strings); Q-003 (newline list items,
 whitespace-only strings, and UTF-8 BOM). No human action is needed for ticket
-106.
+107.

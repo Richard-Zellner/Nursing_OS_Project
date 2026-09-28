@@ -177,10 +177,6 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 - [x] **106 Rule 9 fall risk without mobility.** New optional field
   `fall_risk` (boolean). If `true` and `mobility` missing → `WARNING: Fall
   risk documented but mobility status not documented.` Blocked by: 101.
-- [ ] **107 Rule 10 access without IV meds.** Informational only, no
-  warning: nothing. (Placeholder to remind the agent that not every
-  mismatch deserves a warning; delete this ticket with a DECISIONS.md note
-  explaining why.) Blocked by: 101.
 - [ ] **108 Patients E and F.** `SYNTH-005` exercising rules 6–9 all at
   once; `SYNTH-006` a clean telemetry patient producing no warnings.
   Snapshot tests for both. Blocked by: 102–106.
