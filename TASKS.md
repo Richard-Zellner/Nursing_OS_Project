@@ -180,7 +180,7 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 - [x] **108 Patients E and F.** `SYNTH-005` exercising rules 6–9 all at
   once; `SYNTH-006` a clean telemetry patient producing no warnings.
   Snapshot tests for both. Blocked by: 102–106.
-- [ ] **109 Rule registry.** Refactor `rules.py` so every rule is a function
+- [x] **109 Rule registry.** Refactor `rules.py` so every rule is a function
   registered in an ordered `RULES` list with an id and one-line description;
   `python -m nurse_handoff --rules` prints the list. Blocked by: 108.
 - [ ] **110 README and v0.2 Definition of Done.** Document all rules;

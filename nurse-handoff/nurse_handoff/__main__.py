@@ -4,7 +4,7 @@ import sys
 
 from .generator import render_handoff, render_warnings
 from .loader import PatientFileError, load_patient
-from .rules import collect_warnings
+from .rules import collect_warnings, render_rules
 from .validator import validate
 
 
@@ -25,10 +25,15 @@ def _write(stream, text: str) -> None:
 def main(argv: list[str] | None = None) -> int:
     """Print a handoff and its warnings; return the documented exit code.
 
-    Exit 0 on success, 1 on validation errors, and 2 on usage, file, or JSON
-    errors. No handoff is printed when any error occurs.
+    ``--rules`` prints the registered rules. For patient input, exit 0 on
+    success, 1 on validation errors, and 2 on usage, file, or JSON errors.
+    No handoff is printed when any error occurs.
     """
     args = sys.argv[1:] if argv is None else argv
+    if args == ["--rules"]:
+        _write(sys.stdout, render_rules() + "\n")
+        return 0
+
     if len(args) != 1:
         _write(sys.stderr, f"{USAGE}\n")
         return 2

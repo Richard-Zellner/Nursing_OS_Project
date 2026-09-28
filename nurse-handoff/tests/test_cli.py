@@ -238,3 +238,21 @@ def test_wrong_argument_count_prints_usage_and_exits_2(args):
     assert code == 2
     assert stdout == ""
     assert stderr == "Usage: python -m nurse_handoff <patient.json>\n"
+
+
+def test_rules_option_prints_registered_rule_list():
+    code, stdout, stderr = run_cli("--rules")
+
+    assert code == 0
+    assert stderr == ""
+    assert stdout == (
+        "Rule 1: Supplemental oxygen must include a device and flow rate.\n"
+        "Rule 2: An IV medication requires documented vascular access.\n"
+        "Rule 3: Missing mobility status is reported.\n"
+        "Rule 4: Missing pending tasks stay undocumented; an empty list means none.\n"
+        "Rule 5: Missing code status prompts confirmation before handoff.\n"
+        "Rule 6: Telemetry without a documented cardiac rhythm warns.\n"
+        "Rule 7: Loop diuretics without documented urine output warn.\n"
+        "Rule 8: An NPO diet with a meal-related task warns.\n"
+        "Rule 9: Documented fall risk requires documented mobility.\n"
+    )

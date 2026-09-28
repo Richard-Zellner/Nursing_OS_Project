@@ -11,6 +11,7 @@ from nurse_handoff.rules import (
     MOBILITY_WARNING,
     NPO_CONFLICT_WARNING,
     OXYGEN_WARNING,
+    PENDING_TASKS_WARNING,
     CODE_STATUS_WARNING,
     DIURETIC_WARNING,
     FALL_RISK_WARNING,
@@ -23,8 +24,11 @@ from nurse_handoff.rules import (
     check_mobility,
     check_npo_conflict,
     check_oxygen,
+    check_pending_tasks,
     check_telemetry,
     collect_warnings,
+    render_rules,
+    RULES,
 )
 
 
@@ -539,6 +543,29 @@ def test_empty_pending_tasks_render_none_without_warning():
 
     assert render_handoff(record).endswith("\n\nPENDING\nNone\n")
     assert PENDING_WARNING not in check_important_fields(record)
+
+
+@pytest.mark.parametrize(
+    "record",
+    [{}, {"pending_tasks": None}],
+    ids=["pending-absent", "pending-null"],
+)
+def test_rule_4_warns_when_pending_tasks_are_unknown(record):
+    assert check_pending_tasks(record) == [PENDING_TASKS_WARNING]
+
+
+@pytest.mark.parametrize("pending_tasks", [[], ["Review synthetic lab"]])
+def test_rule_4_does_not_warn_when_pending_tasks_are_documented(pending_tasks):
+    assert check_pending_tasks({"pending_tasks": pending_tasks}) == []
+
+
+def test_rules_registry_is_complete_ordered_and_described():
+    assert [rule.id for rule in RULES] == list(range(1, 10))
+    assert all(callable(rule.check) for rule in RULES)
+    assert all(rule.description and "\n" not in rule.description for rule in RULES)
+    assert render_rules().splitlines() == [
+        f"Rule {rule.id}: {rule.description}" for rule in RULES
+    ]
 
 
 def test_all_missing_important_fields_warn_in_schema_order():

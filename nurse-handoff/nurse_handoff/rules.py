@@ -1,6 +1,8 @@
 """Deterministic clinical consistency rules that return warning lines."""
 
 import re
+from dataclasses import dataclass
+from typing import Callable
 
 from .schema import IMPORTANT_FIELDS
 
@@ -27,6 +29,7 @@ NPO_CONFLICT_WARNING = (
 FALL_RISK_WARNING = (
     "WARNING: Fall risk documented but mobility status not documented."
 )
+PENDING_TASKS_WARNING = IMPORTANT_FIELDS["pending_tasks"]
 
 # Case-sensitive, word-bounded: "IV" and "IV/PO" match; "IVF", "IVIG",
 # "PIV", and "Ivabradine" do not.
@@ -79,6 +82,13 @@ def check_mobility(record: dict) -> list[str]:
     """Rule 3: an absent or null mobility status is reported, never assumed."""
     if record.get("mobility") is None:
         return [MOBILITY_WARNING]
+    return []
+
+
+def check_pending_tasks(record: dict) -> list[str]:
+    """Rule 4: absent tasks stay unknown; only an explicit empty list means none."""
+    if record.get("pending_tasks") is None:
+        return [PENDING_TASKS_WARNING]
     return []
 
 
@@ -163,23 +173,88 @@ def check_important_fields(record: dict) -> list[str]:
     ]
 
 
+@dataclass(frozen=True)
+class Rule:
+    """A registered handoff rule and its one-line description."""
+
+    id: int
+    description: str
+    check: Callable[[dict], list[str]]
+    warning_kind: str = "rule"
+
+
+RULES: list[Rule] = [
+    Rule(
+        1,
+        "Supplemental oxygen must include a device and flow rate.",
+        check_oxygen,
+    ),
+    Rule(
+        2,
+        "An IV medication requires documented vascular access.",
+        check_iv_access,
+    ),
+    Rule(3, "Missing mobility status is reported.", check_mobility),
+    Rule(
+        4,
+        "Missing pending tasks stay undocumented; an empty list means none.",
+        check_pending_tasks,
+        "field",
+    ),
+    Rule(
+        5,
+        "Missing code status prompts confirmation before handoff.",
+        check_code_status,
+    ),
+    Rule(
+        6,
+        "Telemetry without a documented cardiac rhythm warns.",
+        check_telemetry,
+    ),
+    Rule(
+        7,
+        "Loop diuretics without documented urine output warn.",
+        check_diuretic_output,
+    ),
+    Rule(
+        8,
+        "An NPO diet with a meal-related task warns.",
+        check_npo_conflict,
+    ),
+    Rule(
+        9,
+        "Documented fall risk requires documented mobility.",
+        check_fall_risk,
+    ),
+]
+
+
+def render_rules() -> str:
+    """Return the ordered rule IDs and their one-line descriptions."""
+    return "\n".join(f"Rule {rule.id}: {rule.description}" for rule in RULES)
+
+
 def collect_warnings(record: dict) -> list[str]:
-    """Return important-field warnings, then rule warnings in rule order.
+    """Return important-field warnings, then registered rule warnings in order.
 
     Rule 3 and the mobility important-field warning describe the same fact,
     so only the rule wording is kept when mobility is not documented.
     """
-    rule_warnings = (
-        check_oxygen(record)
-        + check_iv_access(record)
-        + check_mobility(record)
-        + check_code_status(record)
-        + check_telemetry(record)
-        + check_diuretic_output(record)
-        + check_npo_conflict(record)
-        + check_fall_risk(record)
-    )
-    field_warnings = check_important_fields(record)
+    rule_warnings: list[str] = []
+    registry_field_warnings: list[str] = []
+    for rule in RULES:
+        warnings = rule.check(record)
+        if rule.warning_kind == "field":
+            registry_field_warnings.extend(warnings)
+        else:
+            rule_warnings.extend(warnings)
+
+    field_warnings = [
+        warning
+        for warning in check_important_fields(record)
+        if warning != PENDING_TASKS_WARNING
+    ]
+    field_warnings.extend(registry_field_warnings)
     if MOBILITY_WARNING in rule_warnings:
         field_warnings = [
             warning
