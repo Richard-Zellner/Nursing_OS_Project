@@ -180,6 +180,9 @@ Clinical consistency rules are deterministic and intentionally simple:
 8. **NPO conflict.** If `diet` contains `NPO` and any `pending_tasks` entry
    contains `meal` or `tray` (case-insensitive), the warning
    `WARNING: NPO diet documented but a meal-related task is pending.` is added.
+9. **Fall risk without mobility.** If `fall_risk` is `true` and `mobility` is
+   absent or `null`, the warning
+   `WARNING: Fall risk documented but mobility status not documented.` is added.
 
 ## Running tests
 

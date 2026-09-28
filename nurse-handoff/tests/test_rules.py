@@ -13,9 +13,11 @@ from nurse_handoff.rules import (
     OXYGEN_WARNING,
     CODE_STATUS_WARNING,
     DIURETIC_WARNING,
+    FALL_RISK_WARNING,
     TELEMETRY_WARNING,
     check_code_status,
     check_diuretic_output,
+    check_fall_risk,
     check_important_fields,
     check_iv_access,
     check_mobility,
@@ -459,6 +461,51 @@ def test_rule_8_follows_rule_7_in_collected_warnings():
     assert collect_warnings(record)[-2:] == [
         DIURETIC_WARNING,
         NPO_CONFLICT_WARNING,
+    ]
+
+
+def test_fall_risk_warning_uses_exact_rule_9_wording():
+    assert (
+        FALL_RISK_WARNING
+        == "WARNING: Fall risk documented but mobility status not documented."
+    )
+
+
+@pytest.mark.parametrize(
+    "record",
+    [{"fall_risk": True}, {"fall_risk": True, "mobility": None}],
+    ids=["mobility-absent", "mobility-null"],
+)
+def test_fall_risk_without_mobility_warns(record):
+    assert check_fall_risk(record) == [FALL_RISK_WARNING]
+
+
+def test_fall_risk_with_documented_mobility_does_not_warn():
+    assert check_fall_risk(
+        {"fall_risk": True, "mobility": "1-person assist"}
+    ) == []
+
+
+@pytest.mark.parametrize(
+    "fall_risk",
+    [False, None],
+    ids=["false", "null"],
+)
+def test_fall_risk_not_true_does_not_warn_without_mobility(fall_risk):
+    assert check_fall_risk({"fall_risk": fall_risk}) == []
+
+
+def test_rule_9_follows_rule_8_in_collected_warnings():
+    record = {
+        **MINIMAL_RECORD,
+        "fall_risk": True,
+        "diet": "NPO",
+        "pending_tasks": ["Arrange meal tray"],
+    }
+
+    assert collect_warnings(record)[-2:] == [
+        NPO_CONFLICT_WARNING,
+        FALL_RISK_WARNING,
     ]
 
 

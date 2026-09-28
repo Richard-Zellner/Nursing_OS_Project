@@ -174,7 +174,7 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 - [x] **105 Rule 8 NPO conflict.** If `diet` contains `NPO` and any
   `pending_tasks` entry contains `meal` or `tray` → `WARNING: NPO diet
   documented but a meal-related task is pending.` Blocked by: 101.
-- [ ] **106 Rule 9 fall risk without mobility.** New optional field
+- [x] **106 Rule 9 fall risk without mobility.** New optional field
   `fall_risk` (boolean). If `true` and `mobility` missing → `WARNING: Fall
   risk documented but mobility status not documented.` Blocked by: 101.
 - [ ] **107 Rule 10 access without IV meds.** Informational only, no

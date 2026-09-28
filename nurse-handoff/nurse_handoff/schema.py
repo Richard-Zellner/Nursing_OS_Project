@@ -20,6 +20,7 @@ OPTIONAL_FIELDS = [
     "medications_of_note",
     "recent_events",
     "monitoring",
+    "fall_risk",
 ]
 
 # Each JSON field path maps to its expected Python type. All fields may be
@@ -43,4 +44,5 @@ FIELD_TYPES = {
     "recent_events": list,
     "pending_tasks": list,
     "monitoring": str,
+    "fall_risk": bool,
 }

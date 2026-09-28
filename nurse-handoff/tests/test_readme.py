@@ -7,6 +7,7 @@ import pytest
 
 from nurse_handoff.rules import (
     CODE_STATUS_WARNING,
+    FALL_RISK_WARNING,
     IV_ACCESS_WARNING,
     MOBILITY_WARNING,
     OXYGEN_WARNING,
@@ -91,6 +92,7 @@ def test_readme_lists_every_warning_verbatim():
         MOBILITY_WARNING,
         CODE_STATUS_WARNING,
         TELEMETRY_WARNING,
+        FALL_RISK_WARNING,
     ):
         assert warning in README
 

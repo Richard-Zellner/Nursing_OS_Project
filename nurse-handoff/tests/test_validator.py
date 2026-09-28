@@ -79,6 +79,15 @@ def test_monitoring_must_be_a_string_when_documented():
     ]
 
 
+def test_fall_risk_must_be_a_boolean_when_documented():
+    assert validate({**VALID_RECORD, "fall_risk": True}) == []
+    assert validate({**VALID_RECORD, "fall_risk": False}) == []
+    assert validate({**VALID_RECORD, "fall_risk": None}) == []
+    assert validate({**VALID_RECORD, "fall_risk": "high"}) == [
+        "fall_risk must be a boolean"
+    ]
+
+
 def test_nested_respiratory_type_error_is_reported():
     record = {
         **VALID_RECORD,

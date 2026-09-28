@@ -30,6 +30,7 @@ def test_optional_fields_and_expected_types_are_documented():
         "medications_of_note",
         "recent_events",
         "monitoring",
+        "fall_risk",
     ]
     assert FIELD_TYPES == {
         "patient_id": str,
@@ -49,4 +50,5 @@ def test_optional_fields_and_expected_types_are_documented():
         "recent_events": list,
         "pending_tasks": list,
         "monitoring": str,
+        "fall_risk": bool,
     }

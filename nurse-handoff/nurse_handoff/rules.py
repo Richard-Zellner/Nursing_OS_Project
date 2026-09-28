@@ -24,6 +24,9 @@ DIURETIC_WARNING = (
 NPO_CONFLICT_WARNING = (
     "WARNING: NPO diet documented but a meal-related task is pending."
 )
+FALL_RISK_WARNING = (
+    "WARNING: Fall risk documented but mobility status not documented."
+)
 
 # Case-sensitive, word-bounded: "IV" and "IV/PO" match; "IVF", "IVIG",
 # "PIV", and "Ivabradine" do not.
@@ -140,6 +143,13 @@ def check_npo_conflict(record: dict) -> list[str]:
     return [NPO_CONFLICT_WARNING] if has_meal_related_task else []
 
 
+def check_fall_risk(record: dict) -> list[str]:
+    """Rule 9: documented fall risk needs a documented mobility status."""
+    if record.get("fall_risk") is not True or record.get("mobility") is not None:
+        return []
+    return [FALL_RISK_WARNING]
+
+
 def check_important_fields(record: dict) -> list[str]:
     """Return the glyph warning for each absent or null important field.
 
@@ -167,6 +177,7 @@ def collect_warnings(record: dict) -> list[str]:
         + check_telemetry(record)
         + check_diuretic_output(record)
         + check_npo_conflict(record)
+        + check_fall_risk(record)
     )
     field_warnings = check_important_fields(record)
     if MOBILITY_WARNING in rule_warnings:

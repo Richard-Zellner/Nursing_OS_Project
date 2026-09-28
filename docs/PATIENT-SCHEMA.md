@@ -59,3 +59,4 @@ not documented.
 | Field | Type | Class | `null`/absent means | Use |
 |---|---|---|---|---|
 | `monitoring` | string | optional | not documented | Rule 6 checks for telemetry when cardiac rhythm is not documented |
+| `fall_risk` | boolean | optional | not documented | Rule 9 checks for missing mobility status when `true` |
