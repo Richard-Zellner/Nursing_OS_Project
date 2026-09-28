@@ -1,0 +1,21 @@
+{
+  "patient_id": "SYNTH-006",
+  "age": 46,
+  "code_status": "Full Code",
+  "primary_problem": "Synthetic telemetry observation scenario",
+  "neuro": "Alert and oriented",
+  "cardiac": "Normal sinus rhythm documented",
+  "monitoring": "Continuous telemetry",
+  "respiratory": {
+    "oxygen": false,
+    "device": null,
+    "flow_lpm": null
+  },
+  "mobility": "Independent",
+  "diet": "Regular diet",
+  "access": [],
+  "medications_of_note": [],
+  "recent_events": [],
+  "pending_tasks": [],
+  "fall_risk": false
+}

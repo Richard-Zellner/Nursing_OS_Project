@@ -24,6 +24,8 @@ PATIENT_FILES = (
     "chf_patient.json",
     "incomplete_patient.json",
     "complex_patient.json",
+    "patient_e.json",
+    "patient_f.json",
 )
 SECTION_TITLES = (
     "NURSING HANDOFF",
@@ -300,8 +302,15 @@ def test_null_optional_fields_render_like_absent_fields():
     [
         ("simple_patient.json", "simple_patient.txt"),
         ("chf_patient.json", "chf_patient.txt"),
+        ("patient_e.json", "patient_e.txt"),
+        ("patient_f.json", "patient_f.txt"),
     ],
-    ids=["patient-a-simple", "patient-b-chf"],
+    ids=[
+        "patient-a-simple",
+        "patient-b-chf",
+        "patient-e-all-rules",
+        "patient-f-clean-telemetry",
+    ],
 )
 def test_handoff_matches_snapshot_byte_for_byte(filename, snapshot):
     handoff = render_handoff(load_patient(DATA_DIR / filename))

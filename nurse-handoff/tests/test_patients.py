@@ -10,6 +10,8 @@ PATIENT_FILES = (
     "chf_patient.json",
     "incomplete_patient.json",
     "complex_patient.json",
+    "patient_e.json",
+    "patient_f.json",
 )
 FORBIDDEN_KEYS = {"name", "dob", "mrn", "facility"}
 
@@ -24,7 +26,7 @@ def _all_keys(value):
             yield from _all_keys(nested_value)
 
 
-def test_four_synthetic_patients_parse_with_sequential_ids():
+def test_six_synthetic_patients_parse_with_sequential_ids():
     records = [
         json.loads((DATA_DIR / filename).read_text(encoding="utf-8"))
         for filename in PATIENT_FILES
@@ -35,6 +37,8 @@ def test_four_synthetic_patients_parse_with_sequential_ids():
         "SYNTH-002",
         "SYNTH-003",
         "SYNTH-004",
+        "SYNTH-005",
+        "SYNTH-006",
     ]
 
 

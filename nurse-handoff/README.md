@@ -130,6 +130,8 @@ documented "nothing" and renders `None`.
 | `data/chf_patient.json` | SYNTH-002 | Patient B. CHF exacerbation on telemetry with 2 L/min oxygen, IV diuretic, intake and output, daily weight, and pending labs. | None |
 | `data/incomplete_patient.json` | SYNTH-003 | Patient C. Omits code status, mobility, and the respiratory assessment. | `⚠ Code status not documented`, `⚠ Respiratory assessment not documented`, `WARNING: Mobility status not documented.`, `WARNING: Code status not documented; confirm before handoff.` |
 | `data/complex_patient.json` | SYNTH-004 | Patient D. Oxygen documented without device or flow, and an IV medication with no vascular access. | Rule 1 and Rule 2 warnings |
+| `data/patient_e.json` | SYNTH-005 | Patient E. Exercises Rules 6–9 together: telemetry without rhythm, diuretic without output, an NPO meal task, and fall risk without mobility. | Rule 3 and Rules 6–9 warnings |
+| `data/patient_f.json` | SYNTH-006 | Patient F. A clean telemetry patient with a documented rhythm. | None |
 
 Patient IDs use the `SYNTH-###` form. No names, dates of birth, MRNs, or
 facility names appear anywhere, and a test scans `data/` to keep it that way.

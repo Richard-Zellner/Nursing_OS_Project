@@ -97,11 +97,13 @@ def test_readme_lists_every_warning_verbatim():
         assert warning in README
 
 
-def test_readme_lists_all_four_synthetic_patients():
+def test_readme_lists_all_six_synthetic_patients():
     for patient_id, filename in (
         ("SYNTH-001", "simple_patient.json"),
         ("SYNTH-002", "chf_patient.json"),
         ("SYNTH-003", "incomplete_patient.json"),
         ("SYNTH-004", "complex_patient.json"),
+        ("SYNTH-005", "patient_e.json"),
+        ("SYNTH-006", "patient_f.json"),
     ):
         assert f"| `data/{filename}` | {patient_id} |" in README

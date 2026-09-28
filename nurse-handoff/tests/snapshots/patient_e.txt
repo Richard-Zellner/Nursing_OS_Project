@@ -1,0 +1,24 @@
+NURSING HANDOFF
+---------------
+
+64-year-old — Full Code
+Primary problem: Synthetic telemetry validation scenario
+
+ASSESSMENT
+Neuro: Alert and oriented
+Cardiac: Not documented
+Respiratory: No supplemental oxygen documented
+Mobility: Not documented
+Diet: NPO per synthetic scenario
+
+ACCESS
+None
+
+MEDICATIONS OF NOTE
+- Furosemide 20 mg PO daily
+
+THIS SHIFT
+None
+
+PENDING
+- Review meal tray request

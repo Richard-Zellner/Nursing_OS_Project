@@ -177,7 +177,7 @@ never infer clinical facts. Do not touch v0.3+ (web, FHIR, LLM).
 - [x] **106 Rule 9 fall risk without mobility.** New optional field
   `fall_risk` (boolean). If `true` and `mobility` missing → `WARNING: Fall
   risk documented but mobility status not documented.` Blocked by: 101.
-- [ ] **108 Patients E and F.** `SYNTH-005` exercising rules 6–9 all at
+- [x] **108 Patients E and F.** `SYNTH-005` exercising rules 6–9 all at
   once; `SYNTH-006` a clean telemetry patient producing no warnings.
   Snapshot tests for both. Blocked by: 102–106.
 - [ ] **109 Rule registry.** Refactor `rules.py` so every rule is a function

@@ -601,6 +601,30 @@ def test_collect_warnings_on_synthetic_patients(filename, expected):
     assert collect_warnings(load_patient(DATA_DIR / filename)) == expected
 
 
+def test_patient_e_exercises_rules_6_through_9_together():
+    record = load_patient(DATA_DIR / "patient_e.json")
+
+    assert check_telemetry(record) == [TELEMETRY_WARNING]
+    assert check_diuretic_output(record) == [DIURETIC_WARNING]
+    assert check_npo_conflict(record) == [NPO_CONFLICT_WARNING]
+    assert check_fall_risk(record) == [FALL_RISK_WARNING]
+    assert collect_warnings(record) == [
+        MOBILITY_WARNING,
+        TELEMETRY_WARNING,
+        DIURETIC_WARNING,
+        NPO_CONFLICT_WARNING,
+        FALL_RISK_WARNING,
+    ]
+
+
+def test_patient_f_is_clean_with_documented_telemetry_rhythm():
+    record = load_patient(DATA_DIR / "patient_f.json")
+
+    assert record["monitoring"] == "Continuous telemetry"
+    assert record["cardiac"] == "Normal sinus rhythm documented"
+    assert collect_warnings(record) == []
+
+
 def test_collect_warnings_lists_field_warnings_before_rule_warnings():
     record = {
         **MINIMAL_RECORD,
